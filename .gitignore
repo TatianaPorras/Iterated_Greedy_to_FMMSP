@@ -1,0 +1,6 @@
+# para evitar los archivos .aux y .log (y .pdf pero esto puede cambiar después)
+*.aux
+*.log
+
+# para evitar la carpeta con el tutorial de Latex
+Latex/
