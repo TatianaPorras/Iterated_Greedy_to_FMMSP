@@ -2,6 +2,9 @@
 
 % paquete para imágenes y figuras del proyecto
 \usepackage{graphicx}
+% paquete para la bibliografía
+\usepackage[backend=bibtex,sorting=none]{biblatex}
+\bibliography{MNIG_to_FMMSP_Tatiana_Porras}
 
 % metadata del proyecto
 \title{MNIG to FMMSP Tatiana Porras}
@@ -50,28 +53,87 @@
 
 \setcounter{section}{-1}
 
+% secciones del proyecto
 \section{TÍTULO}
 
 "ALGORITMO VORAZ ITERATIVO CON MULTI-VECINDAD APLICADO AL PROBLEMA DE
-SECUENCIACIÓN DIFUSO MULTIPRODUCTO Y MULTIETAPAS"
+SECUENCIACIÓN DIFUSO MULTIPRODUCTO Y \linebreak MULTIETAPAS"
+
+\newpage
 
 \section{RESUMEN}
 
-El Algoritmo Voraz Iterativo con Multi-vecindad aplicado al Problema de 
-Secuenciación Difuso Multiproducto y Multietapas (en adelante 
-\algmod\ por sus siglas en inglés) no ha sido tratado en la 
-literatura científica internacional. En este trabajo se explora esta
-combinación nueva.
+El Algoritmo Voraz Iterativo con Multi-Vecindad aplicado al Problema de
+Secuenciación Difuso Multiproducto y Multietapas (\algmod\ por sus siglas
+en inglés) no ha sido tratado en la literatura científica internacional.
+En este trabajo se explora esta combinación nueva. Para ello, se modificará
+el algoritmo MNIG de modo que pueda ser utilizado para resolver el modelo FMMSP.
+
+\vspace{\baselineskip}
+Al final se reportarán los resultados del algoritmo aplicado a varias instancias 
+del problema, y se compara dichos resultados con los de otros cuatro algoritmos 
+que han sido aplicados al modelo FMMSP en la literatura.
+
+\vspace{\baselineskip}
+\textbf{Palabras Clave}: Algoritmo Voraz Iterativo, Multi-vecindad,
+Difuso, Secuenciación, Multiproducto, Multietapas
 
 \subsection{ABSTRACT}
 
 The Multi-neighborhood Iterated Greedy algorithm applied to the Fuzzy 
 Multiproduct Multistage Scheduling Problem (from now on \algmod)
 has not been treated in the international scientific literature. This
-work explores this new combination.
+work explores this new combination. For that, the MNIG algorithm will be
+modified so that it can be used to solve the FMMSP model.
+
+\vspace{\baselineskip}
+At the end, the results of the algorithm will be reported, after applying it to 
+several instances of the problem, and the results will be compared to those of 
+another four algorithms that have been applied to the FMMSP model in the 
+literature. 
+
+\vspace{\baselineskip}
+\par \textbf{Keywords}: Iterated Greedy, Multi-neighborhood, Scheduling, Fuzzy,
+Multiproduct, Multistage
 
 \section{INTRODUCCIÓN}
 
+Mediante el presente trabajo de tesis de pregrado se pretende hacer un aporte
+aunque pequeño al conocimiento. En la ingeniería industrial existen diversas
+áreas en las que se puede hacer un aporte de este tipo. Existe el área de
+investigación de operaciones, el área de gestión, mercadeo, higiene industrial,
+seguridad y salud en el trabajo, ergonomía, etcétera. 
+
+\vspace{\baselineskip}
+Un aporte de nuevo conocimiento en pregrado es un aporte pequeño y muy
+específico, detallado. Por ello se selecciona una de las áreas de conocimiento
+de la ingeniería industrial y dentro de esa área se elige un tema en particular.
+De ese tema elegido se trabaja un detalle que no haya sido estudiado con
+anterioridad. 
+
+\vspace{\baselineskip}
+En el presente trabajo se eligió el tema de secuenciación, mejor conocido por
+su nombre en inglés como "scheduling". Dentro de este tema se revisó el estado
+del arte, y se encontró un modelo de scheduling que ha sido poco estudiado, y
+por aparte se encontró un algoritmo que nunca ha sido aplicado al modelo, pero
+que podría ser aplicado. El modelo encontrado \autocite{modFMMSP} es llamado 
+FMMSP que significa Fuzzy Multiproduct Multistage Scheduling Problem, que en 
+español se podría traducir como Problema de Secuenciación Difuso Multiproducto 
+y Multietapas. Es un modelo interesante de ser estudiado pues incluye números 
+difusos, múltiples productos, y múltiples etapas. El algoritmo encontrado 
+\autocite{algMNIG} es llamado MNIG que significa Multi-Neighborhood Iterated
+Greedy algorithm. En español se traduce como algoritmo Voraz Iterativo con 
+Multi-Vecindad. Se ha encontrado que este algoritmo sirve para resolver 
+problemas de scheduling \autocite{algMNIG}. 
+
+\vspace{\baselineskip}
+Lo novedoso resulta en que dicho algoritmo jamás ha sido aplicado al modelo, a 
+tal punto que para realizar este trabajo se hará necesario modificar el 
+algoritmo, pues el algoritmo original no se puede aplicar directamente al 
+modelo. No existen pruebas de que este algoritmo sea apropiado para este modelo.
+Con el presente trabajo se propone comprobar que tan bueno es el algoritmo MNIG
+aplicado al modelo FMMSP, al compararlo con otros cuatro algoritmos que ya han
+sido aplicados al modelo FMMSP \autocite{modFMMSP}.
 
 \section{PLANTEAMIENTO DEL PROBLEMA}
 
@@ -92,5 +154,7 @@ work explores this new combination.
 \section{PRODUCTOS DEL PROYECTO}
 
 \section{BIBLIOGRAFÍA}
+
+\printbibliography
 
 \end{document}
