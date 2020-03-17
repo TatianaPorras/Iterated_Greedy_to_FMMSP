@@ -8,22 +8,32 @@
 \defcounter {refsection}{0}\relax 
 \contentsline {section}{\numberline {2}INTRODUCCIÓN}{2}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {3}PLANTEAMIENTO DEL PROBLEMA}{4}%
+\contentsline {section}{\numberline {3}PLANTEAMIENTO DEL PROBLEMA}{3}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {3.1}Elementos del Problema}{3}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {3.2}Pregunta del Problema}{4}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {3.3}Subpreguntas del Problema}{4}%
 \defcounter {refsection}{0}\relax 
 \contentsline {section}{\numberline {4}OBJETIVOS}{4}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {5}JUSTIFICACIÓN}{4}%
+\contentsline {subsection}{\numberline {4.1}Objetivo General}{4}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {6}ALCANCES}{4}%
+\contentsline {subsection}{\numberline {4.2}Objetivos Específicos}{4}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {7}MARCO DE REFERENCIA}{4}%
+\contentsline {section}{\numberline {5}JUSTIFICACIÓN}{5}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {8}HIPÓTESIS}{4}%
+\contentsline {section}{\numberline {6}ALCANCES}{5}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {9}DISEÑO METODOLÓGICO}{4}%
+\contentsline {section}{\numberline {7}MARCO DE REFERENCIA}{5}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {10}CRONOGRAMA}{4}%
+\contentsline {section}{\numberline {8}HIPÓTESIS}{5}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {11}PRODUCTOS DEL PROYECTO}{4}%
+\contentsline {section}{\numberline {9}DISEÑO METODOLÓGICO}{5}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {12}BIBLIOGRAFÍA}{4}%
+\contentsline {section}{\numberline {10}CRONOGRAMA}{5}%
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {11}PRODUCTOS DEL PROYECTO}{5}%
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {12}BIBLIOGRAFÍA}{5}%

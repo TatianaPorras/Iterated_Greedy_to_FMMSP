@@ -5,6 +5,8 @@
 % paquete para la bibliografía
 \usepackage[backend=bibtex,sorting=none]{biblatex}
 \bibliography{MNIG_to_FMMSP_Tatiana_Porras}
+% paquete de símbolos matemáticos
+\usepackage{amsfonts}
 
 % metadata del proyecto
 \title{MNIG to FMMSP Tatiana Porras}
@@ -137,24 +139,107 @@ sido aplicados al modelo FMMSP \autocite{modFMMSP}.
 
 \section{PLANTEAMIENTO DEL PROBLEMA}
 
+El problema que ataca esta tesis es explorar nuevas posibilidades de encontrar
+secuencias en las que se puedan realizar los trabajos en un sistema de
+producción del tipo FMMSP, de modo tal que dichas secuencias de trabajos
+tengan un tiempo de terminación máximo lo más bajo posible.
+
+\vspace{\baselineskip}
+Siendo que el espacio de búsqueda del modelo FMMSP para problemas de tamaño
+realista es muy grande como para buscar de manera exhaustiva la secuencia con
+el menor de los tiempos de terminación máximo (es decir probando cada secuencia
+posible por separado), se diseñan algoritmos que permitan buscar en regiones
+promisorias del espacio de búsqueda. De esta manera, se hace innecesario 
+revisar todo el espacio de búsqueda, y los algoritmos dan buenos resultados,
+o sea, con bajos tiempos de terminación máximo.
+
+\vspace{\baselineskip}
+El algoritmo MNIG aplicado al modelo FMMSP tiene la posibilidad de competir
+en el encuentro de buenas soluciones. Aplicando el algoritmo MNIG un sistema
+productivo tipo FMMSP podría encontrar secuencias de trabajos con bajos tiempos
+de terminación máximo. Sin embargo esta posibilidad aún no está comprobada, de
+eso se trata esta tesis.
+
+\subsection{Elementos del Problema}
+
+Según lo anterior, los elementos del problema son:
+
+\vspace{\baselineskip}
+\begin{itemize}
+    \item[\maltese] Se requieren secuencias con bajos tiempos de terminación en
+    el modelo FMMSP.
+    \item[\maltese] El algoritmo MNIG tiene potencial para encontrar dichas
+    secuencias en un tiempo prudente. Los resultados se pueden comparar a otros
+    cuatro algoritmos que ya han sido usados en el modelo FMMSP
+\end{itemize}
+
+\subsection{Pregunta del Problema}
+
+¿Puede aplicarse el algoritmo MNIG al modelo FMMSP para obtener resultados
+similares a los obtenidos mediante los otros cuatro algoritmos ya probados?
+
+\subsection{Subpreguntas del Problema}
+
+\indent\indent
+¿Puede implementarse el algoritmo MNIG aplicado al modelo FMMSP en un lenguaje
+de programación como Python?
+
+¿Puede correr el algoritmo MNIG aplicado al modelo FMMSP e imprimir o devolver
+una secuencia de trabajos factible en ese modelo?
+
+¿Es comparablemente bueno el algoritmo MNIG aplicado al modelo FMMSP respecto
+a los otros cuatro algoritmos que ya han sido aplicados a ese modelo?
+
 \section{OBJETIVOS}
+
+\subsection{Objetivo General}
+
+\begin{itemize}
+    \item Aplicar el algoritmo MNIG al modelo FMMSP
+\end{itemize}
+
+\subsection{Objetivos Específicos}
+
+\begin{itemize}
+    \item Implementar el algoritmo MNIG aplicado al modelo FMMSP en el
+    \linebreak lenguaje de programación Python
+    \item Correr el algoritmo MNIG en instancias del modelo FMMSP y
+    obtener secuencias factibles
+    \item Comparar el algoritmo MNIG aplicado al modelo FMMSP con los otros
+    cuatro algoritmos que se han aplicado al modelo FMMSP. La comparación se
+    hará con el tiempo de terminación máximo de la secuencia resultante
+\end{itemize}
 
 \section{JUSTIFICACIÓN}
 
+
+
 \section{ALCANCES}
+
+
 
 \section{MARCO DE REFERENCIA}
 
+
+
 \section{HIPÓTESIS}
+
+
 
 \section{DISEÑO METODOLÓGICO}
 
+
+
 \section{CRONOGRAMA}
+
+
 
 \section{PRODUCTOS DEL PROYECTO}
 
+
+
 \section{BIBLIOGRAFÍA}
 
-\printbibliography
+\printbibliography[heading=none]
 
 \end{document}
