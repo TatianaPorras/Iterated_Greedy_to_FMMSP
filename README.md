@@ -2,4 +2,4 @@
 
 Con este proyecto se realizará la graduación de Ingeniera Industral de Tatiana Porras en la Universidad Distrital.
 
-Cosa hermosa usted muaaa ... realmente no se como agradecerte 
+Mua mua mua
