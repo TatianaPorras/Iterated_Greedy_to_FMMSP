@@ -26,14 +26,18 @@
 \defcounter {refsection}{0}\relax 
 \contentsline {section}{\numberline {6}ALCANCES}{5}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {7}MARCO DE REFERENCIA}{6}%
+\contentsline {section}{\numberline {7}MARCO DE REFERENCIA}{5}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {8}HIPÓTESIS}{6}%
+\contentsline {subsection}{\numberline {7.1}Antecedentes y Marco Teórico}{5}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {9}DISEÑO METODOLÓGICO}{6}%
+\contentsline {subsection}{\numberline {7.2}Marco Conceptual}{6}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {10}CRONOGRAMA}{6}%
+\contentsline {section}{\numberline {8}HIPÓTESIS}{16}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {11}PRODUCTOS DEL PROYECTO}{6}%
+\contentsline {section}{\numberline {9}DISEÑO METODOLÓGICO}{16}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {12}BIBLIOGRAFÍA}{6}%
+\contentsline {section}{\numberline {10}CRONOGRAMA}{16}%
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {11}PRODUCTOS DEL PROYECTO}{16}%
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {12}BIBLIOGRAFÍA}{16}%

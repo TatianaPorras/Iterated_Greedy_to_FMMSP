@@ -9,3 +9,6 @@
 
 # para evitar la carpeta con el tutorial de Latex
 Latex/
+
+# para evitar la carpeta con las referencias
+Referencias/
