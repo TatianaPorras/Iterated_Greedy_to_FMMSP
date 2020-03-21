@@ -44,6 +44,6 @@
 \defcounter {refsection}{0}\relax 
 \contentsline {section}{\numberline {10}CRONOGRAMA}{18}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {11}PRODUCTOS DEL PROYECTO}{18}%
+\contentsline {section}{\numberline {11}PRODUCTOS DEL PROYECTO}{19}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {12}BIBLIOGRAFÍA}{18}%
+\contentsline {section}{\numberline {12}BIBLIOGRAFÍA}{19}%

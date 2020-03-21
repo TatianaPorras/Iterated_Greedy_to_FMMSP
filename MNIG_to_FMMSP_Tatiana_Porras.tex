@@ -14,9 +14,10 @@
 \lstset{language=Python}
 % paquete para crear diagrama de árbol de directorios
 \usepackage{dirtree}
-% paquetes para crear tablas
+% paquete para crear tablas
 \usepackage{multirow}
-\usepackage{longtable}
+% paquete para crear diagrama de Gantt del cronograma
+\usepackage{pgfgantt}
 
 % metadata del proyecto
 \title{MNIG to FMMSP Tatiana Porras}
@@ -1002,10 +1003,33 @@ cuatro algoritmos: \autocite{modFMMSP}
 Con esta tabla se compararán directamente los resultados del algoritmo MNIG
 al ser aplicado al modelo FMMSP.
 
-
 \section{CRONOGRAMA}
 
+El cronograma a continuación se basa en el diseño metodológico expuesto.
 
+\begin{center}
+\begin{ganttchart}{7}{12}
+    \gantttitle{2020-3 (meses)}{6}\\
+    \gantttitlelist{7,...,12}{1}\\
+    \ganttgroup{Escritura}{7}{9}\\
+    \ganttbar{Escritura de Código}{7}{8}\\
+    \ganttbar{Depuración}{9}{9}\\
+    \ganttgroup{Ejecución}{10}{10}\\
+    \ganttbar{Ejecución del programa}{10}{10}\\
+    \ganttgroup{Comparación}{11}{12}\\
+    \ganttbar{Comparación de resultados}{11}{11}\\
+    \ganttbar{Conclusiones de la comparación}{12}{12}
+    \ganttlink{elem1}{elem2}
+    \ganttlink{elem2}{elem4}
+    \ganttlink{elem4}{elem6}
+    \ganttlink{elem6}{elem7}
+\end{ganttchart}
+\end{center}
+
+Del cronograma se observan los meses numerados en la parte superior, 7 es Julio,
+8 es Agosto, etcétera. Se estima que el proyecto dure 6 meses o menos. Cada grupo
+de actividades está basado en una parte del diseño metodológico: escritura,
+ejecución, y comparación.
 
 \section{PRODUCTOS DEL PROYECTO}
 
