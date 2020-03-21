@@ -12,6 +12,11 @@
 % paquete para escribir pseudocódigo Python
 \usepackage{listings}
 \lstset{language=Python}
+% paquete para crear diagrama de árbol de directorios
+\usepackage{dirtree}
+% paquetes para crear tablas
+\usepackage{multirow}
+\usepackage{longtable}
 
 % metadata del proyecto
 \title{MNIG to FMMSP Tatiana Porras}
@@ -77,7 +82,7 @@ En este trabajo se explora esta combinación nueva. Para ello, se modificará
 el algoritmo MNIG de modo que pueda ser utilizado para resolver el modelo FMMSP.
 
 \vspace{\baselineskip}
-Al final se reportarán los resultados del algoritmo aplicado a varias instancias 
+Al final se reportarán los resultados del algoritmo aplicado a una instancia
 del problema, y se compara dichos resultados con los de otros cuatro algoritmos 
 que han sido aplicados al modelo FMMSP en la literatura.
 
@@ -208,7 +213,7 @@ a los otros cuatro algoritmos que ya han sido aplicados a ese modelo?
 \begin{itemize}
     \item Implementar el algoritmo MNIG aplicado al modelo FMMSP en el
     \linebreak lenguaje de programación Python
-    \item Correr el algoritmo MNIG en instancias del modelo FMMSP y
+    \item Correr el algoritmo MNIG en una instancia del modelo FMMSP y
     obtener secuencias factibles
     \item Comparar el algoritmo MNIG aplicado al modelo FMMSP con los otros
     cuatro algoritmos que se han aplicado al modelo FMMSP. La comparación se
@@ -867,6 +872,135 @@ El algoritmo MNIG puede ser aplicado al modelo FMMSP.
 
 \section{DISEÑO METODOLÓGICO}
 
+El diseño metodológico de este proyecto abarca tres partes principales: escribir
+el algoritmo MNIG en Python, ejecutar el algoritmo MNIG en una instancia del
+modelo FMMSP, y comparar los resultados del algoritmo MNIG con los resultados de
+los otros cuatro algoritmos que ya han sido aplicados al modelo FMMSP.
+
+\subsection{Escritura del algoritmo MNIG en Python}
+
+El algoritmo MNIG se puede escribir en el lenguaje Python como una aplicación
+de consola. El programa empieza por leer un archivo de texto plano en que se
+encuentren los parámetros del modelo FMMSP, en particular los tiempos de
+procesamiento, el número de etapas, el número de unidades por etapa, el
+número de trabajos a remover en el algoritmo de destrucción y reconstrucción
+$d$, y el parámetro $T_{0}$. Se prefiere tener estos datos en un archivo de
+texto plano para que se pueda repetir el algoritmo rápidamente, y si hay que
+hacer cambios a los datos se hacen independientemente del programa.
+
+\vspace{\baselineskip}
+Una división lógica del programa en Python resultaría de poner los archivos
+en una sola carpeta, y crear un archivo de Python por cada algoritmo separado.
+Una posible jerarquía de archivos resultante sería:
+
+\vspace{\baselineskip}
+\dirtree{%
+.1 MNIG\_to\_FMMSP/. 
+.2 \_\_main\_\_.py. 
+.2 algorithms/. 
+.3 \_\_init\_\_.py. 
+.3 DNEH\_SMR.py. 
+.3 destruction\_reconstruction.py. 
+.3 local\_search.py. 
+}
+
+\vspace{\baselineskip}
+En esta estructura, cada algoritmo tiene su propio archivo, y el archivo que
+tiene el algoritmo MNIG como síntesis de los demás es el archivo \_\_main\_\_.py
+desde este archivo se llama a los demás algoritmos.
+
+\vspace{\baselineskip}
+Durante la ejecución, el programa puede ir imprimiendo en la
+terminal resultados parciales de cada algoritmo, por ejemplo las secuencias
+que van resultando de cada algoritmo. Al finalizar la ejecución del programa, 
+debe quedar impreso en pantalla la secuencia final así como su makespan. El
+hecho de imprimir por pantalla no representa ninguna limitación, pues este
+resultado puede ser redireccionado a un archivo, de modo que los resultados
+queden en un archivo en disco duro, siendo el archivo elección del usuario.
+
+\vspace{\baselineskip}
+Como se observa en la estructura de archivos, la carpeta algorithms/ es
+tratada como un paquete mediante el archivo \_\_init\_\_.py se podría decir
+que es el paquete con los algoritmos necesarios para ejecutar el algoritmo
+principal MNIG.
+
+\subsection{Ejecución del algoritmo MNIG en instancia del modelo FMMSP}
+
+Aquí se explica por fin por qué sólo se trabajará una instancia y no varias
+del modelo FMMSP. La razón principalmente es que sólo existe una instancia
+públicamente a nivel internacional. Ello porque aunque en la literatura se
+habla de varias instancias (de unas 15 instancias), sólo en 1 se dan los datos,
+en el resto se dice que fueron generadas con números aleatorios uniformes con
+ciertas condiciones, pero instancias creadas aleatoriamente no pueden ser
+replicadas con exactitud. \autocite{modFMMSP}
+
+\vspace{\baselineskip}
+Por lo anterior se ejecutará el algoritmo MNIG en la única instancia conocida
+del modelo FMMSP. En la literatura las instancias son nombradas con 3 letras y
+un número por letra, por ejemplo la instancia que se trabajará es "o10s2u5". En
+esta cadena de caracteres, "o" significa "ordenes" (o trabajos), "s" significa
+etapas (stages en inglés), "u" significa "unidades" (o máquinas). Por ende la
+instancia sobre la que se probará el algoritmo es de 10 trabajos, 2 etapas, y 
+5 unidades. La siguiente tabla contiene los datos de la instancia: 
+\autocite{modFMMSP}
+
+\begin{table}[h]
+    \caption{Tiempos de procesamiento de la instancia o10s2u5}
+    \label{tab:tProc}
+    \begin{center}
+    \begin{tabular}{c|c|c|c|c|c}
+        \hline
+        \multirow{2}{*}{Trabajo} & Unidad 1 & Unidad 2 & Unidad 3 & Unidad 4 & Unidad 5\\
+        \cline{2-6}
+        & \multicolumn{2}{c|}{Etapa 1} & \multicolumn{3}{c}{Etapa 2}\\
+        \hline
+        1 & (10,12,13) & (11,12,14) & (9,10,12) & (6,7,9) & (8,9,10)\\
+        2 & (7,8,10) & (8,9,10) & (5,6,8) & (4,5,6) & (4,5,6) \\
+        3 & (10,11,12) & (9,10,12) & (2,3,4) & (5,6,8) & (5,6,7) \\
+        4 & (8,9,10) & (6,7,8) & (7,8,9) & (4,5,6) & (5,6,8) \\
+        5 & (6,7,8) & (8,9,10) & (4,5,6) & (6,7,8) & (6,7,9) \\
+        6 & (4,5,6) & (2,3,4) & (15,16,19) & (13,14,15) & (15,16,20) \\
+        7 & (11,13,15) & (1,2,3) & (11,13,14) & (10,11,13) & (9,10,12) \\
+        8 & (10,11,12) & (18,19,23) & (5,6,7) & (6,7,9) & (7,8,10) \\
+        9 & (5,6,8) & (4,5,6) & (14,15,16) & (19,21,25) & (10,12,13) \\
+        10 & (15,17,20) & (12,14,15) & (16,17,20) & (17,18,21) & (18,19,21) \\
+        \hline
+    \end{tabular}
+    \end{center}
+\end{table}
+
+Recordar que los tiempos de procesamiento vienen en ternas en la tabla pues son
+números difusos triangulares.
+El algoritmo será ejecutado sobre esta instancia o10s2u5 y se guardará el
+resultado en un archivo para compararlo con los de los otros cuatro algoritmos.
+
+\subsection{Comparación del algoritmo MNIG con otros algoritmos}
+
+Tras aplicar el algoritmo MNIG a la instancia del modelo FMMSP y obtener
+resultados, se podrá comparar a otros cuatro algoritmos. Estos son: DBSA-LS,
+BDBSA, MBSA, e IGA. Estos cuatro algoritmos ya fueron aplicados a la instancia
+del modelo FMMSP. En la siguiente tabla se presentan los resultados de esos 
+cuatro algoritmos: \autocite{modFMMSP}
+
+\begin{table}[h]
+    \caption{Resultados del makespan de los cuatro algoritmos}
+    \label{tab:algs}
+    \begin{center}
+    \begin{tabular}{ccccc}
+        \hline
+        Instancia & Algoritmo & Mejor valor & Valor medio & Peor valor\\
+        \hline
+        \multirow{4}{*}{o10s2u5} & DBSA-LS & (36,44,52) & (38,45,52) & (42,48,53)\\
+         & BDBSA & (36,44,52) & (38.6,45.5,52) & (40,46,54)\\
+         & MBSA & (40,47,55) & (44,50,57) & (42.2,49.3,54.6)\\
+         & IGA & (39,45,52) & (40.1,46.9,54.5) & (43,49,57)\\
+        \hline
+    \end{tabular}
+    \end{center}
+\end{table}
+
+Con esta tabla se compararán directamente los resultados del algoritmo MNIG
+al ser aplicado al modelo FMMSP.
 
 
 \section{CRONOGRAMA}

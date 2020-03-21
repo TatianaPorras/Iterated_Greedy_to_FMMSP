@@ -36,8 +36,14 @@
 \defcounter {refsection}{0}\relax 
 \contentsline {section}{\numberline {9}DISEÑO METODOLÓGICO}{16}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {10}CRONOGRAMA}{16}%
+\contentsline {subsection}{\numberline {9.1}Escritura del algoritmo MNIG en Python}{16}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {11}PRODUCTOS DEL PROYECTO}{16}%
+\contentsline {subsection}{\numberline {9.2}Ejecución del algoritmo MNIG en instancia del modelo FMMSP}{17}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {12}BIBLIOGRAFÍA}{16}%
+\contentsline {subsection}{\numberline {9.3}Comparación del algoritmo MNIG con otros algoritmos}{18}%
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {10}CRONOGRAMA}{18}%
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {11}PRODUCTOS DEL PROYECTO}{18}%
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {12}BIBLIOGRAFÍA}{18}%
