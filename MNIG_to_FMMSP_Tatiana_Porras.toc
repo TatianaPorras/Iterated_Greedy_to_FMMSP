@@ -10,7 +10,7 @@
 \defcounter {refsection}{0}\relax 
 \contentsline {section}{\numberline {3}PLANTEAMIENTO DEL PROBLEMA}{3}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {3.1}Elementos del Problema}{3}%
+\contentsline {subsection}{\numberline {3.1}Elementos del Problema}{4}%
 \defcounter {refsection}{0}\relax 
 \contentsline {subsection}{\numberline {3.2}Pregunta del Problema}{4}%
 \defcounter {refsection}{0}\relax 
@@ -22,28 +22,28 @@
 \defcounter {refsection}{0}\relax 
 \contentsline {subsection}{\numberline {4.2}Objetivos Específicos}{4}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {5}JUSTIFICACIÓN}{4}%
+\contentsline {section}{\numberline {5}JUSTIFICACIÓN}{5}%
 \defcounter {refsection}{0}\relax 
 \contentsline {section}{\numberline {6}ALCANCES}{5}%
 \defcounter {refsection}{0}\relax 
 \contentsline {section}{\numberline {7}MARCO DE REFERENCIA}{5}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {7.1}Antecedentes y Marco Teórico}{5}%
+\contentsline {subsection}{\numberline {7.1}Antecedentes y Marco Teórico}{6}%
 \defcounter {refsection}{0}\relax 
 \contentsline {subsection}{\numberline {7.2}Marco Conceptual}{6}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {8}HIPÓTESIS}{16}%
+\contentsline {section}{\numberline {8}HIPÓTESIS}{17}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {9}DISEÑO METODOLÓGICO}{16}%
+\contentsline {section}{\numberline {9}DISEÑO METODOLÓGICO}{17}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {9.1}Escritura del algoritmo MNIG en Python}{16}%
+\contentsline {subsection}{\numberline {9.1}Escritura del algoritmo MNIG en Python}{17}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {9.2}Ejecución del algoritmo MNIG en instancia del modelo FMMSP}{17}%
+\contentsline {subsection}{\numberline {9.2}Ejecución del algoritmo MNIG en instancia del modelo FMMSP}{18}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {9.3}Comparación del algoritmo MNIG con otros algoritmos}{18}%
+\contentsline {subsection}{\numberline {9.3}Comparación del algoritmo MNIG con otros algoritmos}{19}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {10}CRONOGRAMA}{18}%
+\contentsline {section}{\numberline {10}CRONOGRAMA}{19}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {11}PRODUCTOS DEL PROYECTO}{19}%
+\contentsline {section}{\numberline {11}PRODUCTOS DEL PROYECTO}{20}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {12}BIBLIOGRAFÍA}{20}%
+\contentsline {section}{\numberline {12}BIBLIOGRAFÍA}{21}%
