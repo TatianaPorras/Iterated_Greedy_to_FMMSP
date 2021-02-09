@@ -1,14 +1,5 @@
-# para evitar los archivos .aux .log, y otros
-*.aux
+# para evitar los archivos .log, y otros
 *.log
-# archivos asociados a la creación de bibliografía
-*blx.bib
-*.bbl
-*.blg
-*.run.xml
 
 # para evitar la carpeta con el tutorial de Latex
 Latex/
-
-# para evitar la carpeta con las referencias
-Referencias/

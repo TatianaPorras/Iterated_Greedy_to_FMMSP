@@ -1,0 +1,195 @@
+% $ biblatex auxiliary file $
+% $ biblatex bbl format version 3.1 $
+% Do not modify the above lines!
+%
+% This is an auxiliary file used by the 'biblatex' package.
+% This file may safely be deleted. It will be recreated as
+% required.
+%
+\begingroup
+\makeatletter
+\@ifundefined{ver@biblatex.sty}
+  {\@latex@error
+     {Missing 'biblatex' package}
+     {The bibliography requires the 'biblatex' package.}
+      \aftergroup\endinput}
+  {}
+\endgroup
+
+\datalist[entry]{none/global//global/global}
+  \entry{modFMMSP}{article}{}
+    \name{author}{3}{}{%
+      {{hash=YX}{%
+         family={Yan},
+         familyi={Y\bibinitperiod},
+         given={Xueli},
+         giveni={X\bibinitperiod},
+      }}%
+      {{hash=HY}{%
+         family={Han},
+         familyi={H\bibinitperiod},
+         given={Yuxin},
+         giveni={Y\bibinitperiod},
+      }}%
+      {{hash=GX}{%
+         family={Gu},
+         familyi={G\bibinitperiod},
+         given={Xingsheng},
+         giveni={X\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{YXHYGX1}
+    \strng{fullhash}{YXHYGX1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \verb{doi}
+    \verb https://doi.org/10.1016/j.neucom.2020.02.066
+    \endverb
+    \field{title}{An improved discrete backtracking searching algorithm for
+  fuzzy multiproduct multistage scheduling problem}
+    \field{journaltitle}{Neurocomputing}
+    \field{year}{2020}
+  \endentry
+
+  \entry{algMNIG}{article}{}
+    \name{author}{3}{}{%
+      {{hash=SW}{%
+         family={Shao},
+         familyi={S\bibinitperiod},
+         given={Weishi},
+         giveni={W\bibinitperiod},
+      }}%
+      {{hash=SZ}{%
+         family={Shao},
+         familyi={S\bibinitperiod},
+         given={Zhongshi},
+         giveni={Z\bibinitperiod},
+      }}%
+      {{hash=PD}{%
+         family={Pi},
+         familyi={P\bibinitperiod},
+         given={Dechang},
+         giveni={D\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{SWSZPD1}
+    \strng{fullhash}{SWSZPD1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \verb{doi}
+    \verb https://doi.org/10.1016/j.knosys.2020.105527
+    \endverb
+    \field{title}{Modeling and multi neighborhood iterated greedy algorithm for
+  distributed hybrid flow shop scheduling problem}
+    \field{journaltitle}{Knowledge-Based Systems}
+    \field{year}{2020}
+  \endentry
+
+  \entry{schedPinedo}{book}{}
+    \name{author}{1}{}{%
+      {{hash=PM}{%
+         family={Pinedo},
+         familyi={P\bibinitperiod},
+         given={Michael},
+         giveni={M\bibinitperiod},
+      }}%
+    }
+    \list{publisher}{1}{%
+      {Springer}%
+    }
+    \strng{namehash}{PM1}
+    \strng{fullhash}{PM1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{edition}{5}
+    \field{isbn}{978-3-319-26578-0}
+    \field{title}{Scheduling, Theory, Algorithms, and Systems}
+    \list{location}{1}{%
+      {New York, USA}%
+    }
+    \field{year}{2016}
+  \endentry
+
+  \entry{metaTalbi}{book}{}
+    \name{author}{1}{}{%
+      {{hash=TEG}{%
+         family={Talbi},
+         familyi={T\bibinitperiod},
+         given={El-Ghazali},
+         giveni={E\bibinithyphendelim G\bibinitperiod},
+      }}%
+    }
+    \list{publisher}{1}{%
+      {Wiley}%
+    }
+    \strng{namehash}{TEG1}
+    \strng{fullhash}{TEG1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{edition}{1}
+    \field{isbn}{978-0-470-27858-1}
+    \field{title}{Metaheuristics, From Design to Implementation}
+    \list{location}{1}{%
+      {USA}%
+    }
+    \field{year}{2009}
+  \endentry
+
+  \entry{flowCompl}{article}{}
+    \name{author}{3}{}{%
+      {{hash=GM}{%
+         family={Garey},
+         familyi={G\bibinitperiod},
+         given={M.},
+         giveni={M\bibinitperiod},
+      }}%
+      {{hash=JD}{%
+         family={Jhonson},
+         familyi={J\bibinitperiod},
+         given={D.},
+         giveni={D\bibinitperiod},
+      }}%
+      {{hash=SR}{%
+         family={Sethi},
+         familyi={S\bibinitperiod},
+         given={R.},
+         giveni={R\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{GMJDSR1}
+    \strng{fullhash}{GMJDSR1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{number}{2}
+    \field{pages}{117,129}
+    \field{title}{The complexity of flowshop and jobshop scheduling}
+    \field{volume}{1}
+    \field{journaltitle}{Mathematics of Operations Research}
+    \field{year}{1976}
+  \endentry
+
+  \entry{fuzzyNum}{inproceedings}{}
+    \name{author}{2}{}{%
+      {{hash=AMC}{%
+         family={Anand},
+         familyi={A\bibinitperiod},
+         given={M.\bibnamedelima Clement},
+         giveni={M\bibinitperiod\bibinitdelim C\bibinitperiod},
+      }}%
+      {{hash=BJ}{%
+         family={Bharatraj},
+         familyi={B\bibinitperiod},
+         given={Janani},
+         giveni={J\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{AMCBJ1}
+    \strng{fullhash}{AMCBJ1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{title}{Theory of Triangular Fuzzy Number}
+    \field{month}{03}
+    \field{year}{2017}
+  \endentry
+\enddatalist
+\endinput

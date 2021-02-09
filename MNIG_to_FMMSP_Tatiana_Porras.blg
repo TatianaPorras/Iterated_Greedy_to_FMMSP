@@ -1,0 +1,65 @@
+This is BibTeX, Version 0.99d (TeX Live 2019/Debian)
+Capacity: max_strings=200000, hash_size=200000, hash_prime=170003
+The top-level auxiliary file: MNIG_to_FMMSP_Tatiana_Porras.aux
+The style file: biblatex.bst
+Reallocated glb_str_ptr (elt_size=4) to 20 items from 10.
+Reallocated global_strs (elt_size=200001) to 20 items from 10.
+Reallocated glb_str_end (elt_size=4) to 20 items from 10.
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+Reallocated wiz_functions (elt_size=4) to 6000 items from 3000.
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+Database file #1: MNIG_to_FMMSP_Tatiana_Porras-blx.bib
+Database file #2: MNIG_to_FMMSP_Tatiana_Porras.bib
+Biblatex version: 3.13
+Reallocated wiz_functions (elt_size=4) to 9000 items from 6000.
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+You've used 7 entries,
+            6365 wiz_defined-function locations,
+            1233 strings with 9873 characters,
+and the built_in function-call counts, 33192 in all, are:
+= -- 2159
+> -- 735
+< -- 163
++ -- 831
+- -- 279
+* -- 2207
+:= -- 3642
+add.period$ -- 0
+call.type$ -- 7
+change.case$ -- 74
+chr.to.int$ -- 48
+cite$ -- 12
+duplicate$ -- 3547
+empty$ -- 2988
+format.name$ -- 401
+if$ -- 6903
+int.to.chr$ -- 0
+int.to.str$ -- 16
+missing$ -- 0
+newline$ -- 193
+num.names$ -- 268
+pop$ -- 2136
+preamble$ -- 1
+purify$ -- 113
+quote$ -- 0
+skip$ -- 1155
+stack$ -- 0
+substring$ -- 3413
+swap$ -- 798
+text.length$ -- 165
+text.prefix$ -- 0
+top$ -- 1
+type$ -- 226
+warning$ -- 0
+while$ -- 524
+width$ -- 0
+write$ -- 187
