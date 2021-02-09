@@ -26,24 +26,26 @@
 \defcounter {refsection}{0}\relax 
 \contentsline {section}{\numberline {6}ALCANCES}{5}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {7}MARCO DE REFERENCIA}{5}%
+\contentsline {section}{\numberline {7}MARCO DE REFERENCIA}{6}%
 \defcounter {refsection}{0}\relax 
 \contentsline {subsection}{\numberline {7.1}Antecedentes y Marco Teórico}{6}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {7.2}Marco Conceptual}{6}%
+\contentsline {subsection}{\numberline {7.2}Marco Conceptual}{7}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {8}HIPÓTESIS}{17}%
+\contentsline {section}{\numberline {8}HIPÓTESIS}{19}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {9}DISEÑO METODOLÓGICO}{17}%
+\contentsline {section}{\numberline {9}DISEÑO METODOLÓGICO}{19}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {9.1}Escritura del algoritmo MNIG en Python}{17}%
+\contentsline {subsection}{\numberline {9.1}Escritura del algoritmo MNIG en Python}{19}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {9.2}Ejecución del algoritmo MNIG en instancia del modelo FMMSP}{18}%
+\contentsline {subsection}{\numberline {9.2}Ejecución del algoritmo MNIG en instancia del modelo FMMSP}{20}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {9.3}Comparación del algoritmo MNIG con otros algoritmos}{19}%
+\contentsline {subsection}{\numberline {9.3}Comparación del algoritmo MNIG con otros algoritmos}{21}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {10}CRONOGRAMA}{19}%
+\contentsline {subsection}{\numberline {9.4}Instancias de Taillard}{21}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {11}PRODUCTOS DEL PROYECTO}{20}%
+\contentsline {section}{\numberline {10}CRONOGRAMA}{21}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {12}BIBLIOGRAFÍA}{21}%
+\contentsline {section}{\numberline {11}PRODUCTOS DEL PROYECTO}{22}%
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {12}BIBLIOGRAFÍA}{23}%

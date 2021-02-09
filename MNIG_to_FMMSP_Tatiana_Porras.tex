@@ -21,7 +21,7 @@
 
 % metadata del proyecto
 \title{MNIG to FMMSP Tatiana Porras}
-\date{2020-03-13}
+\date{2021-02-09}
 \author{Tatiana Porras}
 
 % definición de variables
@@ -106,7 +106,7 @@ Un aporte de nuevo conocimiento en pregrado es un aporte pequeño y muy específ
 En el presente trabajo se eligió el tema de secuenciación, mejor conocido por su nombre en inglés como "scheduling". Dentro de este tema se revisó el estado del arte, y se encontró un modelo de scheduling que ha sido poco estudiado, y por aparte se encontró un algoritmo que nunca ha sido aplicado al modelo, pero que podría ser aplicado. El modelo encontrado \autocite{modFMMSP} es llamado FMMSP que significa Fuzzy Multiproduct Multistage Scheduling Problem, que en español se podría traducir como Problema de Secuenciación Difuso Multiproducto y Multietapas. Es un modelo interesante de ser estudiado pues incluye números difusos, múltiples productos, y múltiples etapas. El algoritmo encontrado \autocite{algMNIG} es llamado MNIG que significa Multi-Neighborhood Iterated Greedy algorithm. En español se traduce como algoritmo Voraz Iterativo con Multi-Vecindad. Se ha encontrado que este algoritmo sirve para resolver problemas de scheduling \autocite{algMNIG}. 
 
 \vspace{\baselineskip}
-Lo novedoso resulta en que dicho algoritmo jamás ha sido aplicado al modelo, a tal punto que para realizar este trabajo se hará necesario modificar el algoritmo, pues el algoritmo original no se puede aplicar directamente al modelo. No existen pruebas de que este algoritmo sea apropiado para este modelo. Con el presente trabajo se propone comprobar que tan bueno es el algoritmo MNIG aplicado al modelo FMMSP, al compararlo con otros cuatro algoritmos que ya han sido aplicados al modelo FMMSP \autocite{modFMMSP}.
+Lo novedoso resulta en que dicho algoritmo jamás ha sido aplicado al modelo, a tal punto que para realizar este trabajo se hará necesario modificar el algoritmo, pues el algoritmo original no se puede aplicar directamente al modelo. No existen pruebas de que este algoritmo sea apropiado para este modelo. Con el presente trabajo se propone comprobar que tan bueno es el algoritmo MNIG aplicado al modelo FMMSP, al compararlo con otros cuatro algoritmos que ya han sido aplicados al modelo FMMSP, estos cuatro algoritmos son llamados: DBSA-LS, BDBSA, MBSA, e IGA \autocite{modFMMSP}.
 
 \section{PLANTEAMIENTO DEL PROBLEMA}
 
@@ -156,6 +156,7 @@ Según lo anterior, los elementos del problema son:
     \item Obtener secuencias del modelo FMMSP usando la implementación realizada.
     \item Comparar el algoritmo MNIG aplicado al modelo FMMSP con los otros cuatro algoritmos que se han aplicado al modelo FMMSP.
     \item Establecer si tiene sentido o no aplicar el algoritmo MNIG al modelo FMMSP, o si es preferible buscar otros algoritmos incluidos los que ya han sido probados.
+    \item Determinar la efectividad del algoritmo MNIG, no solo respecto al modelo FMMSP sino también respecto al modelo flow shop general.
 \end{itemize}
 
 \section{JUSTIFICACIÓN}
@@ -170,14 +171,14 @@ De este proyecto puede llegar a crearse un paper que podría ser publicado en in
 
 \section{ALCANCES}
 
-\textbf{Alcances:} Los alcances de este proyecto están bien definidos. Parte del alcance consiste en escribir un algoritmo en Python, específicamente implementar el algoritmo MNIG en un programa de consola de Python. En el proyecto también se incluye la tesis de grado en la que se compararán los resultados del algoritmo implementado en este proyecto con los de otros cuatro algoritmos aplicados al modelo FMMSP. Dicha tesis será entregada a la Universidad Distrital.
+\textbf{Alcances:} Los alcances de este proyecto están bien definidos. Parte del alcance consiste en escribir un algoritmo en Python, específicamente implementar el algoritmo MNIG en un programa de consola de Python. En el proyecto también se incluye la tesis de grado en la que se compararán los resultados del algoritmo implementado en este proyecto con los de otros cuatro algoritmos (DBSA-LS, BDBSA, MBSA, e IGA) aplicados al modelo FMMSP. Dicha tesis será entregada a la Universidad Distrital.
 
 \vspace{\baselineskip}
 De manera opcional se incluye la publicación de un paper en el Workshop on Engineering Applications. Este paper es solamente opcional porque no se saben las condiciones futuras, por ejemplo podría pasar que se acabaran las fechas de publicación, en ese caso este proyecto terminaría (pues el paper era opcional) y se publicaría el paper después, en las siguientes fechas pero no como parte de este proyecto para no atrasarlo teniendo en cuenta que el plazo para graduarse en la Universidad Distrital es prestablecido, entonces si las fechas de la graduación no cuadran con las fechas del paper, se publica el paper después de la graduación.
 
 \section{MARCO DE REFERENCIA}
 
-El marco de referencia se enfoca tanto en el scheduling de los sistemas de producción tipo FMMSP, como en el algoritmo MNIG que es un tipo de metaheurística.
+El marco de referencia se enfoca en el scheduling de los sistemas de producción tipo FMMSP, en el algoritmo MNIG que es un tipo de metaheurística, y en los otros cuatro algoritmos que son DBSA-LS, BDBSA, MBSA, e IGA.
 
 \subsection{Antecedentes y Marco Teórico}
 
@@ -308,7 +309,7 @@ Sean $\tilde{A} = (a^1,a^2,a^3)$ y $\tilde{B} = (b^1,b^2,b^3)$. Para establecer 
 \end{align}
 
 \vspace{\baselineskip}
-\textbf{Algoritmo MNIG:} El algoritmo MNIG se entiende dividido en cuatro algoritmos, cada uno realizando un rol diferente y al ser aplicados como se indica logran una solución. \autocite{algMNIG}
+\textbf{Algoritmo MNIG:} El algoritmo MNIG se entiende dividido a su vez en cuatro algoritmos, cada uno realizando un rol diferente y al ser aplicados como se indica logran una solución. \autocite{algMNIG}
 
 \vspace{\baselineskip}
 El primer algoritmo es llamado DNEH\_SMR, sirve para obtener una secuencia de trabajos inicial promisoria en la región de búsqueda. DNEH\_SMR significa "Distributed NEH with Small-Medium Rule" a su vez NEH proviene de "Nawaz, Enscore, Ham" que es un reconocido algoritmo para minimizar el makespan. \autocite{algMNIG}
@@ -501,15 +502,36 @@ Pseudocódigo de Python del algoritmo MNIG:
 \rule{\linewidth}{0.4pt}
 
 \vspace{\baselineskip}
-Esto termina la presentación del modelo FMMSP y del algoritmo MNIG. Con este marco de referencia se puede llevar a cabo el proyecto de grado.
+\textbf{Algoritmos BSA en general:} Los algoritmos BSA, por sus siglas en inglés que significan Backtracking Search Algorithm, son algoritmos que al ser aplicados a problemas de Scheduling, constan de 5 pasos: inicialización, selección-I, mutación, cruzamiento, y selección-II. \autocite{modFMMSP}
+
+\vspace{\baselineskip}
+La inicialización genera la población de secuencias. El paso selección-I actualiza la población de secuencias si es necesario, usando la memoria de la información histórica que guarda un algoritmo BSA. Dicha memoria también se usa para construir o cambiar la dirección de búsqueda de soluciones. El paso mutación genera una nueva población de secuencias mutando o alterando la población recibida del paso anterior. El paso cruzamiento cruza las secuencias unas con otras para obtener nuevas secuencias, descartando las secuencias no factibles. Por último, el paso de selección-II compara el makespan de las nuevas secuencias respecto a la población de secuencias del paso selección-I, y las mejores secuencias son elegidas para la iteración siguiente. \autocite{modFMMSP}
+
+\vspace{\baselineskip}
+Tres de los cuatro algoritmos de comparación en este trabajo, son algoritmos de tipo BSA.
+
+\vspace{\baselineskip}
+\textbf{Algoritmo DBSA-LS:} El algoritmo DBSA-LS, por sus siglas en inglés que significan Discrete Backtracking Search Algorithm with Local Search, es un algoritmo que busca aumentar la velocidad de convergencia del algoritmo BSA. Para ello, el algoritmo DBSA-LS utiliza la mejor secuencia de cada iteración, conocida como la secuencia Gbest. Aparte de esto, el algoritmo DBSA-LS utiliza búsqueda local para mejorar la de exploración de soluciones. \autocite{modFMMSP}
+
+\vspace{\baselineskip}
+\textbf{Algoritmo BDBSA:} El algoritmo BDBSA, por sus siglas en inglés que significan Basic Discrete Backtracking Search Algorithm, es un algoritmo tipo BSA que aplica los mismos cinco pasos del algoritmo BSA a problemas de tiempo discreto. Este algoritmo puede ser aplicado a problemas de scheduling en los que los trabajos inician y terminan en unidades de tiempo discretos. \autocite{modFMMSP}
+
+\vspace{\baselineskip}
+\textbf{Algoritmo MBSA:} El algoritmo MBSA, por sus siglas en inglés que significan Modified Backtracking Search Algorithm, es una forma modificada del algoritmo BSA. Esta modificación no cambia los cinco pasos esenciales del algoritmo BSA. \autocite{modFMMSP}
+
+\vspace{\baselineskip}
+\textbf{Algoritmo IGA:} El algoritmo IGA, por sus siglas en inglés que significan Interactive Genetic Algorithm, es un algoritmo genético que tiene algunas similaridades con el algoritmo BSA. Por ejemplo, en el algoritmo IGA las secuencias son modificadas mediante mutaciones aleatorias, y las mejores secuencias según el makespan pasan a la siguiente iteración. Esto también ocurre en el algoritmo BSA. \autocite{modFMMSP}
+
+\vspace{\baselineskip}
+Esto termina la presentación del modelo FMMSP, el algoritmo MNIG, y los cuatro algoritmos DBSA-LS, BDBSA, MBSA, e IGA. Con este marco de referencia se puede llevar a cabo el proyecto de grado.
 
 \section{HIPÓTESIS}
 
-El algoritmo MNIG puede ser aplicado al modelo FMMSP.
+El algoritmo MNIG puede ser aplicado al modelo FMMSP. Tras su aplicación la efectividad del algoritmo MNIG es medible y es comparable a la efectividad de los otros cuatro algoritmos: DBSA-LS, BDBSA, MBSA, e IGA.
 
 \section{DISEÑO METODOLÓGICO}
 
-El diseño metodológico de este proyecto abarca tres partes principales: escribir el algoritmo MNIG en Python, ejecutar el algoritmo MNIG en una instancia del modelo FMMSP, y comparar los resultados del algoritmo MNIG con los resultados de los otros cuatro algoritmos que ya han sido aplicados al modelo FMMSP.
+El diseño metodológico de este proyecto abarca tres partes principales: escribir el algoritmo MNIG en Python, ejecutar el algoritmo MNIG en una instancia del modelo FMMSP, y comparar los resultados del algoritmo MNIG con los resultados de los otros cuatro algoritmos que ya han sido aplicados al modelo FMMSP (DBSA-LS, BDBSA, MBSA, e IGA).
 
 \subsection{Escritura del algoritmo MNIG en Python}
 
@@ -595,22 +617,26 @@ Tras aplicar el algoritmo MNIG a la instancia del modelo FMMSP y obtener resulta
 
 Con esta tabla se compararán directamente los resultados del algoritmo MNIG al ser aplicado al modelo FMMSP.
 
+\subsection{Instancias de Taillard}
+
+A nivel internacional, se reconocen algunas instancias con las que se puede medir la efectividad de las metaheurísticas. Para el caso flow shop, las instancias de Taillard son instancias que se han venido usando desde 1993 cuando fueron creadas, son en total 12 instancias. La más pequeña cuenta con 20 trabajos y 5 máquinas. La instancia más grande es de 500 trabajos y 20 máquinas. Se aplicará el algoritmo MNIG a estas instancias aunque no esté diseñado para resolver el modelo flow shop básico, pues esto permitirá comprobar que el algoritmo MNIG puede ser aplicado a sistemas tipo flow shop.
+
 \section{CRONOGRAMA}
 
 El cronograma a continuación se basa en el diseño metodológico expuesto.
 
 \begin{center}
-\begin{ganttchart}{7}{12}
-    \gantttitle{2020-3 (meses)}{6}\\
-    \gantttitlelist{7,...,12}{1}\\
-    \ganttgroup{Escritura}{7}{9}\\
-    \ganttbar{Escritura de Código}{7}{8}\\
-    \ganttbar{Depuración}{9}{9}\\
-    \ganttgroup{Ejecución}{10}{10}\\
-    \ganttbar{Ejecución del programa}{10}{10}\\
-    \ganttgroup{Comparación}{11}{12}\\
-    \ganttbar{Comparación de resultados}{11}{11}\\
-    \ganttbar{Conclusiones de la comparación}{12}{12}
+\begin{ganttchart}{4}{9}
+    \gantttitle{2021-1 (meses)}{6}\\
+    \gantttitlelist{4,...,9}{1}\\
+    \ganttgroup{Escritura}{4}{6}\\
+    \ganttbar{Escritura de Código}{4}{5}\\
+    \ganttbar{Depuración}{6}{6}\\
+    \ganttgroup{Ejecución}{7}{7}\\
+    \ganttbar{Ejecución del programa}{7}{7}\\
+    \ganttgroup{Comparación}{8}{9}\\
+    \ganttbar{Comparación de resultados}{8}{8}\\
+    \ganttbar{Conclusiones de la comparación}{9}{9}
     \ganttlink{elem1}{elem2}
     \ganttlink{elem2}{elem4}
     \ganttlink{elem4}{elem6}
@@ -618,7 +644,7 @@ El cronograma a continuación se basa en el diseño metodológico expuesto.
 \end{ganttchart}
 \end{center}
 
-Del cronograma se observan los meses numerados en la parte superior, 7 es Julio, 8 es Agosto, etcétera. Se estima que el proyecto dure 6 meses o menos. Cada grupo de actividades está basado en una parte del diseño metodológico: escritura, ejecución, y comparación.
+Del cronograma se observan los meses numerados en la parte superior, 4 es Abril, 7 es Julio, 8 es Agosto, etcétera. Se estima que el proyecto dure 6 meses o menos. Cada grupo de actividades está basado en una parte del diseño metodológico: escritura, ejecución, y comparación.
 
 \section{PRODUCTOS DEL PROYECTO}
 
