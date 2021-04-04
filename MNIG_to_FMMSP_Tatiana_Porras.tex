@@ -298,16 +298,16 @@ La ecuación (\ref{eqn:objF}) es la función objetivo de minimizar el máximo de
 \vspace{\baselineskip}
 Teniendo definido el modelo \notac_modelo, para resolverlo hace falta saber exactamente qué se entiende por el máximo entre dos números difusos triangulares. Como en el modelo se calcula el máximo de los tiempos de terminación, y dichos tiempos son números difusos triangulares, entonces se requiere definir los operadores de comparación <, y > para números difusos triangulares. Solo es necesario definir un operador pues el otro es su negación. El operador > se define de la siguiente manera: \autocite{modFMMSP}
 
-Sean $\tilde{A} = (a^1,a^2,a^3)$ y $\tilde{B} = (b^1,b^2,b^3)$. Para establecer que $\tilde{A} > \tilde{B}$ se dan los tres siguientes casos
+Sean $\tilde{A} = (a^1,a^2,a^3)$ y $\tilde{B} = (b^1,b^2,b^3)$. Para establecer que $\tilde{A} > \tilde{B}$ se dan los tres casos siguientes
 
 \begin{align}
 \begin{split}
     Si \left(\frac{a^1+2*a^2+a^3}{4}\right) > 
-    \left(\frac{b^1+2*b^2+b^3}{4}\right), entonces \tilde{A} > \tilde{B}\\
+    \left(\frac{b^1+2*b^2+b^3}{4}\right), entonces\ \tilde{A} > \tilde{B}\\
     Si \left(\frac{a^1+2*a^2+a^3}{4}\right) = \left(\frac{b^1+2*b^2+b^3}{4}\right),
-    y a^2 > b^2,\\ entonces \tilde{A} > \tilde{B}\\
+    y\ a^2 > b^2,\\ entonces\ \tilde{A} > \tilde{B}\\
     Si \left(\frac{a^1+2*a^2+a^3}{4}\right) = \left(\frac{b^1+2*b^2+b^3}{4}\right),
-    y a^2 = b^2,\\ a^3-a^1 > b^3-b^1, entonces \tilde{A} > \tilde{B}\\
+    y\ a^2 = b^2,\\ a^3-a^1 > b^3-b^1, entonces\ \tilde{A} > \tilde{B}\\
 \end{split}
 \end{align}
 
@@ -430,7 +430,7 @@ Llámesele $\pi_{input}$ a la secuencia a ser destruida y reconstruida, y sea $\
 El algoritmo 3 es el algoritmo de búsqueda local con multi-vecindad. En este algoritmo se toma una secuencia a ser procesada $\pi_{input}$, y el algoritmo retorna una secuencia factible mejorada $\pi_{multivec}$. En el algoritmo se le hacen dos tipos de operaciones a la secuencia: inserciones e intercambios de trabajos. Insertar un trabajo significa tomar un trabajo y ponerlo en otra posición, desplazando los demás trabajos hacia la derecha. Intercambiar dos trabajos implica tomar dos trabajos y cambiarlos de posición, el uno en la posición del otro. Sea $\pi_{modif}$ la secuencia tras ser modificada con alguna de estas operaciones, y $\pi_{temp}$ una secuencia para guardar un resultado temporal. Para este algoritmo, sea $C_{max}(\pi) = F$ para dejar a $F$ en función de la secuencia $\pi$. $C_{max}$ es un símbolo común para el makespan. \autocite{algMNIG}
 
 \vspace{\baselineskip}
-En el algoritmo de búsqueda local con multi-vecindad hay dos funciones clave, que realizan las operaciones de inserción y de intercambio de trabajos. La operación de inserción es realizada con la función $Insertion_inner(\pi)$, en esta función se toma cada trabajo de $\pi$ y se inserta en cada posición, midiendo el makespan y al final dejando insertado el trabajo en la posición que tenga el menor makespan. La otra función es $Swap_inner(\pi)$ en la que se intercambian dos trabajos de $\pi$, se mide el makespan, y al final dejando intercambiados los trabajos en donde se presente el menor makespan. Si después de aplicar estas funciones se encuentra mejora, la función vuelve a ser aplicada, hasta que no se presente mejora en el makespan. \autocite{algMNIG}
+En el algoritmo de búsqueda local con multi-vecindad hay dos funciones clave, que realizan las operaciones de inserción y de intercambio de trabajos. La operación de inserción es realizada con la función $Insertion_{inner}(\pi)$, en esta función se toma cada trabajo de $\pi$ y se inserta en cada posición, midiendo el makespan y al final dejando insertado el trabajo en la posición que tenga el menor makespan. La otra función es $Swap_{inner}(\pi)$ en la que se intercambian dos trabajos de $\pi$, se mide el makespan, y al final dejando intercambiados los trabajos en donde se presente el menor makespan. Si después de aplicar estas funciones se encuentra mejora, la función vuelve a ser aplicada, hasta que no se presente mejora en el makespan. \autocite{algMNIG}
 
 \vspace{\baselineskip}
 Con lo anterior, aquí el algoritmo de búsqueda local con multi-vecindad en su versión de pseudocódigo de Python:
@@ -448,9 +448,9 @@ Con lo anterior, aquí el algoritmo de búsqueda local con multi-vecindad en su 
     1:  $\pi_{modif} = \pi_{input}, l_{max} = 2, l = 1$
     2:  while ($l$ <= $l_{max}$):
     3:      if ($l$ == 1):
-    4:          $\pi_{temp} = Insertion_inner(\pi_{modif})$
+    4:          $\pi_{temp} = Insertion_{inner}(\pi_{modif})$
     5:      else if ($l$ == 2):
-    6:          $\pi_{temp} = Swap_inner(\pi_{modif})$
+    6:          $\pi_{temp} = Swap_{inner}(\pi_{modif})$
     7:      if ($C_{max}(\pi_{temp}) < C_{max}(\pi_{modif})$):
     8:          $\pi_{modif} = \pi_{temp}, l = 1$
     9:      else:
