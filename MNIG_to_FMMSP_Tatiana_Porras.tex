@@ -360,7 +360,7 @@ Teniendo los elementos anteriores, a continuación se presenta el algoritmo DNEH
         \frac{1}{L-k}*\sum_{l = k+1}^{L} \widetilde{Ta}_{i,l}$ $\forall i \in I$
     4:  Ordenar los trabajos según el orden ascendente 
         de $\widetilde{T}_{i,2}'$, guardando la secuencia en $\pi_{re1}$
-    5:  Crear la secuencia $\pi_{re2}$, quitar el primer 
+    5:  Crear la secuencia $\pi_{re2}$, quitando el primer 
         trabajo y luego el de en medio de $\pi_{re1}$, y ponerlos
         en $\pi_{re2}$, repetir con los trabajos restantes hasta
         que ya no queden trabajos en $\pi_{re1}$
@@ -377,6 +377,9 @@ Teniendo los elementos anteriores, a continuación se presenta el algoritmo DNEH
 
 \noindent\noindent
 \rule{\textwidth}{0.4pt}
+
+\vspace{\baselineskip}
+Por claridad en el paso 4 del algoritmo DNEH\_SMR, si por ejemplo la secuencia $\pi_{re1}$ es la secuencia $[1, 6, 2, 5, 4, 3]$, la secuencia $\pi_{re2}$ correspondiente será entonces $[1, 5, 6, 4, 2, 3]$. \autocite{algMNIG}
 
 \vspace{\baselineskip}
 Con el algoritmo DNEH\_SMR se obtiene una solución inicial $\pi_{re3}$. Este primer algoritmo, y los dos siguientes, algoritmos 1, 2, y 3 se integran en el algoritmo 4. Desde ya decir que el algoritmo 4 es el algoritmo MNIG. Para llevar a cabo el algoritmo MNIG hace falta mostrar otros dos algoritmos, los algoritmos 2 y 3 que serán trabajados a continuación.

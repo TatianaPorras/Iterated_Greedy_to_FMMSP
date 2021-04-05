@@ -44,7 +44,7 @@
 \defcounter {refsection}{0}\relax 
 \contentsline {subsection}{\numberline {9.4}Instancias de Taillard}{22}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {10}CRONOGRAMA}{22}%
+\contentsline {section}{\numberline {10}CRONOGRAMA}{23}%
 \defcounter {refsection}{0}\relax 
 \contentsline {section}{\numberline {11}PRODUCTOS DEL PROYECTO}{23}%
 \defcounter {refsection}{0}\relax 
