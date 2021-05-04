@@ -125,13 +125,13 @@ Según lo anterior, los elementos del problema son:
 
 \vspace{\baselineskip}
 \begin{itemize}
-    \item[\maltese] Se requieren secuencias con bajos tiempos de terminación en el modelo FMMSP, denotado como \notac_modelo.
-    \item[\maltese] El algoritmo MNIG tiene potencial para encontrar dichas secuencias en un tiempo prudente. Los resultados se pueden comparar a otros cuatro algoritmos que ya han sido usados en el modelo FMMSP
+    \item[\maltese] Se requieren secuencias con bajos tiempos de terminación en el modelo FMMSP, denotado como \notac_modelo. Estas secuencias son llamadas 'soluciones'.
+    \item[\maltese] El algoritmo MNIG tiene potencial para encontrar dichas soluciones en un tiempo prudente. Los resultados se pueden comparar a otros cuatro algoritmos que ya han sido usados en el modelo FMMSP
 \end{itemize}
 
 \subsection{Pregunta del Problema}
 
-¿Qué conexión o conexiones pueden establecerse entre el algoritmo MNIG y el modelo FMMSP?
+¿Cómo puede el algoritmo MNIG encontrar nuevas soluciones para el modelo FMMSP?
 
 \subsection{Subpreguntas del Problema}
 
@@ -147,13 +147,13 @@ Según lo anterior, los elementos del problema son:
 \subsection{Objetivo General}
 
 \begin{itemize}
-    \item Encontrar y establecer conexiones entre el algoritmo MNIG y el modelo FMMSP.
+    \item Encontrar nuevas soluciones a través del algoritmo MNIG para el modelo FMMSP.
 \end{itemize}
 
 \subsection{Objetivos Específicos}
 
 \begin{itemize}
-    \item Implementar el algoritmo MNIG de modo que se puedan obtener resultados del modelo FMMSP, denotado como \linebreak \notac_modelo.
+    \item Implementar el algoritmo MNIG de modo que se puedan obtener \linebreak resultados del modelo FMMSP, denotado como \linebreak \notac_modelo.
     \item Obtener secuencias del modelo FMMSP usando la implementación realizada.
     \item Comparar el algoritmo MNIG aplicado al modelo FMMSP con los otros cuatro algoritmos que se han aplicado al modelo FMMSP.
     \item Establecer si tiene sentido o no aplicar el algoritmo MNIG al modelo FMMSP, o si es preferible buscar otros algoritmos incluidos los que ya han sido probados.
@@ -194,6 +194,7 @@ La medida de desempeño más ubicua del scheduling es el tiempo de terminación 
 \vspace{\baselineskip}
 Respecto a las heurísticas y metaheurísticas, en ambas se renuncia a la optimalidad, se renuncia a encontrar la mejor solución posible según determinada medida de desempeño, a cambio de encontrar soluciones aceptables en un tiempo prudente. \autocite{metaTalbi}
 
+\vspace{\baselineskip}
 La notación del modelo FMMSP: \notac_modelo, fue creada con base en la notación tradicional de scheduling de Pinedo. \autocite{schedPinedo}
 
 \vspace{\baselineskip}
@@ -234,6 +235,7 @@ Los números difusos triangulares se definen de la siguiente forma: \autocite{fu
 \vspace{\baselineskip}
 Sea $\tilde{A}$ un número difuso triangular, el símbolo encima de la $A$ indica que se trata de un número difuso. Entonces $\tilde{A} = (a,b,c)$ donde $a$, $b$, y $c$ son tres números reales que conforman al número difuso.
 
+\vspace{\baselineskip}
 Por otra parte sea $x$ cualquier número real, y sea $\mu_{\tilde{A}}(x)$ la función del grado de pertenencia de $x$ al número difuso $\tilde{A}$, entonces:
 
 \begin{align}
@@ -259,11 +261,12 @@ Sea $N$ el número de órdenes o trabajos a procesar, sea $I$ el conjunto de los
 Sea $L$ el número de etapas por las que deben pasar los trabajos, sea $S$ el conjunto de las etapas, tal que $S = \{1,2,\dots,s,\dots,L\}$ donde $s$ es cualquier etapa del conjunto $S$.
 
 \vspace{\baselineskip}
-En cada etapa $s$ se presentan $n$ unidades de procesamiento paralelas, sea $U_s$ el conjunto de unidades de procesamiento de la etapa $s$, tal que $U_s = \{1,2,\dots,n\}$.
+En cada etapa $s$ se presentan $n_s$ unidades de procesamiento paralelas, sea $U_s$ el conjunto de unidades de procesamiento de la etapa $s$, tal que $U_s = \{1,2,\dots,n_s\}$.
 
 \vspace{\baselineskip}
 El tiempo de procesamiento del trabajo $i$ en la unidad $u$ es un número difuso triangular, por lo que se puede representar como: $\tilde{T}_{i,u} = (T_{i,u}^{1},T_{i,u}^{2},T_{i,u}^{3})$. Notar que $u$ es cualquier unidad de todas las etapas, y no de una etapa en particular, es decir si se númeran todas las unidades o "máquinas" sin distinguir la etapa, entonces $u$ es uno de estos números, o sea $u$ es cualquier máquina de todo el sistema de producción. Las unidades que pertenecen a una etapa en particular se denotan con $U_s$.
 
+\vspace{\baselineskip}
 El tiempo de inicio del trabajo $i$ en la etapa $s$ también es un número difuso triangular y se representa como $\widetilde{Ts}_{i,s}$, y el tiempo de terminación del trabajo $i$ en la etapa $s$ siendo un número difuso triangular se representa como $\widetilde{Tf}_{i,s}$
 
 \vspace{\baselineskip}
@@ -298,6 +301,7 @@ La ecuación (\ref{eqn:objF}) es la función objetivo de minimizar el máximo de
 \vspace{\baselineskip}
 Teniendo definido el modelo \notac_modelo, para resolverlo hace falta saber exactamente qué se entiende por el máximo entre dos números difusos triangulares. Como en el modelo se calcula el máximo de los tiempos de terminación, y dichos tiempos son números difusos triangulares, entonces se requiere definir los operadores de comparación <, y > para números difusos triangulares. Solo es necesario definir un operador pues el otro es su negación. El operador > se define de la siguiente manera: \autocite{modFMMSP}
 
+\vspace{\baselineskip}
 Sean $\tilde{A} = (a^1,a^2,a^3)$ y $\tilde{B} = (b^1,b^2,b^3)$. Para establecer que $\tilde{A} > \tilde{B}$ se dan los tres casos siguientes
 
 \begin{align}
@@ -324,11 +328,10 @@ El algoritmo MNIG usa su propia notación, que en ocasiones usa los mismos símb
 Para entender el algoritmo DNEH\_SMR se requieren algunos símbolos extra. Una secuencia de trabajos factible se denota como $\pi$, entonces $\pi$ es una solución factible al problema. En el algoritmo DNEH\_SMR se divide en dos la secuencia, el punto en que se divide es llamado $k$, y es definido como $k = \lfloor\frac{L}{2}\rfloor$. Luego en el algoritmo DNEH\_SMR se promedian los tiempos de cada grupo de etapas: antes de $k$ y después de $k$. \autocite{algMNIG}
 
 \vspace{\baselineskip}
-En el modelo FMMSP \notac_modelo no se consideran los tiempos de procesamiento por etapa sino por unidad (o máquina) por lo que se hace necesario modificar ligeramente el algoritmo DNEH\_SMR. Para hacer un tiempo de procesamiento equivalente por etapa, partiendo de los tiempos por unidad, se promedian los tiempos de las unidades en la etapa, es decir $\forall u \in U_{s}$, de este modo defínase $\widetilde{Ta}_{i,s} = \frac{1}{n} *\sum_{u \in U_{s}} \widetilde{T}_{i,u}$, recordando que $n$ es el número de unidades de la etapa $s$. $Ta$ es por $T average$. 
+En el modelo FMMSP \notac_modelo no se consideran los tiempos de procesamiento por etapa sino por unidad (o máquina) por lo que se hace necesario modificar ligeramente el algoritmo DNEH\_SMR. Para hacer un tiempo de procesamiento equivalente por etapa, partiendo de los tiempos por unidad, se promedian los tiempos de las unidades en la etapa, es decir $\forall u \in U_{s}$, de este modo defínase $\widetilde{Ta}_{i,s} = \frac{1}{n_s} *\sum_{u \in U_{s}} \widetilde{T}_{i,u}$. $Ta$ es por $T average$. 
 
 \vspace{\baselineskip}
-Teniendo $\widetilde{Ta}$ se definen los tiempos de procesamiento promedio por
-grupo de etapas, para el primer grupo antes de $k$, $\widetilde{T}_{i,1}' = \frac{1}{k}*\sum_{l=1}^{k} \widetilde{Ta}_{i,l}$, y para el segundo grupo después de $k$, $\widetilde{T}_{i,2}' = \frac{1}{L-k}*\sum_{l = k+1}^{L} \widetilde{Ta}_{i,l}$. Nótese el símbolo prima para indicar que son los tiempos promedio de los grupos de etapas. \autocite{algMNIG}
+Teniendo $\widetilde{Ta}$ se definen los tiempos de procesamiento promedio por grupo de etapas, para el primer grupo antes de $k$, $\widetilde{T}_{i,1}' = \frac{1}{k}*\sum_{l=1}^{k} \widetilde{Ta}_{i,l}$, y para el segundo grupo después de $k$, $\widetilde{T}_{i,2}' = \frac{1}{L-k}*\sum_{l = k+1}^{L} \widetilde{Ta}_{i,l}$. Nótese el símbolo prima para indicar que son los tiempos promedio de los grupos de etapas. \autocite{algMNIG}
 
 \vspace{\baselineskip}
 Del algoritmo DNEH\_SMR resulta una secuencia factible y además no aleatoria, pues intenta crear una solución inicial de calidad. Como parte de ello se crea una secuencia ordenando los trabajos, en orden ascendente del tiempo promedio en el grupo 2 $\widetilde{T}_{i,2}'$, sea dicha secuencia $\pi_{re1}$ donde $re1$ indica que es el primer reordenamiento de la secuencia. Para el segundo reordenamiento, $\pi_{re2}$ se consigue al tomar el primer trabajo y luego el trabajo de en medio de $\pi_{re1}$, eliminando los trabajos tomados de $\pi_{re1}$. Si el número de trabajos en el que se busca el trabajo de en medio es par, se puede tomar el trabajo que está antes de la mitad (pues cuando el número de trabajos que quedan es par existen dos trabajos en el medio, tomar el primero). El hecho de que se van eliminando los trabajos significa que solo hay que repetir la instrucción: tomar el primero, tomar el de en medio, tomar el primero, tomar el de en medio, hasta agotar los trabajos y así dar forma a $\pi_{re2}$. \autocite{algMNIG}
@@ -348,11 +351,11 @@ Teniendo los elementos anteriores, a continuación se presenta el algoritmo DNEH
 
 \noindent\noindent
 \rule{\linewidth}{0.4pt}
-    
+
 \begin{lstlisting}[mathescape=true]
     def DNEH_SMR(todas las $\widetilde{T}_{i,u}$):
     1:  Computar $k = \lfloor\frac{L}{2}\rfloor$
-    2:  Computar $\widetilde{Ta}_{i,s} = \frac{1}{n}
+    2:  Computar $\widetilde{Ta}_{i,s} = \frac{1}{n_s}
         *\sum_{u \in U_{s}} \widetilde{T}_{i,u} \forall i \in I, s \in S$
     3:  Computar $\widetilde{T}_{i,1}' = \frac{1}{k}*
         \sum_{l=1}^{k} \widetilde{Ta}_{i,l}$, 
@@ -533,7 +536,7 @@ Esto termina la presentación del modelo FMMSP denotado como \linebreak \notac_m
 
 \section{HIPÓTESIS}
 
-El algoritmo MNIG puede ser aplicado al modelo FMMSP \linebreak \notac_modelo. Tras su aplicación la efectividad del algoritmo MNIG es medible y es comparable a la efectividad de los otros cuatro algoritmos: DBSA-LS, BDBSA, MBSA, e IGA.
+A través del algoritmo MNIG se pueden encontrar nuevas soluciones para el modelo FMMSP \notac_modelo. Tras su aplicación la efectividad del algoritmo MNIG es medible y es comparable a la efectividad de los otros cuatro algoritmos: DBSA-LS, BDBSA, MBSA, e IGA.
 
 \section{DISEÑO METODOLÓGICO}
 
