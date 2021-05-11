@@ -50,23 +50,42 @@ def makespan(pi, T, U_s, P):
 
     Ts = [[None for s in S] for i in I]
     Tf = [[None for s in S] for i in I]
+
     for s in S:
         for i in I:
             if s == 0 and i == 0:
-                v = np.argmin([P[i][u] for u in U_s[0]])
+                v = np.argmin([P[i][u] for u in U_s[s]])
                 EsC[s][v] += P[i][U_s[s][v]]
                 Es[s][v] = np.add(Es[s][v], T[i][U_s[s][v]])
 
-                Ts[i][s] = 0
-                Tf[i][s] = Ts[i][s] + T[i][U_s[s][v]]
+                Ts[i][s] = (0, 0, 0)
+                Tf[i][s] = np.add(Ts[i][s], T[i][U_s[s][v]])
             if s == 0 and i > 0:
                 v = np.argmin([P[i][u] + EsC[s][u - U_s[s][0]] for u in U_s[s]])
                 EsC[s][v] += P[i][U_s[s][v]]
                 Es[s][v] = np.add(Es[s][v], T[i][U_s[s][v]])
 
                 Ts[i][s] = Es[s][v]
-                Tf[i][s] = Ts[i][s] + T[i][v]
+                Tf[i][s] = np.add(Ts[i][s], T[i][U_s[s][v]])
             if s > 0 and i == 0:
-                print("c", s, i)
+                v = np.argmin([P[i][u] for u in U_s[s]])
+                EsC[s][v] += P[i][U_s[s][v]]
+                Es[s][v] = np.add(Es[s][v], T[i][U_s[s][v]])
+
+                Ts[i][s] = Tf[i][s - 1]
+                Tf[i][s] = np.add(Ts[i][s], T[i][U_s[s][v]])
             if s > 0 and i > 0:
-                print("d", s, i)
+                v = np.argmin([P[i][u] + EsC[s][u - U_s[s][0]] for u in U_s[s]])
+                EsC[s][v] += P[i][U_s[s][v]]
+                Es[s][v] = np.add(Es[s][v], T[i][U_s[s][v]])
+
+                if (Tf[i][s - 1][0] + 2*Tf[i][s - 1][1] + Tf[i][s - 1][2])/4 > EsC[s][v]:
+                    Ts[i][s] = Tf[i][s - 1]
+                else:
+                    Ts[i][s] = Es[s][v]
+
+                Tf[i][s] = np.add(Ts[i][s], T[i][U_s[s][v]])
+
+    j = np.argmax(PT([[Tf[i][L - 1]] for i in I]))
+
+    return Tf[j][L - 1]

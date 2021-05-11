@@ -1,4 +1,4 @@
-from API.functions import c_range, makespan
+from API.functions import c_range, makespan, PT
 
 def DNEH_SMR(T, U_s, P):
     """
@@ -55,14 +55,18 @@ def DNEH_SMR(T, U_s, P):
 
     # Paso 4
 
-    # dT2 es T2 en forma de diccionario, donde la llave del diccionario son los trabajos en orden natural (1, 2, 3, ...)
-    dT2 = dict(zip(sec, T2))
+    # P2 es la lista de tiempos ponderados de la segunda mitad de etapas.
+    P2 = [(T2[i][0] + 2*T2[i][1] + T2[i][2])/4 for i in range(len(T2))]
 
-    # dT2_ord es dT2 en orden ascendente de T2
-    dT2_ord = dict(sorted(dT2.items(), key = lambda arg1: arg1[1]))
+    # dP2 es P2 en forma de diccionario, donde la llave del diccionario son los trabajos en orden natural (1, 2, 3, ...)
+    dP2 = dict(zip(sec, P2))
 
-    # Pi_re1 es la secuencia de trabajos en orden ascendente de T2
-    Pi_re1 = list(dT2_ord.keys())
+    # dP2_ord es dP2 en orden ascendente de P2
+    dP2_ord = dict(sorted(dP2.items(), key = lambda arg1: arg1[1]))
+
+    # Pi_re1 es la secuencia de trabajos en orden ascendente de P2
+    Pi_re1 = list(dP2_ord.keys())
+
 
     # Paso 5
 
@@ -83,6 +87,6 @@ def DNEH_SMR(T, U_s, P):
 
     # Paso 7
 
-    makespan(Pi_re3, T, U_s, P)
+    Cmax = makespan(Pi_re3, T, U_s, P)
 
-    return Pi_re2
+    return Cmax
