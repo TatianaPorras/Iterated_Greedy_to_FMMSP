@@ -87,6 +87,20 @@ def DNEH_SMR(T, U_s, P):
 
     # Paso 7
 
-    Cmax = makespan(Pi_re3, T, U_s, P)
+    for j in Pi_re2:
+        Cmax = [0 for i in I]
+        temp = Pi_re3.copy()
+        for i in I:
+            k = Pi_re3.index(j)
+            t = temp[i]
+            temp[i] = temp[k]
+            temp[k] = t
 
-    return Cmax
+            Cmax[i] = makespan(temp, T, U_s, P)
+        i_min = np.argmin(Cmax)
+        k = Pi_re3.index(j)
+        t = Pi_re3[i_min]
+        Pi_re3[i_min] = Pi_re3[k]
+        Pi_re3[k] = t
+
+    return Pi_re3

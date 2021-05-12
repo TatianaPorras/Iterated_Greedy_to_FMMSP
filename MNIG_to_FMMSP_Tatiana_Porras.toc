@@ -24,28 +24,28 @@
 \defcounter {refsection}{0}\relax 
 \contentsline {section}{\numberline {5}JUSTIFICACIÓN}{6}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {6}ALCANCES}{6}%
+\contentsline {section}{\numberline {6}ALCANCES}{8}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {7}MARCO DE REFERENCIA}{7}%
+\contentsline {section}{\numberline {7}MARCO DE REFERENCIA}{8}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {7.1}Antecedentes y Marco Teórico}{7}%
+\contentsline {subsection}{\numberline {7.1}Antecedentes y Marco Teórico}{8}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {7.2}Marco Conceptual}{8}%
+\contentsline {subsection}{\numberline {7.2}Marco Conceptual}{9}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {8}HIPÓTESIS}{20}%
+\contentsline {section}{\numberline {8}HIPÓTESIS}{21}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {9}DISEÑO METODOLÓGICO}{20}%
+\contentsline {section}{\numberline {9}DISEÑO METODOLÓGICO}{21}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {9.1}Escritura del algoritmo MNIG en Python}{20}%
+\contentsline {subsection}{\numberline {9.1}Escritura del algoritmo MNIG en Python}{21}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {9.2}Ejecución del algoritmo MNIG en instancia del modelo FMMSP}{21}%
+\contentsline {subsection}{\numberline {9.2}Ejecución del algoritmo MNIG en instancia del modelo FMMSP}{22}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {9.3}Comparación del algoritmo MNIG con otros algoritmos}{21}%
+\contentsline {subsection}{\numberline {9.3}Comparación del algoritmo MNIG con otros algoritmos}{22}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {9.4}Instancias de Taillard}{22}%
+\contentsline {subsection}{\numberline {9.4}Instancias de Taillard}{23}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {10}CRONOGRAMA}{23}%
+\contentsline {section}{\numberline {10}CRONOGRAMA}{24}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {11}PRODUCTOS DEL PROYECTO}{23}%
+\contentsline {section}{\numberline {11}PRODUCTOS DEL PROYECTO}{24}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {12}BIBLIOGRAFÍA}{24}%
+\contentsline {section}{\numberline {12}BIBLIOGRAFÍA}{25}%
