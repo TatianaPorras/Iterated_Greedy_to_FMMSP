@@ -1,4 +1,4 @@
-from API.functions import c_range, makespan, PT
+from API.functions import c_range, makespan, PT, ct
 
 def DNEH_SMR(T, U_s, P):
     """
@@ -87,20 +87,18 @@ def DNEH_SMR(T, U_s, P):
 
     # Paso 7
 
+    Tss = [T for j in Pi_re3]
+    U_ss = [U_s for j in Pi_re3]
+    Ps = [P for j in Pi_re3]
+    ex = []
     for j in Pi_re2:
-        Cmax = [0 for i in I]
-        temp = Pi_re3.copy()
-        for i in I:
-            k = Pi_re3.index(j)
-            t = temp[i]
-            temp[i] = temp[k]
-            temp[k] = t
+        Pi_re3s = ct(Pi_re3, j, ex)
+        Cmax = list(map(makespan, Pi_re3s, Tss, U_ss, Ps))
 
-            Cmax[i] = makespan(temp, T, U_s, P)
-        i_min = np.argmin(Cmax)
+        j_min = np.argmin(Cmax)
         k = Pi_re3.index(j)
-        t = Pi_re3[i_min]
-        Pi_re3[i_min] = Pi_re3[k]
-        Pi_re3[k] = t
+
+        Pi_re3[j_min], Pi_re3[k] = Pi_re3[k], Pi_re3[j_min]
+        ex.append(j_min)
 
     return Pi_re3

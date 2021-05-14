@@ -22,15 +22,41 @@ def PT(T):
 
     return P
 
-def makespan(pi, T, U_s, P):
+def ct(pi, i, ex = None):
     """
     pi es una secuencia de trabajos.
 
-    T son los tiempos de producción.
+    i es uno de los trabajos.
+
+    ex es una lista de trabajos excluidos cuya posición no es cambiada por i
+
+    Esta función devuelve una lista de secuencias, poniendo i en cada puesto de la secuencia de trabajos. ct es por cambiar trabajos.
+    """
+    pi2 = pi.copy()
+    pis = []
+    if i not in pi2: pi2.append(i)
+
+    if ex is None:
+        for j in range(len(pi2)):
+            pi2[pi2.index(i)], pi2[j] = pi2[j], pi2[pi2.index(i)]
+            pis.append(pi2.copy())
+        return pis
+    else:
+        for j in range(len(pi2)):
+            if j not in ex:
+                pi2[pi2.index(i)], pi2[j] = pi2[j], pi2[pi2.index(i)]
+                pis.append(pi2.copy())
+        return pis
+
+def makespan(pi, Tn, U_s, Pn):
+    """
+    pi es una secuencia de trabajos.
+
+    Tn son los tiempos de producción en orden de secuencia natural, 1, 2 ,3, ...
 
     U_s es el conjunto de máquinas o unidades de la etapa s.
 
-    P es la ponderación de los números triangulares.
+    Pn es la ponderación de los números triangulares en orden de secuencia natural, 1, 2, 3, ...
 
     Esta función calcula el makespan de una secuencia en el modelo FMMSP
     """
@@ -39,7 +65,10 @@ def makespan(pi, T, U_s, P):
     L = len(U_s)
 
     # I es el conjunto de trabajos.
-    I = range(len(T))
+    I = range(len(pi))
+
+    T = [Tn[pi[i] - 1] for i in I]
+    P = [Pn[pi[i] - 1] for i in I]
 
     # S es el conjunto de etapas.
     S = range(L)
