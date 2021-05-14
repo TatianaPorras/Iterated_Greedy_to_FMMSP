@@ -22,7 +22,7 @@ def PT(T):
 
     return P
 
-def ct(pi, i, ex = None):
+def ct(pi, i, ex = []):
     """
     pi es una secuencia de trabajos.
 
@@ -34,19 +34,35 @@ def ct(pi, i, ex = None):
     """
     pi2 = pi.copy()
     pis = []
-    if i not in pi2: pi2.append(i)
 
-    if ex is None:
-        for j in range(len(pi2)):
+    if i not in pi2: pi2.append(i)
+    for j in range(len(pi2)):
+        if j not in ex:
             pi2[pi2.index(i)], pi2[j] = pi2[j], pi2[pi2.index(i)]
             pis.append(pi2.copy())
-        return pis
-    else:
-        for j in range(len(pi2)):
-            if j not in ex:
-                pi2[pi2.index(i)], pi2[j] = pi2[j], pi2[pi2.index(i)]
-                pis.append(pi2.copy())
-        return pis
+    return pis
+
+def st(pi, i, ex = []):
+    """
+    pi es una secuencia de trabajos.
+
+    i es uno de los trabajos.
+
+    ex es una lista de trabajos excluidos cuya posición no es cambiada por i
+
+    Esta función devuelve una lista de secuencias, intercambiando i por cada uno de los otros trabajos de la secuencia. st es por swap trabajos (porque esta función es creada por necesidad de la función swap del algoritmo MNIG).
+    """
+    pi2 = pi.copy()
+    pis = []
+    if i not in pi2: pi2.append(i)
+
+    for j in range(len(pi2)):
+        if j not in ex:
+            k = pi2.index(i)
+            pi2[k], pi2[j] = pi2[j], pi2[k]
+            pis.append(pi2.copy())
+            pi2[k], pi2[j] = pi2[j], pi2[k]
+    return pis
 
 def makespan(pi, Tn, U_s, Pn):
     """
