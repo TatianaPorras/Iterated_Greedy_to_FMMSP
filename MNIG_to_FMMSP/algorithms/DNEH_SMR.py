@@ -1,12 +1,12 @@
 from API.functions import c_range, makespan, PT, ct
 
-def DNEH_SMR(T, U_s, P):
+def DNEH_SMR(Tn, U_s, Pn):
     """
-    T es la lista de números triangulares difusos del tiempo de producción del trabajo i en la unidad o máquina u. El prefijo 't' es por triangular difuso.
+    Tn es la lista de números triangulares difusos del tiempo de producción del trabajo i en la unidad o máquina u, en secuencia de números naturales, 1, 2, 3, ... El prefijo 't' es por triangular difuso.
 
     U_s es el conjunto de máquinas o unidades de la etapa s.
 
-    P es la ponderación de los números triangulares.
+    Pn es la ponderación de los números triangulares en secuencia de números naturales, 1, 2, 3, ...
 
     Esta función aplica el algoritmo DNEH_SMR.
     """
@@ -18,10 +18,10 @@ def DNEH_SMR(T, U_s, P):
     L = len(U_s)
 
     # I es el conjunto de trabajos.
-    I = range(len(T))
+    I = range(len(Tn))
 
     # sec es la secuencia natural de trabajos: 1, 2, 3, ...
-    sec = range(1, len(T) + 1)
+    sec = range(1, len(Tn) + 1)
 
     # S es el conjunto de etapas.
     S = range(L)
@@ -38,7 +38,7 @@ def DNEH_SMR(T, U_s, P):
     # Paso 2
 
     # Ta es la lista de los tiempos de producción promedio del trabajo i en la etapa s.
-    Ta = [1/n_s[s]*np.sum([[T[i][u] for i in I] for u in U_s[s]], axis = 0) for s in S]
+    Ta = [1/n_s[s]*np.sum([[Tn[i][u] for i in I] for u in U_s[s]], axis = 0) for s in S]
 
     # reordenar Ta
     Ta = [[Ta[s][i] for s in S] for i in I]
@@ -64,41 +64,41 @@ def DNEH_SMR(T, U_s, P):
     # dP2_ord es dP2 en orden ascendente de P2
     dP2_ord = dict(sorted(dP2.items(), key = lambda arg1: arg1[1]))
 
-    # Pi_re1 es la secuencia de trabajos en orden ascendente de P2
-    Pi_re1 = list(dP2_ord.keys())
+    # pi_re1 es la secuencia de trabajos en orden ascendente de P2
+    pi_re1 = list(dP2_ord.keys())
 
 
     # Paso 5
 
-    Pi_re2 = []
+    pi_re2 = []
     for j in I:
         if j % 2 == 0:
-            Pi_re2.append(Pi_re1[0])
-            Pi_re1.remove(Pi_re1[0])
+            pi_re2.append(pi_re1[0])
+            pi_re1.remove(pi_re1[0])
         else:
-            Pi_re2.append(Pi_re1[math.ceil(len(Pi_re1)/2) - 1])
-            Pi_re1.remove(Pi_re1[math.ceil(len(Pi_re1)/2) - 1])
+            pi_re2.append(pi_re1[math.ceil(len(pi_re1)/2) - 1])
+            pi_re1.remove(pi_re1[math.ceil(len(pi_re1)/2) - 1])
 
 
     # Paso 6
 
-    Pi_re3 = Pi_re2.copy()
+    pi_re3 = pi_re2.copy()
 
 
     # Paso 7
 
-    Tss = [T for j in Pi_re3]
-    U_ss = [U_s for j in Pi_re3]
-    Ps = [P for j in Pi_re3]
+    Tss = [Tn for j in pi_re3]
+    U_ss = [U_s for j in pi_re3]
+    Ps = [Pn for j in pi_re3]
     ex = []
-    for j in Pi_re2:
-        Pi_re3s = ct(Pi_re3, j, ex)
-        Cmax = list(map(makespan, Pi_re3s, Tss, U_ss, Ps))
+    for j in pi_re2:
+        pi_re3s = ct(pi_re3, j, ex)
+        Cmax = list(map(makespan, pi_re3s, Tss, U_ss, Ps))
 
         j_min = np.argmin(Cmax)
-        k = Pi_re3.index(j)
+        k = pi_re3.index(j)
 
-        Pi_re3[j_min], Pi_re3[k] = Pi_re3[k], Pi_re3[j_min]
+        pi_re3[j_min], pi_re3[k] = pi_re3[k], pi_re3[j_min]
         ex.append(j_min)
 
-    return Pi_re3
+    return pi_re3, Ta

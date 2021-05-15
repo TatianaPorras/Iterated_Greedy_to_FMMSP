@@ -2,7 +2,7 @@ from API.functions import makespan, ct
 
 import numpy as np
 
-def destruction_reconstruction(pi_input, d, T, U_s, P):
+def destruction_reconstruction(pi_input, d, Tn, U_s, Pn):
     """
     pi_input es la secuencia a la que se le aplica este algoritmo
 
@@ -27,9 +27,9 @@ def destruction_reconstruction(pi_input, d, T, U_s, P):
 
     # Paso 2
 
-    Tss = [T for j in pi_d]
+    Tss = [Tn for j in pi_d]
     U_ss = [U_s for j in pi_d]
-    Ps = [P for j in pi_d]
+    Ps = [Pn for j in pi_d]
     ex = []
     pi_r2 = pi_r.copy()
     for j in pi_d:

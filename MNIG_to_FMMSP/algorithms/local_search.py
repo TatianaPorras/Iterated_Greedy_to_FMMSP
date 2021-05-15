@@ -17,20 +17,17 @@ def insertion(pi, Tn, U_s, Pn):
 
     I = range(len(pi))
 
-    T = [Tn[pi[i] - 1] for i in I]
-    P = [Pn[pi[i] - 1] for i in I]
-
     pi_ins = pi.copy()
 
-    Tss = [T for i in I]
+    Tss = [Tn for i in I]
     U_ss = [U_s for i in I]
-    Ps = [P for i in I]
+    Ps = [Pn for i in I]
 
     for i in pi:
         pis = ct(pi_ins, i)
         Cmax = list(map(makespan, pis, Tss, U_ss, Ps))
 
-        Cmax_pi = makespan(pi_ins, T, U_s, P)
+        Cmax_pi = makespan(pi_ins, Tn, U_s, Pn)
         i_min = np.argmin(Cmax)        
 
         if (Cmax[i_min] < Cmax_pi):
@@ -54,19 +51,22 @@ def swap(pi, Tn, U_s, Pn):
 
     I = range(len(pi))
 
-    T = [Tn[pi[i] - 1] for i in I]
-    P = [Pn[pi[i] - 1] for i in I]
-
     pi_sw = pi.copy()
 
-    Tss = [T for i in I]
+    Tss = [Tn for i in I]
     U_ss = [U_s for i in I]
-    Ps = [P for i in I]
+    Ps = [Pn for i in I]
 
     for i in pi:
-        pis = ct(pi_sw, i)
+        pis = st(pi_sw, i)
         Cmax = list(map(makespan, pis, Tss, U_ss, Ps))
 
+        Cmax_pi = makespan(pi_sw, Tn, U_s, Pn)
+        i_min = np.argmin(Cmax)        
+
+        if (Cmax[i_min] < Cmax_pi):
+            k = pi_sw.index(i)
+            pi_sw[i_min], pi_sw[k] = pi_sw[k], pi_sw[i_min]
 
     return pi_sw
 
@@ -86,7 +86,51 @@ def local_search(pi_input):
     # Paso 2
 
     while (l <= l_max):
+
+
+    # Paso 3
+
         if (l == 1):
+
+
+    # Paso 4
+
             pi_temp = insertion(pi_modif)
 
-    return 1888
+
+    # Paso 5
+
+        else if (l == 2):
+    
+
+    # Paso 6
+
+            pi_temp = swap(pi_modif)
+
+
+    # Paso 7
+
+        if (makespan(pi_temp) < makespan(pi_modif)):
+
+
+    # Paso 8
+
+            pi_modif = pi_temp
+            l = 1
+    
+
+    # Paso 9
+
+        else:
+
+
+    # Paso 10
+
+            l = l + 1
+    
+
+    # Paso 11
+
+    pi_multivec = pi_modif
+
+    return pi_multivec
