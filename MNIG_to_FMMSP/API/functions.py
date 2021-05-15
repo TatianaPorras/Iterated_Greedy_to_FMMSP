@@ -18,8 +18,14 @@ def PT(T):
     Esta función devuelve la ponderación de las tres partes de un número triangular difuso
     """
 
-    P = [[(T[i][u][0] + 2*T[i][u][1] + T[i][u][2])/4 for u in range(len(T[0]))] for i in range(len(T))]
+    I = range(len(T))
 
+    if (np.array(T).ndim == 3):
+        P = [[(T[i][u][0] + 2*T[i][u][1] + T[i][u][2])/4 for u in range(len(T[0]))] for i in I]
+    elif (np.array(T).ndim == 2):
+        P = [(T[i][0] + 2*T[i][1] + T[i][2])/4 for i in I]
+    elif (np.array(T).ndim == 1):
+        P = (T[0] + 2*T[1] + T[2])/4
     return P
 
 def ct(pi, i, ex = []):

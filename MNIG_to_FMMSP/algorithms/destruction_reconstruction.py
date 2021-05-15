@@ -1,4 +1,4 @@
-from API.functions import makespan, ct
+from API.functions import makespan, ct, PT
 
 import numpy as np
 
@@ -41,12 +41,13 @@ def destruction_reconstruction(pi_input, d, Tn, U_s, Pn):
         pi_rs = ct(pi_r, j)
 
         fitness1s = list(map(makespan, pi_rs, Tss, U_ss, Ps))
-        fitness1 = min(fitness1s)
+        P_fitness1s = PT(fitness1s)
+        fitness1 = min(P_fitness1s)
 
 
     # Paso 4
 
-        j_min = np.argmin(fitness1s)
+        j_min = np.argmin(P_fitness1s)
         k = pi_r.index(j)
 
         pi_r[j_min], pi_r[k] = pi_r[k], pi_r[j_min]
@@ -61,7 +62,8 @@ def destruction_reconstruction(pi_input, d, Tn, U_s, Pn):
 
             pi_rs2 = ct(pi_r, j2)
             fitness2s = list(map(makespan, pi_rs2, Tss, U_ss, Ps))
-            fitness2 = min(fitness2s)
+            P_fitness2s = PT(fitness2s)
+            fitness2 = min(P_fitness2s)
 
 
     # Paso 7
@@ -71,7 +73,7 @@ def destruction_reconstruction(pi_input, d, Tn, U_s, Pn):
 
     # Paso 8
 
-                j2_min = np.argmin(fitness2s)
+                j2_min = np.argmin(P_fitness2s)
                 k2 = pi_r.index(j2)
 
                 pi_r[j2_min], pi_r[k2] = pi_r[k2], pi_r[j2_min]

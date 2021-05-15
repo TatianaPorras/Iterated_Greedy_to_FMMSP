@@ -1,5 +1,5 @@
 from algorithms import DNEH_SMR, destruction_reconstruction, local_search
-from API.functions import PT, c_range
+from API.functions import PT, c_range, makespan
 
 import numpy as np
 import random
@@ -36,10 +36,31 @@ U_s = [[0, 1], [2, 3, 4]]
 L = len(U_s)
 
 # Pn es la ponderación de los números triangulares.
-Pn = PT(T_i_u)
+Pn = PT(Tn)
 
-# T_0 es un parametro para crear variación en el algoritmo, diferente de cero 
-T_0 = 1.1
+# Parametros para las iteraciones, introducidos como argumentos a este programa
+
+import argparse
+parser1 = argparse.ArgumentParser()
+
+parser1.add_argument("N", type = int)
+parser1.add_argument("T_0", type = float)
+parser1.add_argument("d", type = int)
+
+args1 = parser1.parse_args()
+
+N = args1.N
+T_0 = args1.T_0
+d = args1.d
+
+# N es un parámetro para el número de iteraciones
+# N = 5
+
+# T_0 es un parámetro para crear variación en el algoritmo, diferente de cero 
+# T_0 = 1.1
+
+# d es un parámetro para la cantidad de trabajos a colocar en pi_d para el algoritmo destruction_reconstruction
+# d = 4
 
 # Paso 1
 
@@ -59,16 +80,18 @@ UT = np.sum([len(U_s[s]) for s in c_range(1, L)])
 TT = T_0*(np.sum(Ta))/(10 * N * L)
 
 while (iter1 <= N**2 * L * UT):
+    print("Iter:", iter1)
 
+    iter1 += 1
 
 # Paso 4
 
-    pi_temp = local_search(pi_temp)
+    pi_temp = local_search(pi_temp, Tn, U_s, Pn)
 
 
 # Paso 5
 
-    if (makespan(pi_temp, Tn, U_s, Pn) < makespan(pi_re3, Tn, U_s, Pn)):
+    if (PT(makespan(pi_temp, Tn, U_s, Pn)) < PT(makespan(pi_re3, Tn, U_s, Pn))):
 
 
 # Paso 6
@@ -78,7 +101,7 @@ while (iter1 <= N**2 * L * UT):
 
 # Paso 7
 
-        if (makespan(pi_temp, Tn, U_s, Pn) < makespan(pi_result, Tn, U_s, Pn)):
+        if (PT(makespan(pi_temp, Tn, U_s, Pn)) < PT(makespan(pi_result, Tn, U_s, Pn))):
 
 
 # Paso 8
@@ -93,13 +116,13 @@ while (iter1 <= N**2 * L * UT):
 
 # Paso 10
 
-        if ( random.random() < math.exp(-(makespan(pi_temp, Tn, U_s, Pn) - makespan(pi_re3, Tn, U_s, Pn))/TT) ):
+        if ( random.random() < math.exp(-(PT(makespan(pi_temp, Tn, U_s, Pn)) - PT(makespan(pi_re3, Tn, U_s, Pn)))/TT) ):
 
 
 # Paso 11
 
             pi_re3 = pi_temp.copy()
-    
+
 
 # Paso 12
 
@@ -108,4 +131,4 @@ while (iter1 <= N**2 * L * UT):
 
 # Paso 13
 
-print(pi_result)
+print(pi_result, makespan(pi_result, Tn, U_s, Pn))

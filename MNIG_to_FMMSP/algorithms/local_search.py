@@ -1,4 +1,4 @@
-from API.functions import makespan, ct
+from API.functions import makespan, ct, st, PT
 
 import numpy as np
 
@@ -28,9 +28,11 @@ def insertion(pi, Tn, U_s, Pn):
         Cmax = list(map(makespan, pis, Tss, U_ss, Ps))
 
         Cmax_pi = makespan(pi_ins, Tn, U_s, Pn)
-        i_min = np.argmin(Cmax)        
 
-        if (Cmax[i_min] < Cmax_pi):
+        P_Cmax = PT(Cmax)
+        i_min = np.argmin(P_Cmax)
+
+        if (PT(Cmax[i_min]) < PT(Cmax_pi)):
             k = pi_ins.index(i)
             pi_ins[i_min], pi_ins[k] = pi_ins[k], pi_ins[i_min]
 
@@ -62,15 +64,17 @@ def swap(pi, Tn, U_s, Pn):
         Cmax = list(map(makespan, pis, Tss, U_ss, Ps))
 
         Cmax_pi = makespan(pi_sw, Tn, U_s, Pn)
-        i_min = np.argmin(Cmax)        
 
-        if (Cmax[i_min] < Cmax_pi):
+        P_Cmax = PT(Cmax)
+        i_min = np.argmin(P_Cmax)
+
+        if (PT(Cmax[i_min]) < PT(Cmax_pi)):
             k = pi_sw.index(i)
             pi_sw[i_min], pi_sw[k] = pi_sw[k], pi_sw[i_min]
 
     return pi_sw
 
-def local_search(pi_input):
+def local_search(pi_input, Tn, U_s, Pn):
     """
     pi_input es una secuencia de trabajos
     """
@@ -95,29 +99,29 @@ def local_search(pi_input):
 
     # Paso 4
 
-            pi_temp = insertion(pi_modif)
+            pi_temp = insertion(pi_modif, Tn, U_s, Pn)
 
 
     # Paso 5
 
-        else if (l == 2):
-    
+        elif (l == 2):
+
 
     # Paso 6
 
-            pi_temp = swap(pi_modif)
+            pi_temp = swap(pi_modif, Tn, U_s, Pn)
 
 
     # Paso 7
 
-        if (makespan(pi_temp) < makespan(pi_modif)):
+        if (PT(makespan(pi_temp, Tn, U_s, Pn)) < PT(makespan(pi_modif, Tn, U_s, Pn))):
 
 
     # Paso 8
 
             pi_modif = pi_temp
             l = 1
-    
+
 
     # Paso 9
 
@@ -127,7 +131,7 @@ def local_search(pi_input):
     # Paso 10
 
             l = l + 1
-    
+
 
     # Paso 11
 

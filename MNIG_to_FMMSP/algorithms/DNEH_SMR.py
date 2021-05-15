@@ -95,7 +95,8 @@ def DNEH_SMR(Tn, U_s, Pn):
         pi_re3s = ct(pi_re3, j, ex)
         Cmax = list(map(makespan, pi_re3s, Tss, U_ss, Ps))
 
-        j_min = np.argmin(Cmax)
+        P_Cmax = PT(Cmax)
+        j_min = np.argmin(P_Cmax)
         k = pi_re3.index(j)
 
         pi_re3[j_min], pi_re3[k] = pi_re3[k], pi_re3[j_min]
