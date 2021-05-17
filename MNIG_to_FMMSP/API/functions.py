@@ -70,7 +70,7 @@ def st(pi, i, ex = []):
             pi2[k], pi2[j] = pi2[j], pi2[k]
     return pis
 
-def makespan(pi, Tn, U_s, Pn):
+def makespan(pi, Tn, U_s, Pn, debug = False):
     """
     pi es una secuencia de trabajos.
 
@@ -96,47 +96,57 @@ def makespan(pi, Tn, U_s, Pn):
     S = range(L)
 
     # EsC es por Early start Comparación, esta variable guarda los tiempos ponderados (para hacer comparaciones entre tiempos diferentes) más tempranos en que un trabajo puede iniciar en cada máquina dada u
-    EsC = [[0 for u in U_s[s]] for s in S]
-    Es = [[(0, 0, 0) for u in U_s[s]] for s in S]
+    UT = np.sum([len(U_s[s]) for s in c_range(1, L)])
+    U = range(UT)
 
-    Ts = [[None for s in S] for i in I]
-    Tf = [[None for s in S] for i in I]
+    Ts = [[(0, 0, 0) for s in S] for i in I]
+    Tf = [[(0, 0, 0) for s in S] for i in I]
+    UI = [[(0, 0, 0) for s in S] for i in I]
+    TfU = [[(0, 0, 0) for u in U] for i in I]
 
     for s in S:
+        if (debug == True): print()
         for i in I:
             if s == 0 and i == 0:
-                v = np.argmin([P[i][u] for u in U_s[s]])
-                EsC[s][v] += P[i][U_s[s][v]]
-                Es[s][v] = np.add(Es[s][v], T[i][U_s[s][v]])
+                v = np.argmin([PT(np.add(TfU[i][u], T[i][u])) for u in U_s[s]]) + U_s[s][0]
 
                 Ts[i][s] = (0, 0, 0)
-                Tf[i][s] = np.add(Ts[i][s], T[i][U_s[s][v]])
+                Tf[i][s] = np.add(Ts[i][s], T[i][v])
+                for j in I: TfU[j][v] = Tf[i][s]
             if s == 0 and i > 0:
-                v = np.argmin([P[i][u] + EsC[s][u - U_s[s][0]] for u in U_s[s]])
-                EsC[s][v] += P[i][U_s[s][v]]
-                Es[s][v] = np.add(Es[s][v], T[i][U_s[s][v]])
+                v = np.argmin([PT(np.add(TfU[i][u], T[i][u])) for u in U_s[s]]) + U_s[s][0]
 
-                Ts[i][s] = Es[s][v]
-                Tf[i][s] = np.add(Ts[i][s], T[i][U_s[s][v]])
+                Ts[i][s] = TfU[i][v]
+                Tf[i][s] = np.add(Ts[i][s], T[i][v])
+                for j in I: TfU[j][v] = Tf[i][s]
             if s > 0 and i == 0:
-                v = np.argmin([P[i][u] for u in U_s[s]])
-                EsC[s][v] += P[i][U_s[s][v]]
-                Es[s][v] = np.add(Es[s][v], T[i][U_s[s][v]])
+                for u in U_s[s]:
+                    if (PT(Tf[i][s - 1]) > PT(TfU[i][u])):
+                        TfU[i][u] = Tf[i][s - 1]
+                v = np.argmin([PT(np.add(TfU[i][u], T[i][u])) for u in U_s[s]]) + U_s[s][0]
 
                 Ts[i][s] = Tf[i][s - 1]
-                Tf[i][s] = np.add(Ts[i][s], T[i][U_s[s][v]])
+                Tf[i][s] = np.add(Ts[i][s], T[i][v])
+                for j in I: TfU[j][v] = Tf[i][s]
             if s > 0 and i > 0:
-                v = np.argmin([P[i][u] + EsC[s][u - U_s[s][0]] for u in U_s[s]])
-                EsC[s][v] += P[i][U_s[s][v]]
-                Es[s][v] = np.add(Es[s][v], T[i][U_s[s][v]])
+                for u in U_s[s]:
+                    if (PT(Tf[i][s - 1]) > PT(TfU[i][u])):
+                        TfU[i][u] = Tf[i][s - 1]
+                v = np.argmin([PT(np.add(TfU[i][u], T[i][u])) for u in U_s[s]]) + U_s[s][0]
 
-                if (Tf[i][s - 1][0] + 2*Tf[i][s - 1][1] + Tf[i][s - 1][2])/4 > EsC[s][v]:
+                if (PT(Tf[i][s - 1]) > PT(TfU[i][v])):
                     Ts[i][s] = Tf[i][s - 1]
                 else:
-                    Ts[i][s] = Es[s][v]
+                    Ts[i][s] = TfU[i][v]
 
-                Tf[i][s] = np.add(Ts[i][s], T[i][U_s[s][v]])
+                Tf[i][s] = np.add(Ts[i][s], T[i][v])
+                for j in I: TfU[j][v] = Tf[i][s]
+            if (debug == True):
+                piO = "%2d" % (pi[i])
+                TsO = "(%2d, %2d, %2d)" % (Ts[i][s][0], Ts[i][s][1], Ts[i][s][2])
+                TfO = "(%2d, %2d, %2d)" % (Tf[i][s][0], Tf[i][s][1], Tf[i][s][2])
+                print("pi[i]:", piO, "   s:", s + 1, "   u:", v + 1, "   Ts:", TsO, "   Tf:", TfO)
 
-    j = np.argmax(PT([[Tf[i][L - 1]] for i in I]))
+    n = np.argmax(PT([[Tf[i][L - 1]] for i in I]))
 
-    return Tf[j][L - 1]
+    return Tf[n][L - 1]

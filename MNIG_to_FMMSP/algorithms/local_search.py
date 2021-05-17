@@ -82,7 +82,7 @@ def local_search(pi_input, Tn, U_s, Pn):
 
     # Paso 1
 
-    pi_modif = pi_input
+    pi_modif = pi_input.copy()
     l_max = 2
     l = 1
 

@@ -5,6 +5,20 @@ import numpy as np
 import random
 import math
 
+# Soluciones probadas:
+# Makespan: (36, 44, 52)
+# Secuencias:
+# [7, 8, 6, 10, 1, 9, 5, 4, 2, 3]
+# [7, 8, 6, 10, 5, 9, 1, 4, 2, 3]
+# [6, 1, 9, 7, 8, 10, 4, 5, 2, 3]
+# [1, 6, 9, 10, 7, 8, 5, 4, 2, 3]
+# [6, 5, 10, 1, 9, 7, 8, 4, 2, 3]
+# [6, 10, 1, 8, 9, 4, 5, 7, 2, 3]
+# [6, 5, 7, 10, 8, 1, 4, 9, 2, 3]
+# [9, 7, 1, 6, 8, 10, 4, 5, 2, 3]
+# [5, 8, 7, 6, 10, 4, 1, 9, 2, 3]
+# [7, 1, 6, 10, 5, 9, 8, 4, 2, 3]
+
 # Datos de la instancia de prueba
 # Tn = [   
 #     [(10,12,13), (7,8,10), (10,11,12), (8,9,10), (6,7,8), (4,5,6), (11,13,15), (10,11,12), (5,6,8), (15,17,20)], 
@@ -46,12 +60,14 @@ parser1 = argparse.ArgumentParser()
 parser1.add_argument("N", type = int)
 parser1.add_argument("T_0", type = float)
 parser1.add_argument("d", type = int)
+parser1.add_argument("--debug", action = "store_true")
 
 args1 = parser1.parse_args()
 
 N = args1.N
 T_0 = args1.T_0
 d = args1.d
+debug = args1.debug
 
 # N es un parámetro para el número de iteraciones
 # N = 5
@@ -61,6 +77,7 @@ d = args1.d
 
 # d es un parámetro para la cantidad de trabajos a colocar en pi_d para el algoritmo destruction_reconstruction
 # d = 4
+
 
 # Paso 1
 
@@ -80,9 +97,8 @@ UT = np.sum([len(U_s[s]) for s in c_range(1, L)])
 TT = T_0*(np.sum(Ta))/(10 * N * L)
 
 while (iter1 <= N**2 * L * UT):
-    print("Iter:", iter1)
-
     iter1 += 1
+
 
 # Paso 4
 
@@ -128,7 +144,12 @@ while (iter1 <= N**2 * L * UT):
 
     pi_temp = destruction_reconstruction(pi_temp, d, Tn, U_s, Pn)
 
+    if (debug == True):
+        mk = makespan(pi_re3, Tn, U_s, Pn)
+        iter1O = "%4d" % (iter1 - 1)
+        print("Iter:", iter1O, "   Secuencia:", pi_re3, "   Makespan:", mk, "   P:", PT(mk))
+
 
 # Paso 13
 
-print(pi_result, makespan(pi_result, Tn, U_s, Pn))
+print("\n", pi_result, makespan(pi_result, Tn, U_s, Pn, debug))
