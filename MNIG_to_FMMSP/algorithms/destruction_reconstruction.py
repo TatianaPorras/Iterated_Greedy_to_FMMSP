@@ -8,6 +8,12 @@ def destruction_reconstruction(pi_input, d, Tn, U_s, Pn):
 
     d es el número de trabajos que son removidos aleatoriamente de pi
 
+    Tn es la lista de números triangulares difusos del tiempo de producción del trabajo i en la unidad o máquina u, en secuencia de números naturales, 1, 2, 3, ... El prefijo 't' es por triangular difuso.
+
+    U_s es el conjunto de máquinas o unidades de la etapa s.
+
+    Pn es la ponderación de los números triangulares en secuencia de números naturales, 1, 2, 3, ...
+
     Esta función aplica el algoritmo destruction_reconstruction
     """
 

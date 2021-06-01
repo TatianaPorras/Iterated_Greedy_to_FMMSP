@@ -11,9 +11,7 @@ def c_range(llim, ulim):
 
 def PT(T):
     """
-    P es por ponderación.
-
-    PT es por Ponderación de Todos los trabajos en todas las máquinas.
+    P es por ponderación, PT es por Ponderación de Todos los trabajos en todas las máquinas.
 
     Esta función devuelve la ponderación de las tres partes de un número triangular difuso
     """

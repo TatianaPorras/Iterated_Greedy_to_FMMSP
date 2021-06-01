@@ -77,6 +77,14 @@ def swap(pi, Tn, U_s, Pn):
 def local_search(pi_input, Tn, U_s, Pn):
     """
     pi_input es una secuencia de trabajos
+
+    Tn son los tiempos de producción en orden de secuencia natural, 1, 2 ,3, ...
+
+    U_s es el conjunto de máquinas o unidades de la etapa s.
+
+    Pn es la ponderación de los números triangulares en orden de secuencia natural, 1, 2, 3, ...
+
+    Esta función aplica el algoritmo local_search
     """
 
 

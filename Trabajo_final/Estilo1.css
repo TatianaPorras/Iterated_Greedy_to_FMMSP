@@ -1,0 +1,46 @@
+:root
+{
+	--fh1: "Playfair Display";
+	--f1: "Latin Modern Roman";
+	--s1: 14pt;
+}
+
+@page
+{
+	margin: 1.3in;
+}
+
+#main-title p, #datos-varios p
+{
+	font-family: var(--fh1);
+    margin-left: auto;
+    margin-right: auto;
+	text-align: center;
+}
+
+#main-title p
+{
+	font-size: 18pt;
+}
+
+#im1
+{
+	width: 50%
+}
+
+p
+{
+	font-family: var(--f1);
+	font-size: var(--s1);
+}
+
+h1, h2
+{
+	font-family: var(--fh1);
+    margin-left: auto;
+    margin-right: auto;
+	text-align: center;
+
+	font-size: 18pt;	
+	font-weight: normal;
+}

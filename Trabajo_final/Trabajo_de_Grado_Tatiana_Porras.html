@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>Trabajo_de_Grado_Tatiana_Porras</title>
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    span.underline{text-decoration: underline;}
+    div.column{display: inline-block; vertical-align: top; width: 50%;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+  </style>
+  <link rel="stylesheet" href="Estilo1.css" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.11.1/katex.min.js"></script>
+  <script>document.addEventListener("DOMContentLoaded", function () {
+   var mathElements = document.getElementsByClassName("math");
+   var macros = [];
+   for (var i = 0; i < mathElements.length; i++) {
+    var texText = mathElements[i].firstChild;
+    if (mathElements[i].tagName == "SPAN") {
+     katex.render(texText.data, mathElements[i], {
+      displayMode: mathElements[i].classList.contains('display'),
+      throwOnError: false,
+      macros: macros,
+      fleqn: false
+     });
+  }}});
+  </script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.11.1/katex.min.css" />
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+</head>
+<body>
+<div id="main-title">
+<p>ALGORITMO VORAZ ITERATIVO CON MULTI-VECINDAD APLICADO AL PROBLEMA DE SECUENCIACIÓN DIFUSO MULTIPRODUCTO Y MULTIETAPAS</p>
+</div>
+<div id="datos-varios">
+<p>Trabajo para optar al título de:<br />
+INGENIERA INDUSTRIAL<br />
+<br />
+<br />
+Tatiana Porras Cortés 20092015073<br />
+Correo: tatiporras96@gmail.com<br />
+<br />
+LINDSAY ÁLVAREZ POMAR<br />
+Directora del trabajo de grado<br />
+<img src="EscudoUD1.png" id="im1" alt="escudito" /><br />
+UNIVERSIDAD DISTRITAL FRANCISCO JOSÉ DE CALDAS<br />
+FACULTAD DE INGENIERÍA<br />
+PROYECTO CURRICULAR DE INGENIERÍA INDUSTRIAL<br />
+Bogotá D.C., Colombia. 2021-05-30</p>
+</div>
+<h1 data-number="1" id="título"><span class="header-section-number">1</span> TÍTULO</h1>
+<p>“ALGORITMO VORAZ ITERATIVO CON MULTI-VECINDAD APLICADO AL PROBLEMA DE SECUENCIACIÓN DIFUSO MULTIPRODUCTO Y MULTIETAPAS”</p>
+<h1 data-number="2" id="resumen"><span class="header-section-number">2</span> RESUMEN</h1>
+<p>El Algoritmo Voraz Iterativo con Multi-Vecindad (MNIG por sus siglas en inglés Multi-Neighborhood Iterated Greedy algorithm) aplicado al Problema de Secuenciación Difuso Multiproducto y Multietapas (FMMSP por sus siglas en inglés Fuzzy Multiproduct Multistage Scheduling Problem), no ha sido tratado en la literatura científica internacional. En este trabajo se exploró esta combinación nueva. Para ello, se modificó el algoritmo MNIG y se utilizó para resolver el modelo FMMSP. El modelo FMMSP en notación de scheduling es el modelo <span class="math inline">FFc | \tilde{T}_{i, u}, batch(b), prmu, Z_{i, u, s} | C_{max}</span>.</p>
+<p>Se implementó el algoritmo MNIG en Python, y al aplicarlo al modelo FMMSP se encontró que el algoritmo MNIG es al menos tan bueno como el algoritmo DBSA-LS, e inclusive mostró mejora en la solución promedio. Esto se comprobó con la única instancia disponible que publicaron los creadores del modelo FMMSP.</p>
+<p><strong>Palabras Clave</strong>: Algoritmo Voraz Iterativo, Multi-vecindad, Secuenciación, Números Triangulares Difusos, Multiproducto, Multietapas.<br />
+<br />
+<br />
+</p>
+<h1 data-number="3" id="abstract"><span class="header-section-number">3</span> ABSTRACT</h1>
+<p>The Multi-neighborhood Iterated Greedy algorithm (acronymized as MNIG) applied to the Fuzzy Multiproduct Multistage Scheduling Problem (acronymized as FMMSP), has not been treated in the international scientific literature. This work explored this new combination. For that, the MNIG algorithm was modified and used to solve the FMMSP model. In scheduling notation, the FMMSP model is <span class="math inline">FFc | \tilde{T}_{i, u}, batch(b), prmu, Z_{i, u, s} | C_{max}</span>.</p>
+<p>The MNIG algorithm was implemented in Python, and by applying it to the FMMSP model, it was found that the MNIG algorithm is at least as good as the DBSA-LS algorithm, and it even showed an improvement in the average solution value. This was proven with the only available instance that was published by the creators of the FMMSP model.</p>
+<p><strong>Keywords</strong>: Iterated Greedy Algorithm, Multi-neighborhood, Scheduling, Triangular Fuzzy Numbers, Multiproduct, Multistage.</p>
+<h1 data-number="4" id="introducción"><span class="header-section-number">4</span> INTRODUCCIÓN</h1>
+<h1 data-number="5" id="planteamiento-del-problema"><span class="header-section-number">5</span> PLANTEAMIENTO DEL PROBLEMA</h1>
+<h1 data-number="6" id="objetivos"><span class="header-section-number">6</span> OBJETIVOS</h1>
+<h1 data-number="7" id="justificación"><span class="header-section-number">7</span> JUSTIFICACIÓN</h1>
+<h1 data-number="8" id="alcances-y-limitaciones-del-proyecto"><span class="header-section-number">8</span> ALCANCES Y LIMITACIONES DEL PROYECTO</h1>
+<h1 data-number="9" id="marco-de-referencia"><span class="header-section-number">9</span> MARCO DE REFERENCIA</h1>
+<h1 data-number="10" id="hipótesis"><span class="header-section-number">10</span> HIPÓTESIS</h1>
+<h1 data-number="11" id="diseño-metodológico"><span class="header-section-number">11</span> DISEÑO METODOLÓGICO</h1>
+<h1 data-number="12" id="resultados"><span class="header-section-number">12</span> RESULTADOS</h1>
+<h1 data-number="13" id="conclusiones-y-recomendaciones"><span class="header-section-number">13</span> CONCLUSIONES Y RECOMENDACIONES</h1>
+<h1 data-number="14" id="glosario-de-anglicismos"><span class="header-section-number">14</span> GLOSARIO DE ANGLICISMOS</h1>
+<h1 data-number="15" id="bibliografía"><span class="header-section-number">15</span> BIBLIOGRAFÍA</h1>
+</body>
+</html>
