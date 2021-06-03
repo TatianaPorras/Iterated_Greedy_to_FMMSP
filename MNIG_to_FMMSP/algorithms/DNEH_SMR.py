@@ -47,7 +47,8 @@ def DNEH_SMR(Tn, U_s, Pn):
     # Paso 3
 
     # T1 es la lista de los tiempos promedio de la primera mitad de etapas.
-    T1 = [1/k*np.sum([Ta[i][l] for l in c_range(1, k)], axis = 0) for i in I]
+    # T1 = [1/k*np.sum([Ta[i][l] for l in c_range(1, k)], axis = 0) for i in I]
+    # Está comentado porque T1 no se necesita para los resultados del algoritmo DNEH_SMR. T1 solo es un valor de referencia que no se usa.
 
     # T2 es la lista de los tiempos promedio de la segunda mitad de etapas.
     T2 = [1/(L - k)*np.sum([Ta[i][l] for l in c_range(k + 1, L)], axis = 0) for i in I]

@@ -32,6 +32,7 @@ p
 {
 	font-family: var(--f1);
 	font-size: var(--s1);
+	text-align: justify;
 }
 
 h1, h2
