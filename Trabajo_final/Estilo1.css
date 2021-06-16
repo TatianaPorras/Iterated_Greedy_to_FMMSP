@@ -45,3 +45,43 @@ h1, h2
 	font-size: 18pt;	
 	font-weight: normal;
 }
+
+ul
+{
+	font-family: var(--f1);
+	font-size: var(--s1);
+}
+
+a
+{
+	color: black;
+	text-decoration: none;
+}
+
+.algoritmo
+{
+	margin: 0 36pt;
+	white-space: pre-wrap;
+}
+
+.algoritmo > p
+{
+	font-family: monospace;
+}
+
+code
+{
+	font-size: var(--s1);
+}
+
+table
+{
+	font-family: var(--f1);
+	font-size: var(--s1);
+	border-collapse: collapse;
+}
+
+table, th, td
+{
+	border: 1pt solid;
+}
