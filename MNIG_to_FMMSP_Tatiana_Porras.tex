@@ -28,7 +28,7 @@
 \def\direcM{LINDSAY ÁLVAREZ POMAR}
 \def\direc{Lindsay Álvarez Pomar}
 \def\algmod{MNIG\_to\_FMMSP} % algmod es por algoritmo modelo
-\def\notac_modelo{$FFc | \tilde{T}_{i, u}, batch(b), prmu, Z_{i, u, s} | C_{max}$}
+\def\notac_modelo{$FFc | \tilde{T}_{i, u}, batch(b), Z_{i, u, s} | C_{max}$}
 \makeatletter
 \let\dateVar\@date
 \makeatother
@@ -131,7 +131,7 @@ Según lo anterior, los elementos del problema son:
 
 \subsection{Pregunta del Problema}
 
-¿Cómo puede el algoritmo MNIG encontrar nuevas soluciones para el modelo FMMSP?
+¿Cómo puede el algoritmo MNIG encontrar soluciones para el modelo FMMSP?
 
 \subsection{Subpreguntas del Problema}
 
@@ -147,7 +147,7 @@ Según lo anterior, los elementos del problema son:
 \subsection{Objetivo General}
 
 \begin{itemize}
-    \item Encontrar nuevas soluciones a través del algoritmo MNIG para el modelo FMMSP.
+    \item Encontrar soluciones a través del algoritmo MNIG para el modelo FMMSP.
 \end{itemize}
 
 \subsection{Objetivos Específicos}
@@ -162,7 +162,7 @@ Según lo anterior, los elementos del problema son:
 
 \section{JUSTIFICACIÓN}
 
-Se propone este trabajo porque en el mundo académico existe una necesidad de comprobar que los algoritmos den resultados esperados al ser aplicados a los modelos. En particular en el mundo del scheduling ocurre que un algoritmo que se usa para un tipo de modelos pueda ser adaptado para tratar otro tipo de modelos diferente. Este trabajo se justifica como un aporte de prueba sobre si el algoritmo MNIG sirve para resolver el modelo FMMSP \notac_modelo en comparación a otros algoritmos ya establecidos.
+Se propone este trabajo porque en el mundo académico existe una necesidad de comprobar que nuevos algoritmos den resultados comparables a viejos algoritmos, al ser aplicados a los modelos. En particular en el mundo del scheduling ocurre que un algoritmo que se usa para un tipo de modelos pueda ser adaptado para tratar otro tipo de modelos diferente. Este trabajo se justifica como un aporte de prueba sobre si el algoritmo MNIG sirve para resolver el modelo FMMSP \notac_modelo en comparación a otros algoritmos ya establecidos.
 
 \vspace{\baselineskip}
 En el futuro, podría ser preferible para un sistema de producción tipo \linebreak FMMSP contar con un algoritmo como el MNIG. En cualquier caso, no sobra contar con un algoritmo extra para obtener las secuencias de trabajos en sistema de producción de este tipo.
@@ -183,7 +183,7 @@ Pero, ¿Qué se entiende al decir que un algoritmo es competente o no? En este c
 \textbf{¿Por qué hay que solucionar este problema?}: Porque nunca se ha hecho y porque hay un interés científico por avanzar nuestro conocimiento sobre los límites que unen a las metaheurísticas y los modelos de scheduling. Debido a la naturaleza NP-Hard de los modelos derivados de flow shop (como lo es el modelo FMMSP), aún no existe forma de garantizar la optimalidad de las soluciones encontradas por las metaheurísticas, y por eso existe cierta competencia entre diferentes metaheurísticas que usan diferentes estrategias para buscar soluciones en el espacio de búsqueda. Esta competencia sigue abierta para el modelo FMMSP, y aunque el algoritmo MNIG fue diseñado para problemas muy diferentes, en este trabajo se ha logrado adaptar el algoritmo MNIG para tratar el modelo FMMSP y encontrar soluciones al mismo.
 
 \vspace{\baselineskip}
-\textbf{¿Qué sucede si no solucionamos este problema identificado?}: Si no solucionamos este problema, no avanzará nuestro conocimiento sobre el modelo FMMSP y sus soluciones. El modelo FMMSP es un modelo que se puede encontrar en sistemas de producción reales, nada más el hecho de que el modelo FMMSP incluye números difusos triangulares (F es por Fuzzy), muestra que el modelo FMMSP puede ser aplicado a sistemas de producción colombianos, en donde no hay una fuerte estandarización, porque si las estaciones de trabajo tienen tiempos de procesamiento fuertemente estandarizados, ya no se hacen necesarios los números triangulares difusos, y resulta más fácil y razonable usar simples números para representar los tiempos de procesamiento. En cambio, en sistemas donde no hay una fuerte estandarización, puede tener sentido usar números triangulares difusos para representar los tiempos de producción de las estaciones de trabajo, porque así se representa la incertidumbre sobre el verdadero tiempo de producción, usando las tres partes que formar un número triangular difuso: el tiempo optimista de producción, el tiempo promedio de producción, y el tiempo pesimista de producción (esto se puede ver también en la sección del marco de referencia).
+\textbf{¿Qué sucede si no solucionamos este problema identificado?}: Si no solucionamos este problema, no avanzará nuestro conocimiento sobre el modelo FMMSP y sus soluciones. El modelo FMMSP es un modelo que se puede encontrar en sistemas de producción reales, nada más el hecho de que el modelo FMMSP incluye números difusos triangulares (F es por Fuzzy), muestra que el modelo FMMSP puede ser aplicado a sistemas de producción colombianos, en donde no hay una fuerte estandarización, porque si las estaciones de trabajo tienen tiempos de procesamiento fuertemente estandarizados, ya no se hacen necesarios los números triangulares difusos, y resulta más fácil y razonable usar simples números para representar los tiempos de procesamiento. En cambio, en sistemas donde no hay una fuerte estandarización, puede tener sentido usar números triangulares difusos para representar los tiempos de producción de las estaciones de trabajo, porque así se representa la incertidumbre sobre el verdadero tiempo de producción, usando las tres partes que forman un número triangular difuso: el tiempo optimista de producción, el tiempo promedio de producción, y el tiempo pesimista de producción (esto se puede ver también en la sección del marco de referencia).
 
 \vspace{\baselineskip}
 De este proyecto puede llegar a crearse un paper que podría ser publicado en inglés en una revista indexada internacional. Dicho paper podría publicarse en el Workshop on Engineering Applications que se organiza en la Universidad Distrital. Este aporte sirve también como justificación del proyecto.
@@ -273,7 +273,7 @@ Como se observa en la ecuación (\ref{eqn:fPert}) la función del grado de perte
 Haciendo uso de los números difusos triangulares, a continuación se define el modelo FMMSP \notac_modelo: \autocite{modFMMSP}
 
 \vspace{\baselineskip}
-Sea $N$ el número de órdenes o trabajos a procesar, sea $I$ el conjunto de los trabajos, tal que $I = \{1,2,\dots,i,\dots,N\}$ donde $i$ es cualquier trabajo del conjunto $I$.
+Sea $NT$ el número de órdenes o trabajos a procesar, sea $I$ el conjunto de los trabajos, tal que $I = \{1,2,\dots,i,\dots,NT\}$ donde $i$ es cualquier trabajo del conjunto $I$.
 
 \vspace{\baselineskip}
 Sea $L$ el número de etapas por las que deben pasar los trabajos, sea $S$ el conjunto de las etapas, tal que $S = \{1,2,\dots,s,\dots,L\}$ donde $s$ es cualquier etapa del conjunto $S$.
@@ -556,7 +556,7 @@ Esto termina la presentación del modelo FMMSP denotado como \linebreak \notac_m
 
 \section{HIPÓTESIS}
 
-A través del algoritmo MNIG se pueden encontrar nuevas soluciones para el modelo FMMSP \notac_modelo. Tras su aplicación la efectividad del algoritmo MNIG es medible y es comparable a la efectividad de los otros cuatro algoritmos: DBSA-LS, BDBSA, MBSA, e IGA.
+A través del algoritmo MNIG se pueden encontrar soluciones para el modelo FMMSP \notac_modelo. Tras su aplicación la efectividad del algoritmo MNIG es medible y es comparable a la efectividad de los otros cuatro algoritmos: DBSA-LS, BDBSA, MBSA, e IGA.
 
 \section{DISEÑO METODOLÓGICO}
 
@@ -591,7 +591,7 @@ Como se observa en la estructura de archivos, la carpeta algorithms/ es tratada 
 
 \subsection{Ejecución del algoritmo MNIG en instancia del modelo FMMSP}
 
-Aquí se explica por qué sólo se trabajará una instancia y no varias del modelo FMMSP \notac_modelo. La razón principalmente es que sólo existe una instancia públicamente a nivel internacional. Ello porque aunque en la literatura se habla de varias instancias (de unas 15 instancias), sólo en 1 se dan los datos, en el resto se dice que fueron generadas con números aleatorios uniformes con ciertas condiciones, pero instancias creadas aleatoriamente no pueden ser replicadas con exactitud. \autocite{modFMMSP}
+Aquí se explica por qué sólo se trabajará una instancia y no varias del modelo FMMSP \notac_modelo. La razón es que sólo existe una instancia públicamente a nivel internacional. Ello porque aunque en la literatura se habla de varias instancias (de unas 15 instancias), sólo en 1 se dan los datos, en el resto se dice que fueron generadas con números aleatorios uniformes con ciertas condiciones, pero instancias creadas aleatoriamente no pueden ser replicadas con exactitud. \autocite{modFMMSP}
 
 \vspace{\baselineskip}
 Por lo anterior se ejecutará el algoritmo MNIG en la única instancia conocida del modelo FMMSP \notac_modelo. En la literatura las instancias son nombradas con 3 letras y un número por letra, por ejemplo la instancia que se trabajará es "o10s2u5". En esta cadena de caracteres, "o" significa "ordenes" (o trabajos), "s" significa etapas (stages en inglés), "u" significa "unidades" (o máquinas). Por ende la instancia sobre la que se probará el algoritmo es de 10 trabajos, 2 etapas, y 5 unidades. La siguiente tabla contiene los datos de la instancia: \autocite{modFMMSP}
@@ -648,7 +648,7 @@ Con esta tabla se compararán directamente los resultados del algoritmo MNIG al 
 
 \subsection{Instancias de Taillard}
 
-A nivel internacional, se reconocen algunas instancias con las que se puede medir la efectividad de las metaheurísticas. Para el caso flow shop, las instancias de Taillard son instancias que se han venido usando desde 1993 cuando fueron creadas, son en total 12 instancias. La más pequeña cuenta con 20 trabajos y 5 máquinas. La instancia más grande es de 500 trabajos y 20 máquinas. Se aplicará el algoritmo MNIG a estas instancias aunque no esté diseñado para resolver el modelo flow shop básico, pues esto permitirá comprobar que el algoritmo MNIG puede ser aplicado a sistemas tipo flow shop.
+A nivel internacional, se reconocen algunas instancias con las que se puede medir la efectividad de las metaheurísticas. Para el caso flow shop, las instancias de Taillard son instancias que se han venido usando desde 1993 cuando fueron creadas, son en total 120 instancias. La más pequeña cuenta con 20 trabajos y 5 máquinas. La instancia más grande es de 500 trabajos y 20 máquinas. Se aplicará el algoritmo MNIG a estas instancias aunque no esté diseñado para resolver el modelo flow shop básico, pues esto permitirá comprobar que el algoritmo MNIG puede ser aplicado a sistemas tipo flow shop.
 
 \section{CRONOGRAMA}
 

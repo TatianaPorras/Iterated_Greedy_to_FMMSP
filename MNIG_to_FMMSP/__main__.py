@@ -75,13 +75,13 @@ def MNIG(Tn, U_s):
     Pn = PT(Tn)
 
 # Paso 1
-    print("Paso 1", file = sys.stderr)
+    #print("Paso 1", file = sys.stderr)
 
     pi_re3, Ta = DNEH_SMR(Tn, U_s, Pn)
 
 
 # Paso 2
-    print("Paso 2", file = sys.stderr)
+    #print("Paso 2", file = sys.stderr)
 
     pi_result = pi_re3.copy()
     pi_temp = pi_re3.copy()
@@ -89,7 +89,7 @@ def MNIG(Tn, U_s):
 
 
 # Paso 3
-    print("Paso 3", file = sys.stderr)
+    #print("Paso 3", file = sys.stderr)
 
     UT = np.sum([len(U_s[s]) for s in c_range(1, L)])
     TT = T_0*(np.sum(Ta))/(10 * N * L)
@@ -99,55 +99,55 @@ def MNIG(Tn, U_s):
 
 
 # Paso 4
-        print("Paso 4", file = sys.stderr)
+        #print("Paso 4", file = sys.stderr)
 
         pi_temp = local_search(pi_temp, Tn, U_s, Pn)
 
 
 # Paso 5
-        print("Paso 5", file = sys.stderr)
+        #print("Paso 5", file = sys.stderr)
 
         if (PT(makespan(pi_temp, Tn, U_s, Pn)) < PT(makespan(pi_re3, Tn, U_s, Pn))):
 
 
 # Paso 6
-            print("Paso 6", file = sys.stderr)
+            #print("Paso 6", file = sys.stderr)
 
             pi_re3 = pi_temp.copy()
 
 
 # Paso 7
-            print("Paso 7", file = sys.stderr)
+            #print("Paso 7", file = sys.stderr)
 
             if (PT(makespan(pi_temp, Tn, U_s, Pn)) < PT(makespan(pi_result, Tn, U_s, Pn))):
 
 
 # Paso 8
-                print("Paso 8", file = sys.stderr)
+                #print("Paso 8", file = sys.stderr)
 
                 pi_result = pi_temp.copy()
 
 
 # Paso 9
-                print("Paso 9", file = sys.stderr)
+                #print("Paso 9", file = sys.stderr)
 
         else:
 
 
 # Paso 10
-            print("Paso 10", file = sys.stderr)
+            #print("Paso 10", file = sys.stderr)
 
             if ( random.random() < math.exp(-(PT(makespan(pi_temp, Tn, U_s, Pn)) - PT(makespan(pi_re3, Tn, U_s, Pn)))/TT) ):
 
 
 # Paso 11
-                print("Paso 11", file = sys.stderr)
+                #print("Paso 11", file = sys.stderr)
 
                 pi_re3 = pi_temp.copy()
 
 
 # Paso 12
-        print("Paso 12", file = sys.stderr)
+        #print("Paso 12", file = sys.stderr)
 
         pi_temp = destruction_reconstruction(pi_temp, d, Tn, U_s, Pn)
 
@@ -158,11 +158,12 @@ def MNIG(Tn, U_s):
 
 
 # Paso 13
-    print("Paso 13", file = sys.stderr)
+    #print("Paso 13", file = sys.stderr)
 
-    print("\n", pi_result, makespan(pi_result, Tn, U_s, Pn, debug), file = file1)
+    print("\n", pi_result, makespan(pi_result, Tn, U_s, Pn, debug))
 
-#MNIG(Tn, U_s)
+MNIG(Tn, U_s)
+quit()
 
 # Instancias de Taillard
 
