@@ -331,7 +331,7 @@ Bogotá D.C., Colombia. 2021-05-30</p>
 <p>Como se observa en la estructura de archivos, la carpeta <code>algorithms/</code> es tratada como un paquete mediante el archivo <code>__init__.py</code> se podría decir que es el paquete con los algoritmos necesarios para ejecutar el algoritmo principal MNIG.</p>
 <h2 id="ejecución-del-algoritmo-mnig-en-instancia-del-modelo-fmmsp">Ejecución del algoritmo MNIG en instancia del modelo FMMSP</h2>
 <p>Aquí se explica por qué sólo se trabajará una instancia y no varias del modelo FMMSP <span class="math inline">FFc | \tilde{T}_{i, u}, batch(b), Z_{i, u, s} | C_{max}</span>. La razón es que sólo existe una instancia públicamente a nivel internacional. Ello porque aunque en la literatura se habla de varias instancias (de unas 15 instancias), sólo en 1 se dan los datos, en el resto se dice que fueron generadas con números aleatorios uniformes con ciertas condiciones, pero instancias creadas aleatoriamente no pueden ser replicadas con exactitud. <span class="citation" data-cites="modFMMSP">(Yan, Han, and Gu 2020)</span></p>
-<p>Por lo anterior se ejecutará el algoritmo MNIG en la única instancia conocida del modelo FMMSP <span class="math inline">FFc | \tilde{T}_{i, u}, batch(b), Z_{i, u, s} | C_{max}</span>. En la literatura las instancias son nombradas con 3 letras y un número por letra, por ejemplo la instancia que se trabajará es “o10s2u5.” En esta cadena de caracteres, “o” significa “ordenes” (o trabajos), “s” significa etapas (stages en inglés), “u” significa “unidades” (o máquinas). Por ende la instancia sobre la que se probará el algoritmo es de 10 trabajos, 2 etapas, y 5 unidades. La siguiente tabla contiene los datos de la instancia: <span class="citation" data-cites="modFMMSP">(Yan, Han, and Gu 2020)</span></p>
+<p>Por lo anterior se ejecutó el algoritmo MNIG en la única instancia conocida del modelo FMMSP <span class="math inline">FFc | \tilde{T}_{i, u}, batch(b), Z_{i, u, s} | C_{max}</span>. En la literatura las instancias son nombradas con 3 letras y un número por letra, por ejemplo la instancia que se trabajará es “o10s2u5.” En esta cadena de caracteres, “o” significa “ordenes” (o trabajos), “s” significa etapas (stages en inglés), “u” significa “unidades” (o máquinas). Por ende la instancia sobre la que se probará el algoritmo es de 10 trabajos, 2 etapas, y 5 unidades. La siguiente tabla contiene los datos de la instancia: <span class="citation" data-cites="modFMMSP">(Yan, Han, and Gu 2020)</span></p>
 <table>
 <caption>Tiempos de procesamiento de la instancia o10s2u5</caption>
 <colgroup>
@@ -435,9 +435,9 @@ Bogotá D.C., Colombia. 2021-05-30</p>
 </tr>
 </tbody>
 </table>
-<p>Recordar que los tiempos de procesamiento vienen en ternas en la tabla pues son números difusos triangulares. El algoritmo será ejecutado sobre esta instancia o10s2u5 y se guardará el resultado en un archivo para compararlo con los de los otros cuatro algoritmos.</p>
+<p>Recordar que los tiempos de procesamiento vienen en ternas en la tabla pues son números difusos triangulares. El algoritmo fue ejecutado sobre esta instancia o10s2u5 y se compararon los resultados con los de los otros cuatro algoritmos.</p>
 <h2 id="comparación-del-algoritmo-mnig-con-otros-algoritmos">Comparación del algoritmo MNIG con otros algoritmos</h2>
-<p>Tras aplicar el algoritmo MNIG a la instancia del modelo FMMSP y obtener resultados, se podrá comparar a otros cuatro algoritmos. Estos son: DBSA-LS, BDBSA, MBSA, e IGA. Estos cuatro algoritmos ya fueron aplicados a la instancia del modelo FMMSP. En la siguiente tabla se presentan los resultados de esos cuatro algoritmos: <span class="citation" data-cites="modFMMSP">(Yan, Han, and Gu 2020)</span></p>
+<p>Tras aplicar el algoritmo MNIG a la instancia del modelo FMMSP y obtener resultados, se comparó con los otros cuatro algoritmos. Estos son: DBSA-LS, BDBSA, MBSA, e IGA. Estos cuatro algoritmos ya fueron aplicados a la instancia del modelo FMMSP. En la siguiente tabla se presentan los resultados de esos cuatro algoritmos: <span class="citation" data-cites="modFMMSP">(Yan, Han, and Gu 2020)</span></p>
 <table>
 <caption>Resultados del makespan de los cuatro algoritmos en la instancia o10s2u5</caption>
 <thead>
@@ -475,12 +475,726 @@ Bogotá D.C., Colombia. 2021-05-30</p>
 </tr>
 </tbody>
 </table>
-<p>Con esta tabla se compararán directamente los resultados del algoritmo MNIG al ser aplicado al modelo FMMSP <span class="math inline">FFc | \tilde{T}_{i, u}, batch(b), Z_{i, u, s} | C_{max}</span>.</p>
+<p>Con esta tabla se compararon directamente los resultados del algoritmo MNIG al ser aplicado al modelo FMMSP <span class="math inline">FFc | \tilde{T}_{i, u}, batch(b), Z_{i, u, s} | C_{max}</span>.</p>
 <h2 id="instancias-de-taillard">Instancias de Taillard</h2>
-<p>A nivel internacional, se reconocen algunas instancias con las que se puede medir la efectividad de las metaheurísticas. Para el caso flow shop, las instancias de Taillard son instancias que se han venido usando desde 1993 cuando fueron creadas, son en total 12 instancias. La más pequeña cuenta con 20 trabajos y 5 máquinas. La instancia más grande es de 500 trabajos y 20 máquinas. Se aplicará el algoritmo MNIG a estas instancias aunque no esté diseñado para resolver el modelo flow shop básico, pues esto permitirá comprobar que el algoritmo MNIG puede ser aplicado a sistemas tipo flow shop.</p>
+<p>A nivel internacional, se reconocen algunas instancias con las que se puede medir la efectividad de las metaheurísticas. Para el caso flow shop, las instancias de Taillard son instancias que se han venido usando desde 1993 cuando fueron creadas, son en total 120 instancias. La más pequeña cuenta con 20 trabajos y 5 máquinas. La instancia más grande es de 500 trabajos y 20 máquinas. Se aplicó el algoritmo MNIG a las primeras 95 de estas instancias, aunque el algoritmo MNIG no esté diseñado para resolver el modelo flow shop básico. Se podría aplicar el algoritmo MNIG a las 25 instancias, pero hacerlo requeriría más de 24 horas por cada instancia, es decir, al menos 25 días de ejecución continua, y probablemente más. Aparte para analizar el algoritmo MNIG aplicado al problema flow shop básico, no necesariamente es obligatorio probar con todas las instancias.</p>
 <h1 id="resultados">RESULTADOS</h1>
+<p>Se corrió varias veces el algoritmo MNIG implementado en Python, para resolver la instancia o10s2u5 del modelo FMMSP. Las siguientes dos tablas presentan un resumen de los resultados encontrados al resolver la instancia o10s2u5.</p>
+<table>
+<caption>Resumen de la solución obtenida por el algoritmo MNIG</caption>
+<thead>
+<tr class="header">
+<th style="text-align: center;">Algoritmo</th>
+<th style="text-align: center;">Mejor valor</th>
+<th style="text-align: center;">Valor medio</th>
+<th style="text-align: center;">Peor valor</th>
+<th style="text-align: center;">Tiempo promedio</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">MNIG</td>
+<td style="text-align: center;">(36,44,52)</td>
+<td style="text-align: center;">(36,44,52)</td>
+<td style="text-align: center;">(36,44,52)</td>
+<td style="text-align: center;">0.83 segundos</td>
+</tr>
+</tbody>
+</table>
+<table>
+<caption>Secuencias encontradas con la solución (36, 44, 52)</caption>
+<thead>
+<tr class="header">
+<th style="text-align: center;">Secuencia</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">[7, 8, 6, 10, 1, 9, 5, 4, 2, 3]</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">[7, 8, 6, 10, 5, 9, 1, 4, 2, 3]</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">[6, 1, 9, 7, 8, 10, 4, 5, 2, 3]</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">[1, 6, 9, 10, 7, 8, 5, 4, 2, 3]</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">[6, 5, 10, 1, 9, 7, 8, 4, 2, 3]</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">[6, 10, 1, 8, 9, 4, 5, 7, 2, 3]</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">[6, 5, 7, 10, 8, 1, 4, 9, 2, 3]</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">[9, 7, 1, 6, 8, 10, 4, 5, 2, 3]</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">[5, 8, 7, 6, 10, 4, 1, 9, 2, 3]</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">[7, 1, 6, 10, 5, 9, 8, 4, 2, 3]</td>
+</tr>
+</tbody>
+</table>
+<p>Todas estas secuencias tienen un makespan de (36, 44, 52).</p>
+<h2 id="análisis-de-resultados">Análisis de resultados</h2>
+<p>El algoritmo MNIG se corrió más de 30 veces en la instancia o10s2u5 del modelo FMMSP, y se midió el tiempo de ejecución de esas 30 veces para promediarlo. Se encontró un tiempo de ejecución promedio de 0.83 segundos, con un máximo de 0.85 segundos y un mínimo de 0.82 segundos.</p>
+<p>Para poder comparar el tiempo de ejecución, debe tenerse en cuenta que el algoritmo MNIG fue ejecutado en una máquina Ubuntu Linux, con un CPU Intel(R) Core(TM) i5-6200U CPU @ 2.30GHz.</p>
+<p>De la primera tabla de resultados, se observa que el algoritmo MNIG aporta consistentemente la misma solución (36, 44, 52), de la instancia o10s2u5. En todas las ejecuciones, el algoritmo MNIG aportó la misma solución, por lo que la peor y mejor solución, son la misma. Esto muestra una mejora por parte del algoritmo MNIG en comparación de los otros cuatro algoritmos.</p>
+<table>
+<caption>Comparación de los algoritmos</caption>
+<thead>
+<tr class="header">
+<th style="text-align: center;">Algoritmo</th>
+<th style="text-align: center;">Mejor valor</th>
+<th style="text-align: center;">Valor medio</th>
+<th style="text-align: center;">Peor valor</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">MNIG</td>
+<td style="text-align: center;">(36,44,52)</td>
+<td style="text-align: center;">(36,44,52)</td>
+<td style="text-align: center;">(36,44,52)</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">DBSA-LS</td>
+<td style="text-align: center;">(36,44,52)</td>
+<td style="text-align: center;">(38,45,52)</td>
+<td style="text-align: center;">(42,48,53)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">BDBSA</td>
+<td style="text-align: center;">(36,44,52)</td>
+<td style="text-align: center;">(38.6,45.5,52)</td>
+<td style="text-align: center;">(40,46,54)</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">MBSA</td>
+<td style="text-align: center;">(40,47,55)</td>
+<td style="text-align: center;">(44,50,57)</td>
+<td style="text-align: center;">(42.2,49.3,54.6)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">IGA</td>
+<td style="text-align: center;">(39,45,52)</td>
+<td style="text-align: center;">(40.1,46.9,54.5)</td>
+<td style="text-align: center;">(43,49,57)</td>
+</tr>
+</tbody>
+</table>
+<p>El algoritmo MNIG tiene como mejor valor, valor medio, y peor valor, la misma solución (36, 44, 52). Es importante denotar que la solución (36, 44, 52) se alcanzaba con tan solo una iteración. Consistentemente basta una sola iteración del algoritmo MNIG para encontrar la solución (36, 44, 52). Se analizó cuál parte del programa es la que convierte cualquier secuencia en una secuencia con makespan (36, 44, 52), y resultó ser la parte voraz del algoritmo MNIG, que es el algoritmo <code>destruction_reconstruction.py</code>. Al algoritmo <code>destruction_reconstruction.py</code> se le puede dar cualquier secuencia de la instancia o10s2u5, y retornará una secuencia con makespan (36, 44, 52) en una sola iteración. Como se verá más adelante en las intancias de Taillard, la parte más lenta del algoritmo MNIG también es el algoritmo <code>destruction_reconstruction.py</code>, tanto que en las instancias más grandes de Taillard, puede tardar más de 24 horas en hacer una iteración.</p>
+<h2 id="resultados-de-las-instancias-de-taillard">Resultados de las instancias de Taillard</h2>
+<p>El algoritmo MNIG se aplicó a las primeras 95 instancias de Taillard. Se decidió no aplicarlo a las últimas 25 instancias (son 120 en total), porque esta implementación del algoritmo MNIG se tardaba más de 24 horas por instancia.</p>
+<table>
+<caption>Resultados de las instancias de Taillard</caption>
+<colgroup>
+<col style="width: 13%" />
+<col style="width: 11%" />
+<col style="width: 61%" />
+<col style="width: 13%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: center;">Instancia</th>
+<th style="text-align: center;">Makespan</th>
+<th style="text-align: center;">Secuencia</th>
+<th style="text-align: center;">% sobre cota superior</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">1297</td>
+<td style="text-align: center;">[9, 15, 6, 4, 11, 13, 1, 5, 17, 14, 2, 8, 19, 7, 18, 12, 3, 16, 10, 20]</td>
+<td style="text-align: center;">1.49%</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">2</td>
+<td style="text-align: center;">1366</td>
+<td style="text-align: center;">[6, 7, 18, 15, 9, 12, 8, 20, 14, 13, 16, 5, 4, 19, 10, 11, 3, 17, 1, 2]</td>
+<td style="text-align: center;">0.52%</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">3</td>
+<td style="text-align: center;">1100</td>
+<td style="text-align: center;">[3, 16, 14, 20, 7, 4, 18, 10, 12, 1, 11, 19, 5, 9, 17, 6, 13, 8, 2, 15]</td>
+<td style="text-align: center;">1.76%</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">4</td>
+<td style="text-align: center;">1315</td>
+<td style="text-align: center;">[13, 11, 17, 15, 19, 9, 16, 2, 20, 7, 12, 10, 1, 5, 3, 8, 6, 18, 14, 4]</td>
+<td style="text-align: center;">1.70%</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">5</td>
+<td style="text-align: center;">1250</td>
+<td style="text-align: center;">[12, 3, 19, 10, 9, 4, 6, 5, 16, 17, 13, 2, 7, 11, 15, 1, 14, 18, 8, 20]</td>
+<td style="text-align: center;">1.13%</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">6</td>
+<td style="text-align: center;">1210</td>
+<td style="text-align: center;">[14, 11, 17, 13, 5, 20, 6, 9, 4, 7, 8, 12, 15, 18, 1, 10, 16, 19, 2, 3]</td>
+<td style="text-align: center;">1.26%</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">7</td>
+<td style="text-align: center;">1251</td>
+<td style="text-align: center;">[5, 11, 20, 13, 1, 9, 17, 19, 2, 7, 16, 6, 15, 4, 3, 14, 8, 18, 12, 10]</td>
+<td style="text-align: center;">0.97%</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">8</td>
+<td style="text-align: center;">1206</td>
+<td style="text-align: center;">[17, 2, 16, 9, 5, 14, 12, 1, 3, 19, 7, 13, 10, 18, 8, 20, 4, 15, 6, 11]</td>
+<td style="text-align: center;">0.00%</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">9</td>
+<td style="text-align: center;">1255</td>
+<td style="text-align: center;">[4, 7, 20, 12, 16, 1, 15, 17, 18, 3, 8, 10, 2, 6, 9, 13, 14, 5, 11, 19]</td>
+<td style="text-align: center;">2.03%</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">10</td>
+<td style="text-align: center;">1127</td>
+<td style="text-align: center;">[5, 16, 11, 6, 13, 10, 8, 14, 1, 19, 12, 3, 17, 18, 2, 20, 7, 4, 15, 9]</td>
+<td style="text-align: center;">1.71%</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">11</td>
+<td style="text-align: center;">1597</td>
+<td style="text-align: center;">[5, 2, 12, 9, 10, 15, 4, 14, 19, 17, 13, 3, 18, 6, 8, 20, 11, 7, 1, 16]</td>
+<td style="text-align: center;">0.95%</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">12</td>
+<td style="text-align: center;">1687</td>
+<td style="text-align: center;">[17, 19, 15, 12, 13, 11, 20, 10, 1, 5, 9, 7, 2, 4, 16, 8, 14, 3, 6, 18]</td>
+<td style="text-align: center;">1.69%</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">13</td>
+<td style="text-align: center;">1538</td>
+<td style="text-align: center;">[4, 7, 16, 12, 13, 9, 5, 1, 11, 2, 6, 14, 3, 10, 17, 15, 18, 20, 19, 8]</td>
+<td style="text-align: center;">2.81%</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">14</td>
+<td style="text-align: center;">1397</td>
+<td style="text-align: center;">[3, 12, 20, 16, 8, 18, 4, 1, 10, 9, 2, 7, 6, 15, 13, 11, 14, 17, 19, 5]</td>
+<td style="text-align: center;">1.38%</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">15</td>
+<td style="text-align: center;">1443</td>
+<td style="text-align: center;">[16, 8, 18, 4, 13, 14, 12, 6, 19, 1, 20, 15, 3, 11, 17, 2, 9, 7, 5, 10]</td>
+<td style="text-align: center;">1.69%</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">16</td>
+<td style="text-align: center;">1414</td>
+<td style="text-align: center;">[18, 19, 8, 3, 17, 16, 11, 14, 6, 5, 20, 13, 4, 7, 12, 10, 9, 15, 2, 1]</td>
+<td style="text-align: center;">1.22%</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">17</td>
+<td style="text-align: center;">1510</td>
+<td style="text-align: center;">[19, 4, 6, 7, 9, 13, 17, 18, 1, 2, 10, 20, 5, 16, 12, 14, 11, 3, 8, 15]</td>
+<td style="text-align: center;">1.75%</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">18</td>
+<td style="text-align: center;">1566</td>
+<td style="text-align: center;">[10, 19, 7, 9, 4, 16, 8, 3, 18, 14, 1, 15, 20, 5, 13, 6, 11, 17, 2, 12]</td>
+<td style="text-align: center;">1.82%</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">19</td>
+<td style="text-align: center;">1630</td>
+<td style="text-align: center;">[14, 12, 20, 4, 2, 8, 1, 19, 3, 13, 10, 11, 18, 16, 15, 7, 17, 5, 6, 9]</td>
+<td style="text-align: center;">2.32%</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">20</td>
+<td style="text-align: center;">1618</td>
+<td style="text-align: center;">[5, 13, 7, 17, 8, 6, 16, 20, 19, 4, 10, 2, 15, 14, 18, 1, 9, 12, 11, 3]</td>
+<td style="text-align: center;">1.70%</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">21</td>
+<td style="text-align: center;">2327</td>
+<td style="text-align: center;">[16, 18, 14, 10, 8, 9, 15, 3, 2, 11, 6, 12, 13, 5, 1, 20, 4, 17, 7, 19]</td>
+<td style="text-align: center;">1.31%</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">22</td>
+<td style="text-align: center;">2114</td>
+<td style="text-align: center;">[18, 11, 13, 3, 10, 4, 20, 19, 12, 5, 6, 14, 15, 16, 1, 9, 8, 7, 17, 2]</td>
+<td style="text-align: center;">0.67%</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">23</td>
+<td style="text-align: center;">2357</td>
+<td style="text-align: center;">[19, 5, 17, 16, 4, 1, 2, 15, 13, 10, 14, 3, 20, 9, 6, 18, 8, 11, 12, 7]</td>
+<td style="text-align: center;">1.33%</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">24</td>
+<td style="text-align: center;">2235</td>
+<td style="text-align: center;">[14, 18, 5, 2, 8, 6, 4, 20, 15, 13, 1, 12, 7, 3, 17, 19, 9, 16, 11, 10]</td>
+<td style="text-align: center;">0.54%</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">25</td>
+<td style="text-align: center;">2313</td>
+<td style="text-align: center;">[10, 2, 9, 3, 16, 17, 15, 1, 18, 13, 4, 20, 7, 19, 11, 12, 14, 5, 8, 6]</td>
+<td style="text-align: center;">0.96%</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">26</td>
+<td style="text-align: center;">2242</td>
+<td style="text-align: center;">[6, 14, 18, 13, 3, 5, 16, 8, 15, 9, 1, 10, 11, 20, 2, 17, 4, 7, 12, 19]</td>
+<td style="text-align: center;">0.72%</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">27</td>
+<td style="text-align: center;">2297</td>
+<td style="text-align: center;">[10, 12, 5, 9, 11, 20, 4, 15, 6, 19, 2, 14, 1, 18, 16, 7, 17, 8, 3, 13]</td>
+<td style="text-align: center;">1.06%</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">28</td>
+<td style="text-align: center;">2224</td>
+<td style="text-align: center;">[4, 10, 17, 5, 16, 14, 7, 2, 13, 12, 3, 11, 6, 20, 19, 8, 18, 15, 9, 1]</td>
+<td style="text-align: center;">1.09%</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">29</td>
+<td style="text-align: center;">2258</td>
+<td style="text-align: center;">[1, 8, 14, 2, 13, 17, 4, 6, 3, 7, 18, 11, 9, 15, 20, 10, 12, 16, 5, 19]</td>
+<td style="text-align: center;">0.94%</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">30</td>
+<td style="text-align: center;">2205</td>
+<td style="text-align: center;">[3, 7, 12, 6, 13, 18, 10, 17, 11, 5, 15, 19, 1, 8, 20, 2, 9, 16, 4, 14]</td>
+<td style="text-align: center;">1.24%</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">31</td>
+<td style="text-align: center;">2729</td>
+<td style="text-align: center;">[26, 39, 20, 30, 49, 17, 22, 4, 1, 43, 28, 46, 47, 25, 31, 40, 34, 29, 10, 24, 36, 11, 14, 6, 2, 32, 42, 38, 5, 27, 18, 35, 8, 44, 13, 9, 45, 33, 21, 7, 15, 16, 12, 50, 23, 41, 48, 19, 37, 3]</td>
+<td style="text-align: center;">0.18%</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">32</td>
+<td style="text-align: center;">2863</td>
+<td style="text-align: center;">[50, 37, 33, 8, 2, 46, 24, 10, 9, 47, 17, 45, 42, 5, 41, 26, 7, 22, 40, 14, 18, 43, 29, 35, 27, 15, 39, 31, 20, 25, 6, 32, 3, 34, 48, 49, 30, 16, 28, 19, 11, 1, 36, 21, 4, 23, 44, 13, 12, 38]</td>
+<td style="text-align: center;">1.02%</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">33</td>
+<td style="text-align: center;">2646</td>
+<td style="text-align: center;">[4, 13, 45, 3, 18, 26, 9, 24, 40, 20, 22, 2, 37, 25, 38, 42, 49, 33, 41, 10, 34, 29, 35, 5, 32, 16, 1, 19, 46, 36, 27, 28, 17, 50, 6, 11, 31, 8, 15, 39, 7, 23, 48, 14, 43, 47, 21, 44, 30, 12]</td>
+<td style="text-align: center;">0.95%</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">34</td>
+<td style="text-align: center;">2755</td>
+<td style="text-align: center;">[42, 30, 50, 14, 12, 25, 13, 19, 35, 24, 7, 23, 38, 36, 5, 20, 47, 10, 31, 8, 28, 1, 3, 26, 11, 9, 22, 29, 46, 16, 45, 2, 41, 49, 17, 48, 15, 40, 33, 18, 27, 6, 37, 34, 39, 4, 32, 21, 43, 44]</td>
+<td style="text-align: center;">0.15%</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">35</td>
+<td style="text-align: center;">2887</td>
+<td style="text-align: center;">[48, 5, 32, 1, 28, 21, 37, 12, 27, 40, 25, 11, 4, 35, 31, 34, 14, 43, 3, 44, 20, 22, 47, 16, 2, 29, 9, 26, 8, 23, 18, 36, 17, 41, 46, 24, 50, 7, 13, 45, 15, 39, 38, 19, 42, 49, 6, 10, 33, 30]</td>
+<td style="text-align: center;">0.84%</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">36</td>
+<td style="text-align: center;">2836</td>
+<td style="text-align: center;">[47, 29, 35, 34, 30, 32, 15, 5, 23, 21, 28, 33, 24, 10, 13, 39, 49, 17, 37, 6, 2, 18, 20, 46, 8, 4, 19, 1, 11, 3, 38, 45, 40, 44, 48, 22, 41, 7, 9, 50, 43, 14, 36, 42, 31, 27, 25, 26, 16, 12]</td>
+<td style="text-align: center;">0.25%</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">37</td>
+<td style="text-align: center;">2736</td>
+<td style="text-align: center;">[22, 43, 9, 49, 45, 5, 21, 24, 46, 40, 30, 33, 12, 39, 18, 3, 41, 15, 7, 35, 37, 14, 26, 10, 25, 8, 23, 32, 44, 20, 4, 38, 29, 17, 31, 19, 6, 11, 36, 34, 47, 27, 2, 48, 50, 42, 13, 1, 16, 28]</td>
+<td style="text-align: center;">0.40%</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">38</td>
+<td style="text-align: center;">2704</td>
+<td style="text-align: center;">[8, 25, 35, 14, 31, 39, 37, 5, 28, 18, 41, 10, 1, 17, 33, 45, 43, 47, 16, 49, 48, 36, 21, 46, 20, 2, 19, 30, 29, 7, 23, 3, 34, 4, 24, 44, 15, 12, 27, 11, 26, 13, 9, 6, 32, 42, 22, 50, 38, 40]</td>
+<td style="text-align: center;">0.78%</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">39</td>
+<td style="text-align: center;">2579</td>
+<td style="text-align: center;">[1, 15, 36, 38, 48, 5, 17, 41, 47, 44, 33, 46, 3, 18, 30, 43, 11, 49, 9, 20, 25, 34, 2, 24, 32, 29, 16, 28, 22, 42, 19, 7, 50, 40, 13, 26, 37, 39, 21, 8, 27, 23, 35, 12, 6, 31, 45, 14, 10, 4]</td>
+<td style="text-align: center;">1.06%</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">40</td>
+<td style="text-align: center;">2783</td>
+<td style="text-align: center;">[6, 35, 16, 24, 1, 18, 48, 44, 17, 38, 34, 4, 40, 19, 30, 49, 3, 39, 11, 8, 42, 50, 31, 36, 27, 2, 7, 15, 47, 28, 45, 12, 29, 9, 14, 37, 21, 43, 23, 10, 5, 41, 33, 13, 46, 25, 20, 32, 26, 22]</td>
+<td style="text-align: center;">0.04%</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">41</td>
+<td style="text-align: center;">3079</td>
+<td style="text-align: center;">[22, 19, 26, 18, 44, 37, 20, 34, 31, 42, 10, 9, 15, 28, 30, 46, 33, 16, 38, 40, 36, 4, 32, 12, 17, 7, 3, 2, 48, 29, 41, 23, 14, 47, 21, 6, 25, 49, 43, 35, 27, 11, 1, 13, 50, 8, 5, 45, 24, 39]</td>
+<td style="text-align: center;">1.78%</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">42</td>
+<td style="text-align: center;">2963</td>
+<td style="text-align: center;">[35, 49, 3, 33, 28, 12, 18, 10, 42, 34, 32, 31, 23, 14, 11, 7, 50, 1, 39, 38, 43, 37, 6, 27, 46, 47, 9, 24, 19, 8, 21, 20, 36, 16, 30, 25, 13, 29, 5, 4, 26, 17, 48, 44, 40, 15, 41, 2, 45, 22]</td>
+<td style="text-align: center;">2.46%</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">43</td>
+<td style="text-align: center;">2959</td>
+<td style="text-align: center;">[10, 24, 4, 28, 33, 38, 3, 25, 47, 11, 29, 42, 18, 37, 7, 44, 45, 1, 32, 26, 35, 20, 40, 30, 31, 17, 9, 39, 27, 43, 41, 13, 50, 16, 5, 6, 14, 49, 2, 15, 19, 46, 48, 36, 21, 8, 12, 34, 22, 23]</td>
+<td style="text-align: center;">3.32%</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">44</td>
+<td style="text-align: center;">3116</td>
+<td style="text-align: center;">[20, 5, 39, 13, 22, 31, 41, 35, 28, 19, 14, 2, 25, 8, 36, 9, 18, 48, 26, 6, 46, 1, 4, 23, 11, 47, 21, 37, 45, 40, 3, 34, 16, 24, 29, 10, 12, 43, 15, 38, 49, 17, 27, 32, 44, 7, 50, 33, 30, 42]</td>
+<td style="text-align: center;">1.70%</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">45</td>
+<td style="text-align: center;">3160</td>
+<td style="text-align: center;">[1, 40, 11, 49, 33, 16, 42, 35, 12, 48, 45, 30, 23, 43, 46, 5, 20, 6, 17, 39, 31, 14, 27, 10, 8, 15, 3, 24, 18, 34, 38, 22, 2, 41, 21, 36, 4, 7, 29, 25, 26, 47, 28, 44, 19, 37, 9, 13, 32, 50]</td>
+<td style="text-align: center;">5.83%</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">46</td>
+<td style="text-align: center;">3159</td>
+<td style="text-align: center;">[16, 42, 2, 24, 28, 27, 3, 10, 20, 45, 33, 46, 5, 48, 44, 11, 19, 30, 25, 38, 9, 36, 15, 29, 47, 34, 14, 32, 43, 39, 40, 23, 6, 31, 8, 17, 37, 22, 49, 26, 50, 13, 7, 1, 18, 41, 21, 35, 12, 4]</td>
+<td style="text-align: center;">5.09%</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">47</td>
+<td style="text-align: center;">3297</td>
+<td style="text-align: center;">[9, 37, 1, 2, 42, 30, 12, 49, 7, 6, 15, 28, 11, 17, 21, 33, 13, 3, 50, 19, 41, 45, 5, 26, 48, 14, 16, 8, 39, 10, 44, 35, 20, 36, 27, 23, 18, 47, 4, 43, 32, 31, 22, 25, 40, 46, 34, 29, 24, 38]</td>
+<td style="text-align: center;">6.12%</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">48</td>
+<td style="text-align: center;">3174</td>
+<td style="text-align: center;">[6, 18, 47, 11, 45, 33, 28, 15, 50, 48, 41, 14, 2, 29, 4, 46, 13, 22, 9, 40, 26, 24, 43, 25, 34, 35, 1, 27, 12, 32, 7, 10, 44, 30, 21, 36, 37, 8, 42, 5, 31, 16, 20, 39, 3, 38, 19, 17, 23, 49]</td>
+<td style="text-align: center;">4.44%</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">49</td>
+<td style="text-align: center;">3097</td>
+<td style="text-align: center;">[18, 44, 22, 13, 4, 46, 6, 23, 42, 17, 50, 37, 39, 48, 33, 27, 38, 11, 20, 41, 40, 14, 16, 21, 45, 3, 31, 19, 8, 12, 32, 10, 34, 49, 5, 26, 35, 29, 9, 30, 25, 7, 2, 24, 28, 1, 47, 36, 43, 15]</td>
+<td style="text-align: center;">6.72%</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">50</td>
+<td style="text-align: center;">3195</td>
+<td style="text-align: center;">[6, 1, 11, 27, 17, 9, 7, 20, 26, 46, 32, 49, 44, 40, 10, 48, 29, 23, 28, 43, 38, 36, 16, 25, 30, 24, 5, 15, 41, 50, 8, 34, 19, 35, 12, 14, 22, 31, 21, 37, 3, 18, 45, 39, 47, 13, 4, 42, 33, 2]</td>
+<td style="text-align: center;">3.36%</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">51</td>
+<td style="text-align: center;">4089</td>
+<td style="text-align: center;">[35, 17, 31, 24, 33, 12, 30, 20, 50, 44, 8, 40, 45, 15, 6, 13, 34, 26, 43, 42, 7, 23, 38, 14, 46, 29, 4, 27, 36, 5, 11, 39, 16, 2, 49, 10, 32, 25, 48, 41, 22, 37, 19, 28, 47, 1, 9, 21, 18, 3]</td>
+<td style="text-align: center;">5.52%</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">52</td>
+<td style="text-align: center;">3990</td>
+<td style="text-align: center;">[37, 11, 45, 18, 40, 1, 17, 12, 21, 42, 20, 14, 36, 41, 29, 47, 8, 38, 3, 50, 43, 2, 24, 5, 15, 39, 10, 13, 22, 16, 4, 28, 23, 9, 44, 34, 33, 26, 19, 31, 25, 32, 30, 6, 35, 48, 49, 7, 46, 27]</td>
+<td style="text-align: center;">7.40%</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">53</td>
+<td style="text-align: center;">3845</td>
+<td style="text-align: center;">[28, 22, 24, 31, 3, 39, 49, 4, 8, 16, 5, 9, 17, 18, 2, 19, 10, 33, 46, 30, 34, 29, 15, 48, 50, 12, 11, 41, 21, 1, 43, 36, 42, 20, 37, 35, 23, 32, 25, 26, 47, 14, 38, 45, 6, 13, 27, 40, 44, 7]</td>
+<td style="text-align: center;">4.83%</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">54</td>
+<td style="text-align: center;">3978</td>
+<td style="text-align: center;">[20, 34, 3, 32, 50, 11, 30, 13, 35, 1, 29, 45, 19, 4, 33, 8, 46, 48, 31, 17, 43, 44, 49, 36, 21, 14, 42, 6, 15, 5, 47, 26, 9, 27, 2, 18, 39, 12, 7, 38, 37, 22, 23, 10, 24, 40, 25, 41, 28, 16]</td>
+<td style="text-align: center;">6.02%</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">55</td>
+<td style="text-align: center;">3893</td>
+<td style="text-align: center;">[48, 2, 20, 19, 5, 4, 27, 21, 44, 43, 28, 31, 40, 18, 34, 23, 45, 50, 38, 33, 9, 29, 11, 30, 46, 16, 25, 22, 41, 49, 10, 26, 36, 42, 13, 8, 47, 14, 17, 1, 24, 39, 3, 6, 7, 37, 12, 35, 32, 15]</td>
+<td style="text-align: center;">7.10%</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">56</td>
+<td style="text-align: center;">3971</td>
+<td style="text-align: center;">[21, 50, 40, 18, 11, 39, 47, 16, 14, 36, 35, 20, 45, 24, 42, 4, 22, 5, 49, 34, 30, 6, 31, 7, 2, 27, 9, 33, 37, 46, 32, 10, 26, 8, 3, 13, 29, 12, 15, 17, 28, 41, 44, 1, 25, 19, 48, 23, 43, 38]</td>
+<td style="text-align: center;">7.38%</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">57</td>
+<td style="text-align: center;">3968</td>
+<td style="text-align: center;">[20, 15, 4, 45, 38, 46, 19, 1, 47, 33, 11, 14, 8, 5, 18, 50, 27, 23, 12, 49, 39, 40, 29, 2, 34, 31, 25, 37, 9, 3, 28, 42, 32, 6, 22, 41, 26, 13, 43, 10, 17, 48, 21, 16, 7, 30, 36, 44, 35, 24]</td>
+<td style="text-align: center;">6.78%</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">58</td>
+<td style="text-align: center;">3994</td>
+<td style="text-align: center;">[47, 21, 26, 24, 40, 41, 49, 32, 29, 31, 22, 1, 17, 37, 36, 15, 48, 2, 18, 13, 16, 34, 45, 35, 19, 5, 9, 30, 27, 38, 50, 8, 20, 43, 12, 25, 42, 4, 33, 14, 7, 10, 6, 28, 11, 3, 46, 39, 44, 23]</td>
+<td style="text-align: center;">7.68%</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">59</td>
+<td style="text-align: center;">4008</td>
+<td style="text-align: center;">[3, 15, 28, 32, 6, 8, 17, 11, 42, 41, 12, 1, 46, 37, 40, 5, 45, 21, 9, 25, 13, 27, 47, 43, 4, 30, 31, 7, 2, 26, 23, 10, 16, 22, 33, 50, 19, 34, 24, 14, 39, 38, 48, 20, 49, 36, 18, 29, 44, 35]</td>
+<td style="text-align: center;">6.45%</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">60</td>
+<td style="text-align: center;">3923</td>
+<td style="text-align: center;">[33, 12, 19, 15, 37, 50, 29, 2, 8, 38, 3, 18, 25, 14, 47, 48, 20, 23, 40, 31, 32, 1, 16, 9, 30, 10, 11, 41, 22, 42, 35, 27, 44, 6, 49, 36, 5, 24, 21, 45, 28, 17, 39, 43, 26, 7, 13, 46, 4, 34]</td>
+<td style="text-align: center;">3.87%</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">61</td>
+<td style="text-align: center;">5527</td>
+<td style="text-align: center;">[42, 50, 69, 11, 27, 49, 64, 38, 25, 22, 56, 90, 81, 7, 43, 70, 85, 29, 12, 93, 14, 2, 15, 16, 5, 24, 73, 8, 59, 78, 86, 77, 28, 46, 87, 1, 36, 100, 95, 71, 13, 19, 4, 45, 44, 41, 53, 92, 51, 21, 37, 48, 31, 57, 99, 80, 55, 23, 94, 54, 10, 79, 83, 91, 6, 60, 82, 74, 52, 84, 34, 47, 40, 62, 68, 72, 33, 89, 20, 98, 63, 61, 35, 75, 58, 39, 18, 96, 3, 26, 17, 9, 67, 65, 66, 30, 76, 97, 32, 88]</td>
+<td style="text-align: center;">0.62%</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">62</td>
+<td style="text-align: center;">5316</td>
+<td style="text-align: center;">[7, 94, 80, 67, 48, 6, 22, 81, 40, 86, 63, 97, 24, 39, 29, 1, 27, 84, 43, 38, 92, 64, 62, 47, 4, 50, 49, 14, 3, 69, 26, 54, 11, 21, 59, 30, 90, 78, 13, 12, 33, 58, 15, 75, 32, 19, 89, 100, 41, 95, 9, 73, 93, 55, 68, 5, 98, 87, 8, 99, 36, 91, 60, 66, 44, 2, 74, 88, 79, 76, 10, 35, 83, 65, 45, 53, 37, 57, 20, 42, 51, 28, 82, 71, 77, 34, 61, 16, 96, 70, 56, 18, 23, 31, 25, 46, 72, 17, 85, 52]</td>
+<td style="text-align: center;">0.91%</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">63</td>
+<td style="text-align: center;">5221</td>
+<td style="text-align: center;">[14, 25, 74, 99, 80, 62, 37, 1, 30, 6, 54, 100, 70, 82, 46, 7, 81, 47, 69, 83, 32, 5, 15, 42, 3, 12, 18, 63, 2, 31, 85, 84, 87, 36, 40, 65, 44, 79, 33, 93, 57, 72, 41, 96, 68, 94, 9, 39, 45, 86, 38, 91, 98, 23, 76, 77, 10, 20, 22, 53, 27, 24, 49, 75, 66, 8, 55, 29, 21, 34, 67, 19, 89, 88, 59, 43, 92, 61, 4, 58, 26, 71, 64, 17, 35, 56, 78, 48, 97, 95, 73, 50, 51, 16, 90, 52, 11, 28, 60, 13]</td>
+<td style="text-align: center;">0.89%</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">64</td>
+<td style="text-align: center;">5044</td>
+<td style="text-align: center;">[20, 92, 10, 6, 66, 75, 25, 36, 12, 18, 47, 70, 49, 28, 98, 55, 30, 32, 79, 21, 9, 82, 54, 40, 87, 67, 41, 57, 44, 39, 2, 51, 77, 27, 16, 74, 72, 4, 69, 45, 65, 33, 89, 53, 62, 1, 35, 52, 81, 90, 50, 96, 11, 63, 73, 19, 15, 100, 38, 22, 26, 84, 8, 95, 88, 31, 34, 68, 59, 56, 43, 76, 91, 80, 46, 60, 7, 83, 24, 29, 61, 37, 99, 23, 17, 48, 3, 5, 94, 93, 64, 85, 58, 71, 86, 13, 78, 97, 14, 42]</td>
+<td style="text-align: center;">0.60%</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">65</td>
+<td style="text-align: center;">5311</td>
+<td style="text-align: center;">[21, 78, 54, 52, 86, 59, 12, 48, 51, 94, 80, 71, 45, 34, 30, 89, 96, 11, 24, 72, 26, 65, 37, 10, 14, 67, 38, 5, 69, 70, 64, 33, 84, 44, 39, 20, 74, 92, 19, 35, 47, 87, 60, 50, 61, 6, 93, 99, 55, 1, 66, 9, 41, 32, 95, 15, 56, 75, 42, 28, 57, 17, 2, 76, 22, 40, 36, 46, 85, 79, 88, 43, 27, 18, 49, 25, 53, 7, 8, 3, 91, 73, 90, 98, 4, 68, 16, 29, 82, 31, 83, 23, 77, 100, 62, 97, 81, 13, 58, 63]</td>
+<td style="text-align: center;">1.16%</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">66</td>
+<td style="text-align: center;">5161</td>
+<td style="text-align: center;">[73, 49, 81, 22, 6, 72, 47, 38, 88, 37, 68, 85, 24, 10, 80, 63, 74, 79, 82, 3, 83, 59, 50, 19, 51, 34, 15, 84, 11, 62, 93, 30, 40, 92, 21, 7, 96, 69, 99, 100, 16, 94, 45, 71, 5, 67, 75, 42, 89, 32, 12, 23, 48, 2, 14, 8, 33, 76, 1, 91, 55, 53, 39, 98, 65, 43, 25, 70, 57, 44, 66, 31, 95, 17, 35, 52, 28, 46, 56, 4, 41, 61, 29, 78, 90, 13, 27, 77, 87, 20, 86, 54, 18, 97, 58, 60, 64, 26, 9, 36]</td>
+<td style="text-align: center;">0.51%</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">67</td>
+<td style="text-align: center;">5355</td>
+<td style="text-align: center;">[17, 85, 37, 71, 96, 86, 75, 48, 9, 73, 35, 15, 2, 6, 45, 89, 28, 8, 78, 91, 36, 26, 83, 54, 32, 68, 95, 16, 59, 27, 33, 40, 30, 52, 13, 51, 60, 53, 87, 12, 38, 98, 55, 14, 77, 50, 3, 23, 41, 97, 93, 74, 80, 67, 19, 57, 65, 81, 63, 61, 92, 94, 84, 46, 18, 10, 70, 20, 34, 64, 69, 49, 29, 39, 82, 72, 7, 24, 100, 22, 11, 5, 4, 25, 42, 58, 56, 90, 47, 31, 76, 43, 62, 88, 79, 44, 1, 99, 66, 21]</td>
+<td style="text-align: center;">2.08%</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">68</td>
+<td style="text-align: center;">5141</td>
+<td style="text-align: center;">[80, 91, 73, 79, 77, 71, 97, 56, 62, 44, 31, 24, 49, 18, 57, 2, 87, 55, 100, 54, 47, 89, 25, 45, 23, 59, 64, 13, 99, 92, 51, 35, 14, 41, 42, 82, 46, 98, 76, 26, 85, 17, 52, 22, 83, 69, 32, 74, 21, 68, 53, 39, 72, 60, 65, 29, 38, 48, 50, 11, 67, 75, 30, 8, 33, 86, 9, 66, 6, 70, 61, 12, 78, 10, 20, 27, 81, 19, 96, 16, 4, 63, 84, 15, 88, 95, 93, 28, 1, 40, 58, 43, 94, 34, 37, 5, 7, 36, 3, 90]</td>
+<td style="text-align: center;">0.69%</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">69</td>
+<td style="text-align: center;">5536</td>
+<td style="text-align: center;">[34, 98, 75, 62, 64, 33, 44, 31, 67, 79, 14, 39, 16, 71, 11, 37, 88, 10, 28, 5, 38, 70, 46, 87, 58, 2, 15, 6, 99, 36, 85, 22, 94, 74, 91, 8, 66, 57, 95, 55, 26, 89, 18, 19, 77, 76, 97, 45, 35, 63, 86, 68, 12, 83, 100, 56, 20, 84, 51, 59, 54, 42, 40, 96, 61, 4, 48, 23, 43, 73, 49, 72, 47, 92, 52, 41, 30, 69, 50, 90, 60, 80, 24, 9, 29, 25, 7, 53, 82, 81, 65, 17, 93, 32, 3, 21, 27, 1, 78, 13]</td>
+<td style="text-align: center;">1.50%</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">70</td>
+<td style="text-align: center;">5386</td>
+<td style="text-align: center;">[24, 19, 73, 69, 31, 30, 36, 51, 83, 82, 74, 78, 77, 64, 4, 84, 39, 99, 59, 20, 94, 100, 33, 6, 15, 41, 91, 70, 79, 48, 55, 90, 81, 18, 25, 11, 86, 14, 57, 62, 26, 42, 43, 21, 56, 8, 22, 61, 96, 49, 3, 87, 16, 88, 76, 17, 29, 23, 63, 53, 28, 80, 50, 93, 89, 71, 67, 40, 10, 75, 13, 72, 97, 95, 54, 34, 12, 66, 65, 35, 98, 1, 46, 45, 68, 52, 5, 7, 32, 37, 44, 9, 60, 27, 58, 47, 92, 2, 85, 38]</td>
+<td style="text-align: center;">1.09%</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">71</td>
+<td style="text-align: center;">5999</td>
+<td style="text-align: center;">[56, 17, 61, 39, 55, 85, 95, 38, 24, 79, 9, 70, 20, 44, 35, 94, 47, 64, 78, 57, 33, 50, 34, 87, 73, 66, 42, 74, 29, 6, 31, 89, 49, 88, 28, 90, 41, 81, 27, 98, 77, 93, 4, 99, 80, 7, 53, 100, 60, 43, 18, 97, 8, 51, 10, 82, 86, 69, 1, 54, 76, 3, 2, 83, 96, 16, 52, 14, 84, 59, 91, 58, 71, 21, 25, 68, 23, 48, 11, 15, 19, 67, 32, 26, 36, 22, 92, 65, 30, 37, 62, 46, 5, 45, 13, 72, 40, 63, 75, 12]</td>
+<td style="text-align: center;">3.97%</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">72</td>
+<td style="text-align: center;">5481</td>
+<td style="text-align: center;">[54, 98, 22, 87, 12, 5, 49, 60, 32, 31, 10, 72, 6, 1, 74, 52, 55, 80, 24, 27, 59, 3, 62, 93, 69, 34, 66, 82, 35, 78, 96, 25, 90, 43, 85, 65, 46, 81, 37, 29, 88, 41, 9, 71, 28, 95, 75, 76, 68, 8, 13, 36, 20, 73, 44, 97, 16, 15, 89, 45, 61, 58, 64, 47, 11, 4, 86, 77, 83, 50, 38, 14, 21, 26, 42, 40, 56, 79, 91, 67, 48, 92, 63, 17, 18, 99, 51, 57, 53, 33, 19, 100, 94, 70, 30, 39, 2, 84, 23, 7]</td>
+<td style="text-align: center;">2.47%</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">73</td>
+<td style="text-align: center;">5926</td>
+<td style="text-align: center;">[49, 90, 58, 11, 32, 52, 7, 68, 62, 2, 100, 50, 37, 47, 3, 83, 65, 76, 56, 86, 64, 75, 66, 14, 40, 12, 20, 57, 94, 16, 96, 61, 54, 77, 84, 1, 4, 67, 8, 44, 87, 24, 13, 27, 30, 82, 23, 51, 59, 5, 33, 91, 38, 74, 25, 93, 22, 60, 69, 99, 53, 78, 73, 28, 29, 80, 72, 31, 95, 45, 71, 70, 10, 34, 92, 35, 85, 9, 43, 21, 81, 19, 41, 17, 18, 55, 98, 39, 6, 42, 88, 26, 79, 89, 48, 36, 63, 97, 15, 46]</td>
+<td style="text-align: center;">4.39%</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">74</td>
+<td style="text-align: center;">6086</td>
+<td style="text-align: center;">[42, 71, 96, 77, 47, 23, 5, 92, 99, 78, 97, 59, 72, 93, 53, 56, 26, 58, 34, 4, 40, 87, 12, 45, 28, 30, 14, 55, 15, 66, 52, 81, 2, 86, 74, 49, 10, 18, 80, 11, 51, 8, 1, 70, 38, 17, 67, 9, 19, 76, 16, 57, 79, 29, 48, 20, 73, 27, 88, 75, 83, 95, 54, 63, 61, 22, 24, 36, 37, 35, 25, 31, 60, 64, 43, 44, 62, 90, 100, 91, 6, 32, 3, 39, 21, 89, 65, 84, 68, 46, 50, 94, 33, 82, 7, 13, 98, 69, 41, 85]</td>
+<td style="text-align: center;">5.09%</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">75</td>
+<td style="text-align: center;">5651</td>
+<td style="text-align: center;">[79, 56, 75, 33, 66, 87, 27, 4, 58, 83, 48, 45, 51, 76, 63, 96, 30, 94, 88, 42, 44, 80, 12, 55, 81, 14, 68, 59, 100, 86, 64, 38, 62, 34, 99, 73, 39, 8, 97, 7, 84, 6, 18, 1, 2, 10, 54, 60, 90, 49, 91, 36, 17, 67, 20, 61, 69, 74, 95, 53, 21, 89, 24, 5, 28, 19, 25, 47, 52, 11, 9, 41, 40, 65, 72, 35, 43, 70, 23, 98, 92, 31, 71, 13, 22, 46, 85, 57, 77, 16, 29, 78, 50, 26, 15, 93, 37, 32, 3, 82]</td>
+<td style="text-align: center;">3.35%</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">76</td>
+<td style="text-align: center;">5417</td>
+<td style="text-align: center;">[78, 53, 2, 76, 69, 55, 9, 86, 41, 22, 62, 35, 47, 30, 68, 85, 73, 32, 59, 79, 4, 5, 80, 39, 54, 71, 1, 50, 93, 94, 7, 26, 77, 99, 66, 75, 74, 52, 60, 49, 88, 97, 87, 89, 21, 63, 12, 20, 10, 3, 6, 11, 46, 42, 34, 70, 16, 98, 8, 57, 64, 37, 15, 81, 51, 27, 58, 28, 84, 91, 90, 14, 72, 67, 92, 96, 29, 31, 13, 43, 83, 95, 38, 48, 24, 44, 36, 65, 19, 23, 17, 56, 33, 45, 40, 18, 61, 100, 25, 82]</td>
+<td style="text-align: center;">2.15%</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">77</td>
+<td style="text-align: center;">5749</td>
+<td style="text-align: center;">[95, 3, 50, 36, 5, 64, 20, 57, 70, 98, 32, 30, 92, 22, 62, 25, 68, 56, 86, 74, 40, 41, 99, 11, 47, 82, 51, 42, 87, 78, 14, 21, 71, 35, 65, 34, 43, 69, 18, 53, 37, 16, 31, 60, 44, 55, 72, 24, 46, 2, 66, 15, 88, 9, 100, 39, 28, 90, 54, 26, 77, 12, 79, 23, 4, 8, 29, 59, 63, 93, 10, 52, 1, 83, 38, 27, 96, 84, 13, 76, 19, 7, 33, 45, 91, 17, 67, 97, 89, 94, 6, 81, 75, 48, 61, 58, 80, 49, 85, 73]</td>
+<td style="text-align: center;">2.68%</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">78</td>
+<td style="text-align: center;">5807</td>
+<td style="text-align: center;">[67, 6, 92, 78, 48, 75, 9, 26, 55, 52, 13, 56, 43, 22, 19, 58, 20, 12, 99, 30, 88, 28, 68, 2, 32, 100, 21, 82, 35, 95, 14, 5, 89, 63, 18, 76, 72, 65, 59, 77, 91, 93, 4, 85, 96, 87, 97, 50, 83, 69, 64, 74, 45, 29, 60, 51, 66, 42, 86, 81, 90, 3, 23, 10, 33, 17, 73, 41, 80, 62, 38, 8, 27, 34, 16, 11, 40, 1, 31, 54, 39, 71, 44, 7, 57, 36, 47, 98, 61, 24, 53, 70, 37, 46, 15, 79, 49, 25, 94, 84]</td>
+<td style="text-align: center;">3.27%</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">79</td>
+<td style="text-align: center;">6033</td>
+<td style="text-align: center;">[87, 40, 61, 39, 86, 100, 10, 43, 68, 54, 38, 35, 57, 78, 80, 3, 29, 82, 13, 77, 15, 95, 69, 41, 64, 6, 18, 81, 19, 60, 12, 37, 24, 70, 27, 5, 14, 34, 46, 25, 93, 72, 92, 22, 32, 26, 53, 1, 58, 83, 71, 8, 7, 52, 42, 9, 51, 59, 97, 21, 30, 91, 17, 48, 45, 28, 49, 56, 16, 89, 23, 84, 62, 94, 4, 73, 98, 44, 31, 66, 88, 65, 2, 11, 74, 55, 20, 96, 75, 36, 50, 33, 47, 76, 63, 79, 67, 85, 99, 90]</td>
+<td style="text-align: center;">2.69%</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">80</td>
+<td style="text-align: center;">5969</td>
+<td style="text-align: center;">[63, 66, 37, 71, 92, 83, 98, 13, 11, 42, 22, 35, 97, 8, 49, 57, 38, 54, 26, 9, 45, 80, 78, 27, 60, 39, 69, 20, 25, 5, 43, 2, 31, 82, 75, 79, 50, 70, 30, 85, 58, 87, 93, 65, 21, 6, 46, 76, 72, 18, 33, 41, 32, 48, 64, 15, 94, 40, 16, 81, 59, 55, 19, 17, 7, 1, 95, 88, 29, 10, 12, 56, 100, 90, 89, 86, 28, 51, 52, 47, 4, 67, 96, 34, 44, 74, 61, 62, 3, 24, 23, 73, 84, 14, 77, 36, 99, 53, 68, 91]</td>
+<td style="text-align: center;">2.12%</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">81</td>
+<td style="text-align: center;">6550</td>
+<td style="text-align: center;">[47, 22, 54, 79, 10, 40, 78, 71, 39, 86, 43, 3, 51, 83, 82, 16, 37, 61, 99, 74, 1, 33, 48, 89, 65, 12, 91, 90, 63, 88, 31, 9, 21, 28, 59, 93, 53, 96, 35, 15, 50, 58, 85, 75, 17, 30, 23, 56, 26, 62, 81, 34, 42, 80, 24, 18, 76, 19, 55, 44, 57, 20, 67, 95, 6, 29, 8, 2, 41, 4, 5, 32, 94, 11, 60, 14, 97, 100, 45, 92, 27, 46, 49, 70, 36, 52, 38, 87, 68, 13, 98, 77, 66, 7, 73, 72, 64, 25, 84, 69]</td>
+<td style="text-align: center;">4.20%</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">82</td>
+<td style="text-align: center;">6560</td>
+<td style="text-align: center;">[49, 19, 62, 46, 68, 70, 97, 14, 18, 2, 23, 72, 71, 50, 66, 54, 36, 5, 69, 67, 10, 34, 89, 31, 30, 33, 90, 38, 100, 35, 59, 79, 63, 41, 26, 95, 27, 60, 85, 15, 48, 53, 96, 22, 86, 40, 9, 7, 16, 61, 51, 83, 8, 75, 73, 3, 64, 84, 44, 78, 1, 58, 76, 92, 32, 43, 52, 47, 56, 93, 82, 12, 25, 28, 65, 57, 21, 13, 45, 87, 4, 91, 24, 29, 98, 11, 42, 20, 94, 17, 77, 6, 74, 80, 99, 37, 88, 81, 39, 55]</td>
+<td style="text-align: center;">5.11%</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">83</td>
+<td style="text-align: center;">6628</td>
+<td style="text-align: center;">[87, 48, 57, 23, 29, 8, 96, 10, 24, 58, 20, 31, 64, 70, 66, 88, 72, 5, 37, 1, 13, 49, 32, 90, 54, 97, 43, 95, 17, 67, 51, 25, 9, 91, 44, 61, 16, 52, 3, 53, 28, 19, 75, 45, 86, 12, 41, 77, 39, 40, 98, 4, 47, 42, 60, 15, 27, 11, 18, 65, 36, 76, 89, 21, 94, 2, 69, 84, 80, 56, 81, 30, 68, 59, 22, 100, 34, 93, 83, 74, 38, 78, 26, 99, 50, 62, 92, 35, 85, 33, 6, 82, 46, 7, 71, 55, 79, 14, 73, 63]</td>
+<td style="text-align: center;">4.72%</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">84</td>
+<td style="text-align: center;">6484</td>
+<td style="text-align: center;">[74, 5, 57, 60, 8, 1, 84, 68, 38, 46, 55, 50, 13, 79, 88, 51, 69, 9, 72, 58, 23, 52, 44, 43, 21, 71, 56, 15, 99, 2, 11, 91, 16, 96, 61, 89, 10, 98, 93, 26, 54, 22, 45, 49, 78, 86, 87, 18, 14, 67, 94, 37, 41, 77, 92, 27, 70, 19, 35, 33, 31, 95, 62, 63, 76, 47, 4, 90, 85, 29, 32, 48, 53, 75, 25, 39, 20, 66, 7, 6, 12, 34, 73, 17, 28, 42, 3, 24, 64, 100, 59, 83, 82, 30, 81, 65, 40, 97, 36, 80]</td>
+<td style="text-align: center;">2.82%</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">85</td>
+<td style="text-align: center;">6597</td>
+<td style="text-align: center;">[14, 38, 61, 97, 64, 56, 53, 69, 33, 32, 3, 18, 5, 99, 30, 71, 98, 72, 89, 51, 10, 52, 65, 1, 58, 94, 28, 7, 21, 13, 40, 90, 8, 92, 78, 41, 9, 100, 50, 95, 16, 70, 19, 47, 88, 46, 12, 79, 77, 80, 11, 17, 81, 22, 20, 31, 2, 39, 74, 49, 29, 54, 25, 37, 73, 55, 34, 76, 15, 45, 68, 59, 66, 82, 35, 75, 86, 85, 83, 60, 23, 4, 6, 93, 48, 43, 36, 26, 24, 27, 67, 87, 91, 44, 42, 57, 96, 84, 63, 62]</td>
+<td style="text-align: center;">3.45%</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">86</td>
+<td style="text-align: center;">6677</td>
+<td style="text-align: center;">[56, 83, 86, 54, 39, 8, 68, 37, 70, 12, 82, 55, 2, 29, 10, 100, 52, 34, 65, 89, 14, 72, 85, 38, 77, 88, 50, 58, 94, 69, 62, 1, 66, 99, 64, 92, 76, 25, 23, 24, 98, 3, 67, 49, 81, 43, 27, 40, 80, 96, 15, 87, 35, 6, 9, 75, 93, 53, 78, 63, 22, 36, 32, 97, 44, 33, 18, 31, 7, 60, 57, 74, 20, 48, 4, 13, 91, 26, 16, 71, 61, 79, 84, 51, 73, 17, 5, 47, 11, 21, 45, 28, 41, 42, 95, 19, 59, 46, 30, 90]</td>
+<td style="text-align: center;">3.73%</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">87</td>
+<td style="text-align: center;">6640</td>
+<td style="text-align: center;">[57, 83, 67, 7, 85, 59, 93, 80, 32, 19, 33, 73, 16, 23, 50, 41, 51, 20, 94, 28, 48, 47, 14, 24, 96, 11, 22, 62, 72, 55, 39, 89, 36, 31, 21, 40, 12, 98, 91, 42, 5, 97, 78, 34, 53, 27, 25, 43, 88, 95, 10, 35, 65, 1, 13, 9, 69, 64, 79, 6, 18, 90, 2, 84, 56, 92, 54, 29, 61, 45, 82, 38, 100, 75, 70, 46, 52, 30, 15, 76, 81, 3, 49, 17, 8, 4, 37, 58, 60, 77, 86, 71, 66, 26, 87, 99, 44, 68, 74, 63]</td>
+<td style="text-align: center;">4.63%</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">88</td>
+<td style="text-align: center;">6936</td>
+<td style="text-align: center;">[28, 100, 58, 81, 62, 44, 90, 51, 18, 53, 57, 87, 45, 47, 68, 23, 98, 3, 76, 78, 41, 99, 83, 25, 24, 6, 22, 52, 64, 89, 93, 54, 36, 55, 30, 70, 67, 59, 38, 50, 39, 33, 72, 82, 12, 49, 69, 31, 85, 97, 14, 1, 29, 9, 7, 4, 10, 17, 27, 42, 74, 21, 5, 60, 79, 13, 46, 32, 63, 15, 91, 75, 84, 71, 73, 43, 16, 19, 86, 88, 37, 77, 94, 2, 8, 96, 48, 95, 56, 40, 11, 92, 26, 35, 65, 80, 34, 66, 20, 61]</td>
+<td style="text-align: center;">7.02%</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">89</td>
+<td style="text-align: center;">6632</td>
+<td style="text-align: center;">[88, 43, 89, 92, 41, 66, 78, 65, 33, 29, 7, 45, 16, 26, 62, 27, 15, 95, 94, 63, 97, 30, 2, 3, 81, 60, 76, 48, 21, 34, 19, 64, 58, 46, 32, 61, 80, 17, 51, 18, 53, 44, 74, 82, 25, 68, 75, 42, 100, 57, 79, 99, 38, 28, 77, 47, 49, 40, 59, 72, 11, 20, 73, 39, 14, 54, 8, 6, 1, 4, 12, 70, 90, 50, 85, 22, 93, 24, 23, 13, 84, 86, 71, 9, 10, 31, 55, 83, 37, 69, 67, 56, 87, 35, 52, 96, 5, 91, 36, 98]</td>
+<td style="text-align: center;">4.31%</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">90</td>
+<td style="text-align: center;">6785</td>
+<td style="text-align: center;">[83, 65, 6, 77, 38, 67, 36, 43, 46, 17, 40, 42, 35, 88, 92, 71, 75, 52, 14, 87, 16, 41, 99, 23, 10, 70, 74, 21, 48, 51, 15, 56, 54, 20, 12, 22, 57, 69, 37, 4, 47, 94, 61, 90, 86, 68, 5, 82, 96, 78, 63, 76, 33, 34, 9, 64, 60, 13, 32, 2, 7, 30, 26, 62, 95, 27, 45, 49, 24, 3, 100, 84, 25, 8, 80, 79, 72, 73, 1, 85, 18, 89, 39, 28, 19, 93, 91, 98, 53, 97, 50, 11, 81, 31, 29, 66, 55, 44, 59, 58]</td>
+<td style="text-align: center;">4.95%</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">91</td>
+<td style="text-align: center;">11012</td>
+<td style="text-align: center;">[66, 13, 147, 14, 152, 131, 71, 174, 59, 84, 193, 150, 121, 134, 70, 16, 127, 89, 49, 142, 189, 148, 143, 162, 54, 107, 106, 42, 175, 132, 1, 190, 41, 108, 88, 115, 10, 27, 166, 29, 179, 194, 38, 163, 192, 181, 75, 74, 86, 145, 151, 35, 160, 188, 23, 11, 79, 91, 126, 196, 56, 85, 118, 6, 139, 172, 2, 164, 48, 62, 173, 169, 191, 24, 161, 140, 68, 176, 167, 83, 185, 19, 200, 67, 111, 46, 156, 87, 124, 198, 18, 77, 141, 117, 153, 36, 28, 197, 113, 7, 81, 17, 43, 15, 94, 44, 96, 73, 120, 60, 76, 82, 159, 9, 119, 129, 32, 155, 51, 187, 157, 58, 165, 33, 53, 20, 123, 186, 138, 149, 80, 98, 144, 154, 109, 5, 30, 69, 50, 110, 95, 40, 99, 52, 55, 37, 8, 182, 125, 146, 199, 31, 57, 21, 103, 170, 184, 47, 90, 133, 3, 136, 104, 45, 12, 100, 64, 101, 65, 22, 34, 135, 128, 177, 130, 97, 93, 78, 25, 72, 137, 195, 102, 180, 105, 116, 171, 63, 168, 61, 112, 122, 26, 92, 4, 39, 183, 114, 158, 178]</td>
+<td style="text-align: center;">1.32%</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">92</td>
+<td style="text-align: center;">10625</td>
+<td style="text-align: center;">[68, 117, 1, 45, 184, 114, 157, 7, 54, 156, 87, 133, 171, 20, 146, 9, 119, 5, 110, 165, 128, 42, 21, 43, 83, 63, 194, 131, 176, 59, 94, 147, 84, 191, 90, 139, 35, 170, 19, 198, 66, 49, 13, 192, 50, 52, 32, 46, 144, 3, 60, 169, 115, 57, 27, 155, 74, 112, 150, 75, 81, 187, 123, 200, 65, 61, 55, 15, 71, 37, 177, 102, 140, 145, 130, 2, 181, 89, 168, 80, 25, 134, 132, 48, 154, 95, 97, 6, 160, 17, 56, 161, 197, 153, 174, 99, 38, 58, 189, 120, 72, 190, 107, 113, 47, 179, 137, 22, 138, 62, 31, 159, 136, 188, 158, 14, 166, 178, 67, 44, 16, 26, 40, 64, 23, 108, 182, 164, 91, 148, 135, 92, 193, 163, 172, 121, 141, 183, 185, 33, 4, 125, 151, 11, 126, 180, 85, 18, 124, 70, 142, 88, 34, 152, 101, 111, 30, 73, 103, 175, 129, 104, 173, 10, 116, 105, 76, 98, 195, 93, 24, 118, 167, 77, 143, 29, 149, 122, 96, 69, 82, 12, 162, 186, 109, 199, 28, 106, 127, 41, 78, 8, 51, 86, 36, 39, 196, 53, 100, 79]</td>
+<td style="text-align: center;">1.25%</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">93</td>
+<td style="text-align: center;">11159</td>
+<td style="text-align: center;">[183, 83, 62, 136, 133, 48, 155, 6, 151, 166, 46, 30, 144, 132, 99, 100, 114, 111, 127, 125, 130, 147, 141, 51, 94, 126, 20, 57, 196, 1, 4, 14, 49, 107, 63, 74, 8, 87, 113, 29, 18, 70, 69, 12, 178, 186, 102, 128, 139, 148, 77, 117, 188, 98, 104, 7, 187, 157, 197, 103, 35, 175, 78, 39, 152, 52, 146, 105, 37, 164, 124, 84, 68, 184, 73, 191, 86, 32, 131, 27, 58, 192, 185, 121, 65, 59, 140, 110, 172, 200, 171, 17, 36, 3, 115, 85, 80, 177, 150, 169, 93, 189, 97, 95, 198, 44, 190, 165, 129, 195, 159, 67, 108, 21, 92, 75, 10, 120, 156, 38, 181, 81, 167, 145, 106, 154, 25, 193, 109, 23, 153, 72, 149, 135, 15, 182, 34, 66, 31, 11, 82, 28, 138, 45, 60, 16, 161, 137, 55, 174, 2, 123, 91, 13, 118, 199, 143, 168, 88, 33, 71, 24, 41, 61, 50, 116, 40, 54, 112, 163, 180, 173, 160, 79, 53, 47, 119, 76, 122, 42, 43, 96, 9, 170, 158, 90, 134, 194, 101, 179, 56, 176, 162, 22, 89, 64, 26, 5, 19, 142]</td>
+<td style="text-align: center;">2.17%</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">94</td>
+<td style="text-align: center;">11010</td>
+<td style="text-align: center;">[43, 168, 69, 73, 191, 183, 38, 197, 55, 42, 68, 132, 147, 95, 120, 78, 158, 37, 29, 49, 101, 151, 17, 145, 14, 138, 146, 127, 134, 195, 48, 118, 10, 5, 133, 176, 88, 102, 157, 70, 59, 190, 173, 90, 113, 28, 192, 107, 25, 47, 83, 3, 66, 162, 56, 184, 172, 20, 7, 85, 35, 36, 135, 185, 137, 89, 177, 74, 196, 193, 72, 63, 9, 152, 2, 149, 167, 65, 23, 27, 93, 51, 30, 163, 104, 110, 26, 182, 108, 154, 126, 58, 114, 131, 194, 39, 148, 91, 119, 62, 169, 106, 124, 45, 155, 100, 200, 189, 75, 46, 112, 186, 94, 6, 175, 32, 16, 141, 98, 179, 19, 92, 166, 50, 115, 116, 12, 178, 81, 71, 180, 181, 15, 80, 165, 123, 60, 117, 24, 136, 187, 64, 103, 1, 128, 40, 96, 97, 139, 31, 67, 8, 111, 86, 150, 76, 170, 34, 61, 41, 87, 160, 121, 11, 153, 79, 174, 122, 129, 130, 140, 164, 44, 144, 57, 18, 4, 105, 52, 77, 199, 159, 82, 99, 161, 188, 142, 22, 171, 33, 54, 125, 198, 156, 109, 53, 143, 21, 84, 13]</td>
+<td style="text-align: center;">1.11%</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">95</td>
+<td style="text-align: center;">10625</td>
+<td style="text-align: center;">[99, 163, 61, 193, 170, 45, 25, 180, 106, 142, 198, 192, 21, 144, 80, 76, 185, 135, 29, 43, 75, 59, 63, 115, 138, 129, 95, 83, 11, 5, 116, 46, 188, 20, 71, 8, 169, 74, 158, 191, 87, 153, 73, 177, 40, 148, 100, 37, 154, 130, 189, 152, 41, 111, 162, 49, 66, 134, 122, 131, 18, 60, 151, 166, 82, 147, 104, 47, 113, 114, 194, 110, 14, 190, 150, 53, 137, 44, 17, 89, 62, 67, 187, 23, 56, 7, 68, 26, 199, 178, 97, 3, 128, 173, 81, 38, 54, 133, 98, 77, 161, 78, 39, 196, 168, 9, 140, 143, 120, 72, 86, 55, 93, 27, 156, 85, 92, 1, 96, 145, 124, 126, 32, 102, 64, 123, 127, 181, 34, 197, 112, 70, 58, 10, 186, 103, 94, 42, 33, 36, 108, 160, 164, 15, 159, 157, 50, 30, 184, 57, 119, 79, 200, 141, 121, 13, 175, 2, 52, 105, 179, 165, 12, 24, 91, 172, 109, 118, 171, 174, 4, 176, 16, 101, 51, 48, 167, 125, 155, 65, 132, 19, 182, 6, 22, 69, 149, 183, 88, 107, 139, 136, 31, 146, 28, 117, 195, 35, 84, 90]</td>
+<td style="text-align: center;">0.96%</td>
+</tr>
+</tbody>
+</table>
+<p>El porcentaje sobre cota superior, tiene un promedio de: 2.58%, y una desviación estándar de: 2.07%. Este porcentaje significa el porcentaje que el makespan encontrado por el algoritmo MNIG, tiene por sobre la cota superior de cada instancia de Taillard.</p>
+<p>Cada instancia de Taillard tiene una cota inferior y una cota superior para el makespan. En este trabajo ninguna de las soluciones encontradas por el algoritmo MNIG se encontró dentro del rango creado entre la cota inferior y la cota superior, sino que todas las soluciones fueron iguales o estuvieron por encima de la cota superior.</p>
+<p>El porcentaje sobre cota superior mide el porcentaje de diferencia entre la solución encontrada por el algoritmo MNIG, y la cota superior, de una instancia dada. Por ejemplo en la instancia de Taillard 1, la cota superior es 1278, y la solución encontrada por el algoritmo MNIG tiene el valor de 1297, por lo que la diferencia porcentual es (1297 - 1278)/1278 = 1.49%. Este porcentaje de 1.49% es el que se observa en la tabla.</p>
+<p>Se debe aclarar que para hallar estos porcentajes, el algoritmo MNIG fue aplicado con 10 iteraciones a las 95 instancias. Con un mayor número de iteraciones, se pueden encontrar mejores soluciones. Por ejemplo para la instancia de Taillard 1, se probó con 250 iteraciones, y se encontró un makespan de 1278, que es igual que la cota superior para esa instancia. Sin embargo no se aplicaron 250 iteraciones para las 95 instancias, porque hacerlo habrían tomado al menos 25 veces el tiempo que tomó realizar las 95 instancias con 10 iteraciones cada una (esto tomó un tiempo de más de 10 días seguidos de ejecución).</p>
+<p>Estos resultados muestran que el algoritmo MNIG también se puede usar para encontrar soluciones en el sistema flow shop básico, pero como este algoritmo fue diseñado para el modelo FMMSP, esta implementación del algoritmo MNIG es demorado para resolver el problema flow shop básico, sobre todo en instancias de gran cantidad de trabajos y máquinas (por ejemplo 500 trabajos y 20 máquinas, instancias de este tamaño requerirían varios días de ejecución por iteración, en esta implementación del algoritmo).</p>
 <h1 id="conclusiones-y-recomendaciones">CONCLUSIONES Y RECOMENDACIONES</h1>
+<p>A futuro se podría mejorar el algoritmo para tratar otros problemas de scheduling. Con este trabajo se puede concluir que no hay impedimento alguno para adaptar el algoritmo MNIG para tratar problemas job shop, u otros problemas de scheduling. Para ello se requiería entre otras cosas, cambiar la función <code>makespan</code> que en este caso calcula el makespan en un sistema del tipo FMMSP.</p>
+<p>Otra posible mejora para esta implementación del algoritmo MNIG, es la de mejorar el tiempo de ejecución para el problema flow shop básico, y de este modo poder probar las últimas instancias de Taillard sin tener que esperar más de un día por iteración. Es interesante notar cómo el mismo algoritmo MNIG resuelve la instancia o10s2u5 del modelo FMMSP en menos de un segundo (en promedio en 0.83 segundos).</p>
+<p>Como conclusión final, este trabajo evidencia que el algoritmo MNIG sí es competitivo para resolver el problema FMMSP, quod erat demonstrandum.</p>
 <h1 id="glosario-de-anglicismos">GLOSARIO DE ANGLICISMOS</h1>
+<p><strong>Scheduling</strong>: Rama de estudio de la secuenciación de trabajos en un sistema productivo.</p>
+<p><strong>Makespan</strong>: Tiempo de terminación máximo de una secuencia.</p>
+<p><strong>Greedy algorithm</strong>: Tipo de algoritmo que en español se le llama algoritmo voraz.</p>
+<p><strong>Fuzzy number</strong>: Número difuso.</p>
 <h1 class="unnumbered" id="referencias">REFERENCIAS</h1>
 <div id="refs" class="references csl-bib-body hanging-indent" role="doc-bibliography">
 <div id="ref-fuzzyNum" class="csl-entry" role="doc-biblioentry">

@@ -85,3 +85,8 @@ table, th, td
 {
 	border: 1pt solid;
 }
+
+#refs
+{
+    font-family: var(--f1);
+}
