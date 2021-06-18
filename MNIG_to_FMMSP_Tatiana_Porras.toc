@@ -6,46 +6,46 @@
 \defcounter {refsection}{0}\relax 
 \contentsline {subsection}{\numberline {1.1}ABSTRACT}{2}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {2}INTRODUCCIÓN}{2}%
+\contentsline {section}{\numberline {2}INTRODUCCIÓN}{3}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {3}PLANTEAMIENTO DEL PROBLEMA}{4}%
+\contentsline {section}{\numberline {3}PLANTEAMIENTO DEL PROBLEMA}{5}%
 \defcounter {refsection}{0}\relax 
 \contentsline {subsection}{\numberline {3.1}Elementos del Problema}{5}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {3.2}Pregunta del Problema}{5}%
+\contentsline {subsection}{\numberline {3.2}Pregunta del Problema}{6}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {3.3}Subpreguntas del Problema}{5}%
+\contentsline {subsection}{\numberline {3.3}Subpreguntas del Problema}{6}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {4}OBJETIVOS}{5}%
+\contentsline {section}{\numberline {4}OBJETIVOS}{6}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {4.1}Objetivo General}{5}%
+\contentsline {subsection}{\numberline {4.1}Objetivo General}{6}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {4.2}Objetivos Específicos}{5}%
+\contentsline {subsection}{\numberline {4.2}Objetivos Específicos}{6}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {5}JUSTIFICACIÓN}{6}%
+\contentsline {section}{\numberline {5}JUSTIFICACIÓN}{7}%
 \defcounter {refsection}{0}\relax 
 \contentsline {section}{\numberline {6}ALCANCES}{8}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {7}MARCO DE REFERENCIA}{8}%
+\contentsline {section}{\numberline {7}MARCO DE REFERENCIA}{9}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {7.1}Antecedentes y Marco Teórico}{8}%
+\contentsline {subsection}{\numberline {7.1}Antecedentes y Marco Teórico}{9}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {7.2}Marco Conceptual}{9}%
+\contentsline {subsection}{\numberline {7.2}Marco Conceptual}{10}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {8}HIPÓTESIS}{21}%
+\contentsline {section}{\numberline {8}HIPÓTESIS}{22}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {9}DISEÑO METODOLÓGICO}{21}%
+\contentsline {section}{\numberline {9}DISEÑO METODOLÓGICO}{22}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {9.1}Escritura del algoritmo MNIG en Python}{21}%
+\contentsline {subsection}{\numberline {9.1}Escritura del algoritmo MNIG en Python}{22}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {9.2}Ejecución del algoritmo MNIG en instancia del modelo FMMSP}{22}%
+\contentsline {subsection}{\numberline {9.2}Ejecución del algoritmo MNIG en instancia del modelo FMMSP}{23}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {9.3}Comparación del algoritmo MNIG con otros algoritmos}{22}%
+\contentsline {subsection}{\numberline {9.3}Comparación del algoritmo MNIG con otros algoritmos}{23}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {9.4}Instancias de Taillard}{23}%
+\contentsline {subsection}{\numberline {9.4}Instancias de Taillard}{24}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {10}CRONOGRAMA}{24}%
+\contentsline {section}{\numberline {10}CRONOGRAMA}{25}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {11}PRODUCTOS DEL PROYECTO}{24}%
+\contentsline {section}{\numberline {11}PRODUCTOS DEL PROYECTO}{25}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {12}BIBLIOGRAFÍA}{25}%
+\contentsline {section}{\numberline {12}BIBLIOGRAFÍA}{26}%

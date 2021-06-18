@@ -27,20 +27,17 @@ Bogotá D.C., Colombia. 2021-05-30
 
 # RESUMEN
 
-El Algoritmo Voraz Iterativo con Multi-Vecindad (MNIG por sus siglas en inglés Multi-Neighborhood Iterated Greedy algorithm) aplicado al Problema de Secuenciación Difuso Multiproducto y Multietapas (FMMSP por sus siglas en inglés Fuzzy Multiproduct Multistage Scheduling Problem), no ha sido tratado en la literatura científica internacional. En este trabajo se exploró esta combinación nueva. Para ello, se modificó el algoritmo MNIG y se utilizó para resolver el modelo FMMSP. El modelo FMMSP en notación de scheduling es el modelo $FFc | \tilde{T}_{i, u}, batch(b), Z_{i, u, s} | C_{max}$.
+Este trabajo exploró el Problema de Secuenciación Difuso Multiproducto y Multietapas (FMMSP por sus siglas en inglés, denotado como $FFc | \tilde{T}_{i, u}, batch(b), Z_{i, u, s} | C_{max}$) que se observa en industrias donde no hay estandarización establecida. Este problema ya había sido tratado con cuatro algoritmos (DBSA-LS, BDBSA, MBSA, e IGA), pero todos ellos presentan variabilidad en la solución encontrada, y algunos de ellos presentan soluciones de menor calidad. Se adaptó el Algoritmo Voraz Iterativo con Multi-Vecindad (MNIG por sus siglas en inglés) para resolver el modelo FMMSP, y se encontró que el algoritmo MNIG aporta soluciones de alta calidad y con menos variabilidad que los otros cuatro algoritmos.
 
-Se implementó el algoritmo MNIG en Python, y al aplicarlo al modelo FMMSP se encontró que el algoritmo MNIG es al menos tan bueno como el algoritmo DBSA-LS, e inclusive mostró mejora en la solución promedio. Esto se comprobó con la única instancia disponible que publicaron los creadores del modelo FMMSP, la cual fue resuelta por el algoritmo MNIG en 0.83 segundos en promedio.
+Se reportaron los resultados del algoritmo aplicado a una instancia del problema (la instancia o10s2u5, que es la única instancia pública de este problema), y se compararon dichos resultados con los de los otros cuatro algoritmos DBSA-LS, BDBSA, MBSA, e IGA. También se midió el tiempo de ejecución, el cual no fue medido para los otros cuatro algoritmos. El algoritmo MNIG también fue aplicado a instancias de Taillard, que son instancias del problema flow shop básico.
 
 **Palabras Clave**: Algoritmo Voraz Iterativo, Multi-vecindad, Secuenciación, Números Triangulares Difusos, Multiproducto, Multietapas.
-\
-\
-\
 
 # ABSTRACT
 
-The Multi-neighborhood Iterated Greedy algorithm (acronymized as MNIG) applied to the Fuzzy Multiproduct Multistage Scheduling Problem (acronymized as FMMSP), has not been treated in the international scientific literature. This work explored this new combination. For that, the MNIG algorithm was modified and used to solve the FMMSP model. In scheduling notation, the FMMSP model is $FFc | \tilde{T}_{i, u}, batch(b), Z_{i, u, s} | C_{max}$.
+This work explored the Fuzzy Multiproduct Multistage Scheduling Problem (FMMSP, denoted as $FFc | \tilde{T}_{i, u}, batch(b), Z_{i, u, s} | C_{max}$) that can be observed in industries without an established standardization. This problem has already been treated with four algorithms (DBSA-LS, BDBSA, MBSA, and IGA), but all of them present variability en the solution they find, and some of them present solutions of lesser quality. Here the Multi-Neighborhood Iterated Greedy algorithm (MNIG) was adapted to solve the FMMSP model, and it was found that the MNIG algorithm gives solutions of high quality and with less variability than the other four algorithms.
 
-The MNIG algorithm was implemented in Python, and by applying it to the FMMSP model, it was found that the MNIG algorithm is at least as good as the DBSA-LS algorithm, and it even showed an improvement in the average solution value. This was proven with the only available instance that was published by the creators of the FMMSP model, which was solved by the MNIG algorithm in 0.83 seconds on average.
+The results from applying the algorithm to an instance of the problem (the o10s2u5 instance, which is the only public instance of this problem), will be reported, and the results will be compared with those of the other four algorithms DBSA-LS, BDBSA, MBSA, and IGA. The execution time will also be measured, which was not measured for the other four algorithms. The MNIG algorithm will also be applied to Taillard's instances, these are instances of the basic flow shop problem.
 
 **Keywords**: Iterated Greedy Algorithm, Multi-neighborhood, Scheduling, Triangular Fuzzy Numbers, Multiproduct, Multistage.
 
@@ -60,27 +57,31 @@ Lo novedoso resultó en que dicho algoritmo jamás había sido aplicado al model
 
 El algoritmo MNIG fue implementado en Python, y fue específicamente diseñado para tratar el modelo FMMSP. También se le hizo benchmarking al algoritmo MNIG usando 95 instancias de Taillard, que son instancias del problema flow shop básico. A pesar de que en total son 120 instancias de Taillard, solamente se usaron 95, porque las últimas 25 instancias son tan grandes, que esta implementación del algoritmo MNIG se tarda más de 24 horas para realizar una sola iteración, y esto es porque el algoritmo MNIG en este caso fue implementado para resolver el modelo FMMSP, no para resolver el modelo flow shop básico (pero indudablemente si se usara una instancia del modelo FMMSP con muchas máquinas y productos, la ejecución sería lenta, por lo que si se quisiera usar este algoritmo para esas instancias, primero se debería optimizar, lo cual se sale del alcance de este trabajo. Acá lo que cuenta es comprobar que el algoritmo MNIG es competitivo, e inclusive aporta mejores soluciones en promedio, que los otros cuatro algoritmos).
 
+Después de buscar en las bases de datos bibliográficas a que tiene acceso la Universidad Distrital, se encontró que el modelo FMMSP únicamente ha sido solucionado usando los algoritmos DBSA-LS, BDBSA, MBSA, e IGA. La búsqueda se realizó utilizando la búsqueda avanzada en bases de datos tales como: ScienceDirect, SCOPUS, Cengage Learning, Engineering Village, IEEE, JSTOR, y EBSCO. Se usaron y mezclaron las palabras clave: 'fuzzy', 'multiproduct', 'multistage', 'scheduling', 'triangular fuzzy number'.
+
 # PLANTEAMIENTO DEL PROBLEMA
 
 El problema que se resolvió con esta tesis, es el de explorar el algoritmo MNIG como candidato para encontrar secuencias de un sistema de producción del tipo FMMSP, de modo tal que dichas secuencias tengan un makespan bajo, comparado con los makespan encontrados con los algoritmos DBSA-LS, BDBSA, MBSA, e IGA.
+
+Los algoritmos DBSA-LS, BDBSA, MBSA, e IGA, ya se usan para encontrar buenas soluciones del modelo FMMSP, pero estas soluciones tienen variabilidad, que hace que empeore la solución promedio encontrada por esos algoritmos. El algoritmo MNIG es capaz de mejorar la solución promedio encontrada para el modelo FMMSP.
 
 ## Elementos del Problema
 
 Según lo anterior, los elementos del problema son:
 
 - Se requieren secuencias con bajos makespan en el modelo FMMSP, denotado como $FFc | \tilde{T}_{i, u}, batch(b), Z_{i, u, s} | C_{max}$. Estas secuencias son llamadas 'soluciones'.
-- El algoritmo MNIG tiene potencial para encontrar dichas soluciones en un tiempo prudente. Los resultados se pueden comparar a otros cuatro algoritmos que ya han sido usados en el modelo FMMSP.
+- El algoritmo MNIG tiene potencial para encontrar dichas soluciones en un tiempo prudente. Los resultados se pueden comparar a otros cuatro algoritmos que ya han sido usados en el modelo FMMSP, y el algoritmo MNIG podría mejorar la solución promedio cuando se compare con las soluciones promedio de los otros cuatro algoritmos.
 
 Este trabajo de tesis logró resolver estos elementos del problema, de la siguiente manera, respectivamente:
 
 - El algoritmo MNIG ha servido para encontrar soluciones del modelo FMMSP.
-- Las soluciones encontradas por el algoritmo MNIG son al menos igual de buenas, y mejores en promedio, que las soluciones encontradas por los algoritmos DBSA-LS, BDBSA, MBSA, e IGA.
+- Las soluciones encontradas por el algoritmo MNIG son al menos igual de buenas, y mejores en promedio, que las soluciones encontradas por los algoritmos DBSA-LS, BDBSA, MBSA, e IGA. El algoritmo MNIG mejoró la solución promedio al ser comparada con los otros cuatro algoritmos, en la instancia o10s2u5 del modelo FMMSP.
 
 ## Pregunta del Problema
 
-¿Cómo puede el algoritmo MNIG encontrar soluciones para el modelo FMMSP?
+¿Cómo puede el algoritmo MNIG mejorar las soluciones promedio encontradas para el modelo FMMSP?
 
-**Respuesta encontrada en este trabajo**: Implementando el algoritmo MNIG en Python, y aplicándolo a instancias del modelo FMMSP.
+**Respuesta encontrada en este trabajo**: Implementando el algoritmo MNIG en Python, y aplicándolo a la instancia o10s2u5 del modelo FMMSP. No es obligatorio que el algoritmo MNIG mejorara la solución promedio, pues eso no se podía predecir sin hacer este trabajo, pero se encontró que de hecho el algoritmo MNIG sí mejora la solución promedio respecto a los algoritmos DBSA-LS, BDBSA, MBSA, e IGA.
 
 ## Subpreguntas del Problema
 
@@ -100,7 +101,7 @@ Este trabajo de tesis logró resolver estos elementos del problema, de la siguie
 
 ## Objetivo General
 
-- Encontrar soluciones a través del algoritmo MNIG para el modelo FMMSP.
+- Encontrar soluciones a través del algoritmo MNIG para el modelo FMMSP, y determinar si las soluciones encontradas mejoran o no la solución promedio.
 
 ## Objetivos Específicos
 
@@ -108,21 +109,20 @@ Este trabajo de tesis logró resolver estos elementos del problema, de la siguie
 - Obtener secuencias del modelo FMMSP usando la implementación realizada.
 - Comparar el algoritmo MNIG aplicado al modelo FMMSP con los otros cuatro algoritmos que se han aplicado al modelo FMMSP.
 - Establecer si tiene sentido o no aplicar el algoritmo MNIG al modelo FMMSP, o si es preferible buscar otros algoritmos incluidos los que ya han sido probados.
-- Determinar la efectividad del algoritmo MNIG, no solo respecto al modelo FMMSP sino también respecto al modelo flow shop general.
+- Determinar si la solución promedio es mejorada o no por el algoritmo MNIG.
+- Determinar la efectividad del algoritmo MNIG respecto al modelo flow shop general.
 
 # JUSTIFICACIÓN
 
-Se propone este trabajo porque en el mundo académico existe una necesidad de comprobar que nuevos algoritmos den resultados comparables a viejos algoritmos, al ser aplicados a los modelos. En particular en el mundo del scheduling ocurre que un algoritmo que se usa para un tipo de modelos pueda ser adaptado para tratar otro tipo de modelos diferente. Este trabajo se justifica como un aporte de prueba de que el algoritmo MNIG sirve para resolver el modelo FMMSP $FFc | \tilde{T}_{i, u}, batch(b), Z_{i, u, s} | C_{max}$ en comparación a otros algoritmos ya establecidos.
+Se propone este trabajo porque en el mundo académico existe una necesidad de comprobar que nuevos algoritmos den resultados comparables a viejos algoritmos, al ser aplicados a los modelos. En particular en el mundo del scheduling ocurre que un algoritmo que se usa para un tipo de modelos pueda ser adaptado para tratar otro tipo de modelos diferente. Este trabajo se justifica como un aporte de prueba de que el algoritmo MNIG sirve para resolver el modelo FMMSP $FFc | \tilde{T}_{i, u}, batch(b), Z_{i, u, s} | C_{max}$ en comparación a otros algoritmos ya establecidos, y también como prueba de si el algoritmo MNIG puede mejorar la solución promedio en comparación con la solución promedio dada por los algoritmos DBSA-LS, BDBSA, MBSA, e IGA
 
-**¿Cuál es el problema de investigación?**: El problema es que en toda la historia registrada de la humanidad, nunca se había aplicado el algoritmo MNIG al modelo de scheduling FMMSP (para ello se revisaron las bases de datos internacionales a que tiene acceso la Universidad Distrital, y hasta la fecha no se había resuelto este problema). Se podría pensar que cualquier metaheurística que existe se puede aplicar a cualquier modelo de scheduling, sin embargo esto no se puede asumir como cierto hasta que no se demuestre, y hasta ahora se ha demostrado, con este trabajo, que el algotimo MNIG es competente para encontrar soluciones del modelo FMMSP.
-
-Pero, ¿Qué se entiende al decir que un algoritmo es competente o no? En este contexto, se entiende que un algoritmo es competente si produce soluciones de calidad en un tiempo razonable. Para saber si las soluciones son de calidad, se compara aquí el algoritmo MNIG con otros cuatro algoritmos DBSA-LS, BDBSA, MBSA, e IGA (estos se explican en la sección del marco de referencia), los cuales tienen comprobada efectividad para encontrar soluciones en el modelo FMMSP. Esta comparación se hizo con la única instancia publicada por los autores del modelo FMMSP.
+**¿Cuál es el problema de investigación?**: El problema es que la solución promedio que aportan los algoritmos DBSA-LS, BDBSA, MBSA, e IGA, al modelo FMMSP, puede ser mejorada. El algoritmo MNIG es un buen candidato para lograr esta mejora, porque es un algoritmo voraz, cuya voracidad se basa en un algoritmo de búsqueda local, que explora el espacio de búsqueda y podría ser competitivo con los otros cuatro algoritmos, a tal punto que podría llegar a reducir el valor de la solución promedio en comparación a los otros cuatro algoritmos. Este trabajo comprobó que el algoritmo MNIG sí reduce la solución promedio, para la instancia o10s2u5 del modelo FMMSP.
 
 **¿Cómo ha sido resuelto este problema de scheduling?**: El modelo FMMSP ha sido resuelto usando cuatro algoritmos, específicamente los algoritmos DBSA-LS, BDBSA, MBSA, e IGA. Hasta donde se sabe (tras hacer una revisión profunda de las bases de datos internacionales a las que tiene acceso la Universidad Distrital), estos son los únicos cuatro algoritmos con que se ha solucionado el modelo FMMSP. Por ello el algoritmo MNIG fue comparado con estos cuatro algoritmos, y resultó ser que el algoritmo MNIG es competitivo con los otros cuatro al encontrar soluciones del modelo FMMSP, resolviendo la única instancia publicada por los autores del modelo FMMSP en 0.83 segundos en promedio.
 
 **¿Cuál es el aporte a la solución de éste problema de scheduling en particular?**: En este trabajo, el aporte a la solución del modelo FMMSP, es que se aportó un nuevo algoritmo de comprobada efectividad para solucionar el modelo FMMSP. Este nuevo algoritmo es el algoritmo MNIG. Con la única instancia pública internacional que existe del modelo FMMSP se comprobó la competitividad del algoritmo MNIG para resolver el modelo FMMSP.
 
-**¿Por qué hay que solucionar este problema?**: Porque nunca se había hecho y porque hay un interés científico por avanzar nuestro conocimiento sobre los límites que unen a las metaheurísticas y los modelos de scheduling. Debido a la naturaleza NP-Hard de los modelos derivados de flow shop (como lo es el modelo FMMSP), aún no existe forma de garantizar la optimalidad de las soluciones encontradas por las metaheurísticas, y por eso existe cierta competencia entre diferentes metaheurísticas que usan diferentes estrategias para buscar soluciones en el espacio de búsqueda. Esta competencia sigue abierta para el modelo FMMSP, y aunque el algoritmo MNIG fue diseñado para problemas muy diferentes, en este trabajo se ha logrado adaptar el algoritmo MNIG para tratar el modelo FMMSP y encontrar soluciones al mismo, soluciones competitivas con las de los algoritmos DBSA-LS, BDBSA, MBSA, e IGA.
+**¿Por qué hay que solucionar este problema?**: Porque los algoritmos DBSA-LS, BDBSA, MBSA, e IGA presentan variabilidad en sus soluciones, lo que hace que empeore la solución promedio. Debido a la naturaleza NP-Hard de los modelos derivados de flow shop (como lo es el modelo FMMSP), aún no existe forma de garantizar la optimalidad de las soluciones encontradas por las metaheurísticas, y por eso existe cierta competencia entre diferentes metaheurísticas que usan diferentes estrategias para buscar soluciones en el espacio de búsqueda. Esta competencia sigue abierta para el modelo FMMSP, y aunque el algoritmo MNIG fue diseñado para problemas muy diferentes, en este trabajo se ha logrado adaptar el algoritmo MNIG para tratar el modelo FMMSP y encontrar soluciones al mismo, así como disminuir el valor de la solución promedio, comparado con los algoritmos DBSA-LS, BDBSA, MBSA, e IGA.
 
 **¿Qué sucede si no solucionamos este problema identificado?**: Si no se solucionara este problema, no avanzaría nuestro conocimiento sobre el modelo FMMSP y sus soluciones. El modelo FMMSP es un modelo que se puede encontrar en sistemas de producción reales, nada más el hecho de que el modelo FMMSP incluye números difusos triangulares (F es por Fuzzy), muestra que el modelo FMMSP puede ser aplicado a sistemas de producción colombianos, en donde no hay una fuerte estandarización, porque si las estaciones de trabajo tienen tiempos de procesamiento fuertemente estandarizados, ya no se hacen necesarios los números triangulares difusos, y resulta más fácil y razonable usar simples números para representar los tiempos de procesamiento. En cambio, en sistemas donde no hay una fuerte estandarización, puede tener sentido usar números triangulares difusos para representar los tiempos de producción de las estaciones de trabajo, porque así se representa la incertidumbre sobre el verdadero tiempo de producción, usando las tres partes que forman un número triangular difuso: el tiempo optimista de producción, el tiempo promedio de producción, y el tiempo pesimista de producción (esto se puede ver también en la sección del marco de referencia).
 
@@ -508,15 +508,19 @@ De la primera tabla de resultados, se observa que el algoritmo MNIG aporta consi
 
 : Comparación de los algoritmos
 
-| Algoritmo | Mejor valor | Valor medio      | Peor valor       |
-| :-------: | :---------: | :--------------: | :--------------: |
-| MNIG      | (36,44,52)  | (36,44,52)       | (36,44,52)       |
-| DBSA-LS   | (36,44,52)  | (38,45,52)       | (42,48,53)       |
-| BDBSA     | (36,44,52)  | (38.6,45.5,52)   | (40,46,54)       |
-| MBSA      | (40,47,55)  | (44,50,57)       | (42.2,49.3,54.6) |
-| IGA       | (39,45,52)  | (40.1,46.9,54.5) | (43,49,57)       |
+| Algoritmo | Mejor valor | Valor medio      | Peor valor       | % de mejora del MNIG |
+| :-------: | :---------: | :--------------: | :--------------: | :----------: |
+| MNIG      | (36,44,52)  | (36,44,52)       | (36,44,52)       |  0.00% |
+| DBSA-LS   | (36,44,52)  | (38,45,52)       | (42,48,53)       |  2.22% |
+| BDBSA     | (36,44,52)  | (38.6,45.5,52)   | (40,46,54)       |  3.08% |
+| MBSA      | (40,47,55)  | (44,50,57)       | (42.2,49.3,54.6) | 12.44% |
+| IGA       | (39,45,52)  | (40.1,46.9,54.5) | (43,49,57)       |  6.58% |
 
 El algoritmo MNIG tiene como mejor valor, valor medio, y peor valor, la misma solución (36, 44, 52). Es importante denotar que la solución (36, 44, 52) se alcanzaba con tan solo una iteración. Consistentemente basta una sola iteración del algoritmo MNIG para encontrar la solución (36, 44, 52). Se analizó cuál parte del programa es la que convierte cualquier secuencia en una secuencia con makespan (36, 44, 52), y resultó ser la parte voraz del algoritmo MNIG, que es el algoritmo `destruction_reconstruction.py`. Al algoritmo `destruction_reconstruction.py` se le puede dar cualquier secuencia de la instancia o10s2u5, y retornará una secuencia con makespan (36, 44, 52) en una sola iteración. Como se verá más adelante en las intancias de Taillard, la parte más lenta del algoritmo MNIG también es el algoritmo `destruction_reconstruction.py`, tanto que en las instancias más grandes de Taillard, puede tardar más de 24 horas en hacer una iteración.
+
+La columna denominada '% de mejora del MNIG', contiene los porcentajes con los que el algoritmo MNIG mejora la solución promedio, comparado a los demás algoritmos. Por ejemplo, el algoritmo MNIG mejora la solución promedio un 2.22% respecto al algoritmo DBSA-LS. Para calcular este porcentaje, se usa la ponderación que permite comparar cual es mayor, menor, o igual, entre dos números triangulares difusos. Por ejemplo, para calcular ese 2.22%, la solución (36, 44, 52) se pondera como (36 + 2*44 + 52)/4 = 44, y (38 + 2\*45 + 52)/4 = 45. Luego, la mejora porcentual es (45 - 44)/45 = 2.22%, y así con los demás porcentajes.
+
+Estos porcentajes muestran que el algoritmo MNIG mejora la solución promedio al menos un 2.22% y máximo un 12.44%, en comparación con los algoritmos DBSA-LS, BDBSA, MBSA, e IGA, para la instancia o10s2u5 del modelo FMMSP.
 
 ## Resultados de las instancias de Taillard
 
