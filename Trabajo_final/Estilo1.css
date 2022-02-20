@@ -23,9 +23,16 @@
 	font-size: 18pt;
 }
 
+.imag
+{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
 #im1
 {
-	width: 50%
+	width: 50%;
 }
 
 p

@@ -1,3 +1,6 @@
+<!-- Compilar con: pandoc.exe .\Trabajo_de_Grado_Tatiana_Porras.md -c .\Estilo1.css --katex --filter pandoc-crossref --citeproc -s -o Trabajo_de_Grado_Tatiana_Porras.html -->
+<!-- Luego, imprimir Trabajo_de_Grado_Tatiana_Porras.html a PDF desde Chrome -->
+
 ::: {#main-title}
 ALGORITMO VORAZ ITERATIVO CON MULTI-VECINDAD APLICADO AL PROBLEMA DE SECUENCIACIÓN DIFUSO MULTIPRODUCTO Y MULTIETAPAS
 :::
@@ -247,7 +250,11 @@ Dado que el modelo FMMSP es un modelo para sistemas del tipo flow shop flexible,
 
 Por último en el algoritmo, se toma cada trabajo, y se reinserta en cada posición y se deja en la posición en la que resulte el mínimo makespan. Sea $\pi_{re3}$ la secuencia resultante de estas reinserciones. El algoritmo DNEH_SMR retorna la secuencia $\pi_{re3}$ como su resultado. [@algMNIG]
 
-Teniendo los elementos anteriores, a continuación se presenta el algoritmo DNEH_SMR en su versión de pseudocódigo de Python:
+Teniendo los elementos anteriores, a continuación se presenta el algoritmo DNEH_SMR en su versión de diagrama de flujo, y de pseudocódigo de Python:
+
+::: {.imag}
+![](diags/diag_dneh_smr.svg)
+:::
 
 ----
 
@@ -281,7 +288,11 @@ En el algoritmo 2, la destrucción y reconstrucción de una secuencia de trabajo
 
 Luego cada trabajo en $\pi_{r}$ se reinserta en la secuencia bajo construcción, se mide el makespan, y si éste es menor que el makespan inicial entonces se inserta el el trabajo en la posición que haya generado el nuevo y mejor makespan. Se hace lo mismo con los restantes trabajos en $\pi_{r}$ sin reemplazar los que ya hayan sido insertados. Por último se repite este proceso con los demás trabajos en $\pi_{d}$. La secuencia resultante es retornada por el algoritmo. [@algMNIG]
 
-Llámesele $\pi_{input}$ a la secuencia a ser destruida y reconstruida, y sea $\pi_{desrec}$ la secuencia retorna por el algoritmo 2 tras ser destruida y reconstruida. En consideración de lo dicho se presenta el algoritmo de destrucción y reconstrucción en su versión de pseudocódigo de Python:
+Llámesele $\pi_{input}$ a la secuencia a ser destruida y reconstruida, y sea $\pi_{desrec}$ la secuencia retorna por el algoritmo 2 tras ser destruida y reconstruida. En consideración de lo dicho se presenta el algoritmo de destrucción y reconstrucción en su versión de diagrama de flujo y en pseudocódigo de Python:
+
+::: {.imag}
+![](diags/diag_desrec.svg)
+:::
 
 ----
 
@@ -309,7 +320,11 @@ El algoritmo 3 es el algoritmo de búsqueda local con multi-vecindad. En este al
 
 En el algoritmo de búsqueda local con multi-vecindad hay dos funciones clave, que realizan las operaciones de inserción y de intercambio de trabajos. La operación de inserción es realizada con la función $Insertion_{inner}(\pi)$, en esta función se toma cada trabajo de $\pi$ y se inserta en cada posición, midiendo el makespan y al final, si el makespan mejora, se deja insertado el trabajo en la posición que tenga el menor makespan. La otra función es $Swap_{inner}(\pi)$ en la que se intercambian dos trabajos de $\pi$, se mide el makespan, y al final dejando intercambiados los trabajos en donde se presente el menor makespan. Si después de aplicar estas funciones se encuentra mejora, la función vuelve a ser aplicada, hasta que no se presente mejora en el makespan. [@algMNIG]
 
-Con lo anterior, aquí el algoritmo de búsqueda local con multi-vecindad en su versión de pseudocódigo de Python:
+Con lo anterior, aquí el algoritmo de búsqueda local con multi-vecindad en su versión de diagrama de flujo y en pseudocódigo de Python:
+
+::: {.imag}
+![](diags/diag_busq_local.svg)
+:::
 
 ----
 
@@ -339,9 +354,13 @@ Teniendo los tres primeros algoritmos, el cuarto y último es la síntesis de lo
 
 Este es un buen criterio, pero tiene dos problemas, primero no tiene en cuenta todas las partes del modelo FMMSP y segundo está en unidades de milisegundo. Para el primer problema, se puede incluir lo que falta del modelo FMMSP, las unidades (o máquinas). Sea $UT = \sum_{s = 1}^{L}|U_{s}|$, $UT$ es el total de unidades. Lo segundo puede ser un problema porque si el algoritmo para según una cantidad de tiempo arbitraria en milisegundos, ello fuerza a escribir el código de modo que cada iteración dure el menor tiempo posible. Pero eso es una desventaja porque no se puede hacer que el algoritmo dé resultados parciales, pues imprimir resultados parciales toma tiempo, a pesar de que sea poco tiempo. Otra forma de hacerlo sería teniendo un criterio de terminación en número de iteraciones, o sea que el algoritmo pare luego de un número de iteraciones. Según lo anterior, un criterio de terminación para el algoritmo MNIG aplicado al modelo FMMSP podría ser $Iterations = N^2*L*UT$.
 
-Antes de proceder con el pseudocódigo del algoritmo MNIG falta decir que este algoritmo explora en la región de búsqueda, intentando no quedarse en óptimos locales. A este efecto, existe un criterio de aceptación de nuevas soluciones que incluye la posibilidad de aceptar soluciones peores con una baja probabilidad. Este criterio define un nuevo parámetro derivado $T$, cuya ecuación es $T = T_{0}*\frac{\sum_{i}\sum_{s}\widetilde{Ta}_{i,s}}{10*N*L}$ Donde $T_{0}$ es un parámetro diferente de cero y no muy grande. [@algMNIG]
+Antes de proceder con el diagrama de flujo y el pseudocódigo del algoritmo MNIG falta decir que este algoritmo explora en la región de búsqueda, intentando no quedarse en óptimos locales. A este efecto, existe un criterio de aceptación de nuevas soluciones que incluye la posibilidad de aceptar soluciones peores con una baja probabilidad. Este criterio define un nuevo parámetro derivado $T$, cuya ecuación es $T = T_{0}*\frac{\sum_{i}\sum_{s}\widetilde{Ta}_{i,s}}{10*N*L}$ Donde $T_{0}$ es un parámetro diferente de cero y no muy grande. [@algMNIG]
 
-Pseudocódigo de Python del algoritmo MNIG:
+Diagrama de flujo y pseudocódigo de Python del algoritmo MNIG:
+
+::: {.imag}
+![](diags/diag_MNIG.svg)
+:::
 
 ----
 
