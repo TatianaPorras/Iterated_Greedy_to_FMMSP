@@ -1,4 +1,4 @@
-Instancias de Taillard
+Instancias de Taillard (son 120 instancias, 12 grupos de 10 en 10)
 
 
 def ff(s1):

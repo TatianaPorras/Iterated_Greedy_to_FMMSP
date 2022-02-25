@@ -1,0 +1,12 @@
+Instancia1, 1 de 75 perturbaciones N: 2  T_0: 0.4  d: 3
+
+ Secuencia: [15, 6, 17, 9, 18, 4, 19, 3, 7, 11, 13, 1, 2, 14, 16, 8, 5, 10, 20, 12]  Makespan: [1294 1294 1294]  Tiempo de ejecucion: 754.181 segundos o 12.57 minutos  100 iteraciones  Tiempo por iter: 7.542 s/iter
+
+
+
+Instancia1, 2 de 75 perturbaciones N: 2  T_0: 0.4  d: 6
+
+ Secuencia: [9, 15, 13, 1, 11, 14, 17, 5, 6, 7, 8, 19, 16, 18, 4, 2, 10, 20, 12, 3]  Makespan: [1283 1283 1283]  Tiempo de ejecucion: 879.418 segundos o 14.657 minutos  100 iteraciones  Tiempo por iter: 8.794 s/iter
+
+
+
