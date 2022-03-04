@@ -1,4 +1,6 @@
-<!-- Compilar con: pandoc.exe .\Trabajo_de_Grado_Tatiana_Porras.md -c .\Estilo1.css --katex --filter pandoc-crossref --citeproc -s -o Trabajo_de_Grado_Tatiana_Porras.html -->
+<!-- Generar la tabla de contenido ejecutando:  -->
+
+<!-- Compilar con: pandoc.exe --template=.\template.markdown .\Trabajo_de_Grado_Tatiana_Porras.md -c .\Estilo1.css --katex --filter pandoc-crossref --citeproc -s -o Trabajo_de_Grado_Tatiana_Porras.html -->
 <!-- Luego, imprimir Trabajo_de_Grado_Tatiana_Porras.html a PDF desde Chrome -->
 
 ::: {#main-title}
@@ -6,16 +8,27 @@ ALGORITMO VORAZ ITERATIVO CON MULTI-VECINDAD APLICADO AL PROBLEMA DE SECUENCIACI
 :::
 
 ::: {#datos-varios}
+\
+\
 Trabajo para optar al título de:\
 INGENIERA INDUSTRIAL\
+\
 \
 \
 Tatiana Porras Cortés 20092015073\
 Correo: tatiporras96@gmail.com\
 \
+\
 LINDSAY ÁLVAREZ POMAR\
 Directora del trabajo de grado\
+\
+\
 ![escudito]\
+\
+\
+\
+\
+\
 UNIVERSIDAD DISTRITAL FRANCISCO JOSÉ DE CALDAS\
 FACULTAD DE INGENIERÍA\
 PROYECTO CURRICULAR DE INGENIERÍA INDUSTRIAL\
@@ -678,20 +691,41 @@ Estos resultados muestran que el algoritmo MNIG también se puede usar para enco
 
 ## Resultados de las 200 perturbaciones
 
-En el Anexo A se presentan los resultados de las 200 perturbaciones (es demasiado largo para mostrarlo aquí). Las siguiente tablas resumen los resultados de las perturbaciones realizadas al algoritmo MNIG:
+En el Anexo A se presentan los resultados de las 200 perturbaciones (es demasiado largo para mostrarlo aquí). La siguiente tabla muestra las mejores secuencias que se pudieron encontrar gracias a las perturbaciones, en las primeras 4 instancias de Taillard:
 
 : Mejores secuencias encontradas con las perturbaciones
 
-| Instancia | Perturbación | Mejor secuencia | Makespan | Tiempo de ejecución (minutos) | 
-| :-------: | :----------: | :-------------: | :------: | :---------------------------: |
-| 
+| Instancia | Perturbación o perturbaciones       | Mejor secuencia                                                         | Makespan         | % sobre cota superior |
+| :-------: | :---------------------------------: | :---------------------------------------------------------------------: | :--------------: | :-------------------: |
+| 1         | 19,31,32,34,39,42,44,45,46,48,49,50 | [9, 15, 14, 17, 3, 4, 19, 13, 6, 5, 18, 16, 7, 1, 8, 11, 2, 10, 20, 12] | [1278 1278 1278] | 0%                    |
+| 2         | 40,45,50                            | [6, 10, 17, 7, 19, 15, 12, 1, 18, 14, 9, 11, 13, 16, 20, 5, 2, 3, 8, 4] | [1359 1359 1359] | 0%                    |
+| 3         | 27                                  | [3, 4, 16, 11, 1, 20, 18, 19, 14, 13, 12, 7, 5, 6, 10, 15, 9, 8, 17, 2] | [1087 1087 1087] | 0.55%                 |
+| 4         | 25,27                               | [13, 17, 19, 9, 16, 11, 2, 1, 20, 15, 7, 12, 10, 4, 5, 8, 6, 14, 3, 18] | [1293 1293 1293] | 0%                    |
 
+Se puede observar una mejora sustancial. Gracias a las perturbaciones se encontraron secuencias cuyo makespan es igual a la cota superior teórica en 3/4 de los casos, y en general en todos los casos el porcentaje sobre la cota superior es inferior al 1%, lo cual no se observó de forma generalizada en los resultados sin las perturbaciones.
+
+No existe una perturbación específica que haya resultado en la mejor secuencia en todas las instancias. Sin embargo, sí se puede observar unas pocas perturbaciones comunes en las instancias, las perturbaciones: 27, 45, y 50. Estas perturbaciones tiene la siguiente forma:
+
+ - Perturbación 27, N: 5  T_0: 0.4  d: 6
+ - Perturbación 45, N: 5  T_0: 1.0  d: 16
+ - Perturbación 50, N: 5  T_0: 1.2  d: 16
+
+Estas tres perturbaciones tienen en común el valor $N = 5$. Según esto, es posible que valores aún mayores de $N$ den mejores resultados, pero no se intentó hacerlo debido a que aumentar $N$ aumenta al cuadrado el número de iteraciones del algoritmo, lo cual aumenta el tiempo de ejecución hasta que se demora varios días en terminar de procesar. Los valores de $T_0$ y de $d$ tienden a ser altos igual que $N$. $T_0$ oscila entre 1.0 y 1.2, y $d$ tuvo su valor máximo, siendo el quinto sexto del número de trabajos del sistema. Es probable el valor alto de $T_0$ se deba a que aumenta la probabilidad de aceptar secuencias de baja calidad para explorar más en el espacio de búsqueda.
+
+Acorde a lo anterior, se recomienda usar valores altos de los tres parámetros, a menos que el tiempo de ejecución sea demasiado alto debido a $N$. Se puede probar con valores más altos de $T_0$ y de $d$.
+
+La siguiente es la tabla resumen de los resultados de las perturbaciones realizadas al algoritmo MNIG:
 
 : Resumen de las perturbaciones
 
 | Instancia | Número de perturbaciones | Tiempo total (minutos) | Tiempo por perturbación (minutos) |
 | :-------: | :----------------------: | :--------------------: | :-------------------------------: |
-|
+| 1         | 50                       | 4284.442               |  85.69                            |
+| 2         | 50                       | 3986.610               |  79.73                            |
+| 3         | 50                       | 5096.373               | 101.93                            |
+| 4         | 50                       | 5395.246               | 107.90                            |
+
+El tiempo promedio por perturbación es de 93.81 minutos, aproximadamente hora y media. El tiempo promedio por instancia, de 50 perturbaciones, es de 4690.67 minutos, aproximadamente 78 horas, o poco más de 3 días de computación continua (por esto se optó por no probar instancias con $N$ mayor que 5).
 
 # CONCLUSIONES Y RECOMENDACIONES
 
@@ -699,13 +733,17 @@ A futuro se podría mejorar el algoritmo para tratar otros problemas de scheduli
 
 Otra posible mejora para esta implementación del algoritmo MNIG, es la de mejorar el tiempo de ejecución para el problema flow shop básico, y de este modo poder probar las últimas instancias de Taillard sin tener que esperar más de un día por iteración. Es interesante notar cómo el mismo algoritmo MNIG resuelve la instancia o10s2u5 del modelo FMMSP en menos de un segundo (en promedio en 0.83 segundos).
 
-Como conclusión final, este trabajo evidencia que el algoritmo MNIG sí es competitivo para resolver el problema FMMSP, quod erat demonstrandum.
+Las perturbaciones permitieron encontrar valores posiblemente buenos para los parámetros, siendo valores relativamente altos para los tres parámetros $N$, $T_0$, y $d$. El factor limitante para incrementar los parámetros, es $N$, porque el tiempo de ejecución crece según el cuadrado de este parámetro.
+
+Como conclusión final, este trabajo evidencia que el algoritmo MNIG sí es competitivo para resolver el problema FMMSP.
 
 # GLOSARIO DE ANGLICISMOS
 
 **Scheduling**: Rama de estudio de la secuenciación de trabajos en un sistema productivo.
 
 **Makespan**: Tiempo de terminación máximo de una secuencia.
+
+**Flow shop**: Sistema de producción en el que cada trabajo pasa una vez por todas y cada una de las máquinas. El orden de las máquinas es el mismo para todos los trabajos.
 
 **Greedy algorithm**: Tipo de algoritmo que en español se le llama algoritmo voraz.
 
@@ -805,614 +843,3 @@ references:
   title: Theory of Triangular Fuzzy Number
   issued: 2017
 ---
-
-# Anexo A: 200 perturbaciones
-
-## Instancia 1 de Taillard
-
-Instancia1, 1 de 50 perturbaciones N: 2  T_0: 0.4  d: 3
- Secuencia: [9, 15, 6, 4, 11, 13, 1, 5, 17, 14, 2, 8, 19, 7, 18, 12, 3, 16, 10, 20]  Makespan: [1297 1297 1297]  Tiempo de ejecucion: 1129.475 segundos o 18.825 minutos  100 iteraciones  Tiempo por iter: 11.295 s/iter
-
-Instancia1, 2 de 50 perturbaciones N: 2  T_0: 0.4  d: 6
- Secuencia: [9, 15, 6, 4, 11, 13, 1, 5, 17, 14, 2, 8, 19, 7, 18, 12, 3, 16, 10, 20]  Makespan: [1297 1297 1297]  Tiempo de ejecucion: 1349.058 segundos o 22.484 minutos  100 iteraciones  Tiempo por iter: 13.491 s/iter
-
-Instancia1, 3 de 50 perturbaciones N: 2  T_0: 0.4  d: 10
- Secuencia: [9, 15, 6, 4, 11, 13, 1, 5, 17, 14, 2, 8, 19, 7, 18, 12, 3, 16, 10, 20]  Makespan: [1297 1297 1297]  Tiempo de ejecucion: 1495.997 segundos o 24.933 minutos  100 iteraciones  Tiempo por iter: 14.96 s/iter
-
-Instancia1, 4 de 50 perturbaciones N: 2  T_0: 0.4  d: 13
- Secuencia: [15, 6, 8, 4, 9, 17, 11, 13, 14, 19, 3, 5, 7, 1, 2, 18, 16, 10, 20, 12]  Makespan: [1294 1294 1294]  Tiempo de ejecucion: 1484.81 segundos o 24.747 minutos  100 iteraciones  Tiempo por iter: 14.848 s/iter
-
-Instancia1, 5 de 50 perturbaciones N: 2  T_0: 0.4  d: 16
- Secuencia: [15, 17, 6, 9, 2, 14, 5, 13, 3, 8, 7, 11, 4, 19, 1, 18, 16, 10, 20, 12]  Makespan: [1294 1294 1294]  Tiempo de ejecucion: 1350.275 segundos o 22.505 minutos  100 iteraciones  Tiempo por iter: 13.503 s/iter
-
-Instancia1, 6 de 50 perturbaciones N: 2  T_0: 0.6  d: 3
- Secuencia: [9, 15, 6, 4, 11, 13, 1, 5, 17, 14, 2, 8, 19, 7, 18, 12, 3, 16, 10, 20]  Makespan: [1297 1297 1297]  Tiempo de ejecucion: 1153.502 segundos o 19.225 minutos  100 iteraciones  Tiempo por iter: 11.535 s/iter
-
-Instancia1, 7 de 50 perturbaciones N: 2  T_0: 0.6  d: 6
- Secuencia: [17, 8, 11, 15, 13, 1, 9, 16, 6, 5, 4, 19, 14, 3, 18, 2, 10, 7, 20, 12]  Makespan: [1293 1293 1293]  Tiempo de ejecucion: 1303.419 segundos o 21.724 minutos  100 iteraciones  Tiempo por iter: 13.034 s/iter
-
-Instancia1, 8 de 50 perturbaciones N: 2  T_0: 0.6  d: 10
- Secuencia: [9, 15, 6, 4, 11, 13, 1, 5, 17, 14, 2, 8, 19, 7, 18, 12, 3, 16, 10, 20]  Makespan: [1297 1297 1297]  Tiempo de ejecucion: 1403.774 segundos o 23.396 minutos  100 iteraciones  Tiempo por iter: 14.038 s/iter
-
-Instancia1, 9 de 50 perturbaciones N: 2  T_0: 0.6  d: 13
- Secuencia: [9, 15, 6, 4, 11, 13, 1, 5, 17, 14, 2, 8, 19, 7, 18, 12, 3, 16, 10, 20]  Makespan: [1297 1297 1297]  Tiempo de ejecucion: 1490.074 segundos o 24.835 minutos  100 iteraciones  Tiempo por iter: 14.901 s/iter
-
-Instancia1, 10 de 50 perturbaciones N: 2  T_0: 0.6  d: 16
- Secuencia: [9, 15, 6, 4, 11, 13, 1, 5, 17, 14, 2, 8, 19, 7, 18, 12, 3, 16, 10, 20]  Makespan: [1297 1297 1297]  Tiempo de ejecucion: 1428.769 segundos o 23.813 minutos  100 iteraciones  Tiempo por iter: 14.288 s/iter
-
-Instancia1, 11 de 50 perturbaciones N: 2  T_0: 0.8  d: 3
- Secuencia: [15, 6, 19, 1, 8, 9, 17, 4, 16, 13, 18, 11, 14, 5, 2, 7, 10, 20, 12, 3]  Makespan: [1293 1293 1293]  Tiempo de ejecucion: 1144.008 segundos o 19.067 minutos  100 iteraciones  Tiempo por iter: 11.44 s/iter
-
-Instancia1, 12 de 50 perturbaciones N: 2  T_0: 0.8  d: 6
- Secuencia: [15, 14, 17, 6, 9, 1, 18, 19, 4, 16, 5, 10, 7, 11, 8, 2, 13, 20, 12, 3]  Makespan: [1287 1287 1287]  Tiempo de ejecucion: 1366.568 segundos o 22.776 minutos  100 iteraciones  Tiempo por iter: 13.666 s/iter
-
-Instancia1, 13 de 50 perturbaciones N: 2  T_0: 0.8  d: 10
- Secuencia: [9, 15, 6, 3, 8, 17, 11, 13, 1, 14, 2, 7, 18, 19, 4, 5, 16, 10, 20, 12]  Makespan: [1279 1279 1279]  Tiempo de ejecucion: 1535.835 segundos o 25.597 minutos  100 iteraciones  Tiempo por iter: 15.358 s/iter
-
-Instancia1, 14 de 50 perturbaciones N: 2  T_0: 0.8  d: 13
- Secuencia: [9, 15, 6, 4, 11, 13, 1, 5, 17, 14, 2, 8, 19, 7, 18, 12, 3, 16, 10, 20]  Makespan: [1297 1297 1297]  Tiempo de ejecucion: 1506.802 segundos o 25.113 minutos  100 iteraciones  Tiempo por iter: 15.068 s/iter
-
-Instancia1, 15 de 50 perturbaciones N: 2  T_0: 0.8  d: 16
- Secuencia: [15, 6, 3, 17, 5, 4, 14, 19, 9, 16, 1, 18, 11, 13, 8, 2, 7, 10, 20, 12]  Makespan: [1294 1294 1294]  Tiempo de ejecucion: 1457.561 segundos o 24.293 minutos  100 iteraciones  Tiempo por iter: 14.576 s/iter
-
-Instancia1, 16 de 50 perturbaciones N: 2  T_0: 1.0  d: 3
- Secuencia: [9, 15, 6, 4, 11, 13, 1, 5, 17, 14, 2, 8, 19, 7, 18, 12, 3, 16, 10, 20]  Makespan: [1297 1297 1297]  Tiempo de ejecucion: 1174.001 segundos o 19.567 minutos  100 iteraciones  Tiempo por iter: 11.74 s/iter
-
-Instancia1, 17 de 50 perturbaciones N: 2  T_0: 1.0  d: 6
- Secuencia: [9, 15, 6, 4, 11, 13, 1, 5, 17, 14, 2, 8, 19, 7, 18, 12, 3, 16, 10, 20]  Makespan: [1297 1297 1297]  Tiempo de ejecucion: 1347.696 segundos o 22.462 minutos  100 iteraciones  Tiempo por iter: 13.477 s/iter
-
-Instancia1, 18 de 50 perturbaciones N: 2  T_0: 1.0  d: 10
- Secuencia: [9, 15, 6, 4, 11, 13, 1, 5, 17, 14, 2, 8, 19, 7, 18, 12, 3, 16, 10, 20]  Makespan: [1297 1297 1297]  Tiempo de ejecucion: 1514.236 segundos o 25.237 minutos  100 iteraciones  Tiempo por iter: 15.142 s/iter
-
-Instancia1, 19 de 50 perturbaciones N: 2  T_0: 1.0  d: 13
- Secuencia: [9, 17, 15, 6, 4, 3, 5, 7, 11, 19, 8, 13, 1, 2, 18, 16, 14, 10, 20, 12]  Makespan: [1278 1278 1278]  Tiempo de ejecucion: 1564.815 segundos o 26.08 minutos  100 iteraciones  Tiempo por iter: 15.648 s/iter
-
-Instancia1, 20 de 50 perturbaciones N: 2  T_0: 1.0  d: 16
- Secuencia: [15, 17, 13, 8, 3, 4, 19, 11, 6, 5, 9, 18, 7, 16, 14, 1, 2, 10, 20, 12]  Makespan: [1294 1294 1294]  Tiempo de ejecucion: 1448.515 segundos o 24.142 minutos  100 iteraciones  Tiempo por iter: 14.485 s/iter
-
-Instancia1, 21 de 50 perturbaciones N: 2  T_0: 1.2  d: 3
- Secuencia: [15, 6, 9, 18, 19, 8, 16, 13, 4, 14, 11, 17, 5, 1, 2, 7, 10, 20, 12, 3]  Makespan: [1293 1293 1293]  Tiempo de ejecucion: 1164.745 segundos o 19.412 minutos  100 iteraciones  Tiempo por iter: 11.647 s/iter
-
-Instancia1, 22 de 50 perturbaciones N: 2  T_0: 1.2  d: 6
- Secuencia: [15, 6, 11, 9, 13, 3, 5, 19, 1, 17, 14, 4, 2, 18, 7, 8, 16, 10, 20, 12]  Makespan: [1294 1294 1294]  Tiempo de ejecucion: 1342.04 segundos o 22.367 minutos  100 iteraciones  Tiempo por iter: 13.42 s/iter
-
-Instancia1, 23 de 50 perturbaciones N: 2  T_0: 1.2  d: 10
- Secuencia: [17, 9, 15, 14, 1, 2, 6, 18, 16, 5, 7, 8, 11, 19, 13, 4, 10, 20, 12, 3]  Makespan: [1291 1291 1291]  Tiempo de ejecucion: 1499.42 segundos o 24.99 minutos  100 iteraciones  Tiempo por iter: 14.994 s/iter
-
-Instancia1, 24 de 50 perturbaciones N: 2  T_0: 1.2  d: 13
- Secuencia: [9, 15, 6, 4, 11, 13, 1, 5, 17, 14, 2, 8, 19, 7, 18, 12, 3, 16, 10, 20]  Makespan: [1297 1297 1297]  Tiempo de ejecucion: 1460.517 segundos o 24.342 minutos  100 iteraciones  Tiempo por iter: 14.605 s/iter
-
-Instancia1, 25 de 50 perturbaciones N: 2  T_0: 1.2  d: 16
- Secuencia: [9, 15, 6, 4, 11, 13, 1, 5, 17, 14, 2, 8, 19, 7, 18, 12, 3, 16, 10, 20]  Makespan: [1297 1297 1297]  Tiempo de ejecucion: 1424.209 segundos o 23.737 minutos  100 iteraciones  Tiempo por iter: 14.242 s/iter
-
-Instancia1, 26 de 50 perturbaciones N: 5  T_0: 0.4  d: 3
- Secuencia: [15, 8, 11, 6, 9, 13, 4, 17, 19, 7, 2, 14, 3, 1, 18, 5, 16, 10, 20, 12]  Makespan: [1294 1294 1294]  Tiempo de ejecucion: 7336.498 segundos o 122.275 minutos  625 iteraciones  Tiempo por iter: 11.738 s/iter
-
-Instancia1, 27 de 50 perturbaciones N: 5  T_0: 0.4  d: 6
- Secuencia: [17, 15, 6, 8, 11, 14, 5, 9, 7, 4, 19, 1, 3, 18, 16, 10, 2, 13, 20, 12]  Makespan: [1282 1282 1282]  Tiempo de ejecucion: 8384.586 segundos o 139.743 minutos  625 iteraciones  Tiempo por iter: 13.415 s/iter
-
-Instancia1, 28 de 50 perturbaciones N: 5  T_0: 0.4  d: 10
- Secuencia: [9, 15, 14, 11, 6, 17, 3, 2, 13, 1, 5, 19, 8, 7, 18, 16, 4, 10, 20, 12]  Makespan: [1284 1284 1284]  Tiempo de ejecucion: 9436.463 segundos o 157.274 minutos  625 iteraciones  Tiempo por iter: 15.098 s/iter
-
-Instancia1, 29 de 50 perturbaciones N: 5  T_0: 0.4  d: 13
- Secuencia: [3, 15, 14, 17, 9, 6, 5, 8, 16, 13, 7, 1, 11, 18, 4, 19, 2, 10, 20, 12]  Makespan: [1279 1279 1279]  Tiempo de ejecucion: 9527.534 segundos o 158.792 minutos  625 iteraciones  Tiempo por iter: 15.244 s/iter
-
-Instancia1, 30 de 50 perturbaciones N: 5  T_0: 0.4  d: 16
- Secuencia: [15, 17, 6, 14, 4, 19, 9, 1, 18, 5, 8, 16, 2, 7, 11, 13, 10, 20, 12, 3]  Makespan: [1283 1283 1283]  Tiempo de ejecucion: 8982.336 segundos o 149.706 minutos  625 iteraciones  Tiempo por iter: 14.372 s/iter
-
-Instancia1, 31 de 50 perturbaciones N: 5  T_0: 0.6  d: 3
- Secuencia: [9, 15, 6, 17, 7, 11, 3, 13, 1, 8, 19, 5, 4, 2, 18, 16, 14, 10, 20, 12]  Makespan: [1278 1278 1278]  Tiempo de ejecucion: 6558.996 segundos o 109.317 minutos  625 iteraciones  Tiempo por iter: 10.494 s/iter
-
-Instancia1, 32 de 50 perturbaciones N: 5  T_0: 0.6  d: 6
- Secuencia: [9, 15, 14, 17, 3, 4, 19, 13, 6, 5, 18, 16, 7, 1, 8, 11, 2, 10, 20, 12]  Makespan: [1278 1278 1278]  Tiempo de ejecucion: 6912.53 segundos o 115.209 minutos  625 iteraciones  Tiempo por iter: 11.06 s/iter
-
-Instancia1, 33 de 50 perturbaciones N: 5  T_0: 0.6  d: 10
- Secuencia: [9, 15, 8, 17, 6, 5, 4, 18, 14, 19, 7, 1, 11, 16, 13, 2, 10, 20, 12, 3]  Makespan: [1283 1283 1283]  Tiempo de ejecucion: 9233.846 segundos o 153.897 minutos  625 iteraciones  Tiempo por iter: 14.774 s/iter
-
-Instancia1, 34 de 50 perturbaciones N: 5  T_0: 0.6  d: 13
- Secuencia: [3, 17, 15, 6, 9, 13, 14, 11, 7, 8, 16, 1, 19, 5, 18, 4, 2, 10, 20, 12]  Makespan: [1278 1278 1278]  Tiempo de ejecucion: 10035.702 segundos o 167.262 minutos  625 iteraciones  Tiempo por iter: 16.057 s/iter
-
-Instancia1, 35 de 50 perturbaciones N: 5  T_0: 0.6  d: 16
- Secuencia: [15, 9, 14, 4, 11, 13, 19, 6, 17, 5, 8, 18, 7, 16, 1, 2, 10, 20, 12, 3]  Makespan: [1284 1284 1284]  Tiempo de ejecucion: 9383.616 segundos o 156.394 minutos  625 iteraciones  Tiempo por iter: 15.014 s/iter
-
-Instancia1, 36 de 50 perturbaciones N: 5  T_0: 0.8  d: 3
- Secuencia: [15, 14, 8, 9, 6, 19, 11, 13, 17, 5, 7, 18, 16, 4, 2, 1, 10, 20, 12, 3]  Makespan: [1283 1283 1283]  Tiempo de ejecucion: 7432.652 segundos o 123.878 minutos  625 iteraciones  Tiempo por iter: 11.892 s/iter
-
-Instancia1, 37 de 50 perturbaciones N: 5  T_0: 0.8  d: 6
- Secuencia: [15, 6, 3, 9, 17, 7, 4, 2, 11, 14, 5, 1, 13, 8, 19, 18, 16, 10, 20, 12]  Makespan: [1294 1294 1294]  Tiempo de ejecucion: 8657.649 segundos o 144.294 minutos  625 iteraciones  Tiempo por iter: 13.852 s/iter
-
-Instancia1, 38 de 50 perturbaciones N: 5  T_0: 0.8  d: 10
- Secuencia: [15, 14, 11, 13, 6, 17, 19, 8, 7, 1, 2, 4, 9, 5, 18, 16, 10, 20, 12, 3]  Makespan: [1283 1283 1283]  Tiempo de ejecucion: 9638.118 segundos o 160.635 minutos  625 iteraciones  Tiempo por iter: 15.421 s/iter
-
-Instancia1, 39 de 50 perturbaciones N: 5  T_0: 0.8  d: 13
- Secuencia: [9, 17, 15, 6, 1, 3, 19, 14, 13, 8, 16, 18, 7, 11, 5, 4, 2, 10, 20, 12]  Makespan: [1278 1278 1278]  Tiempo de ejecucion: 9912.409 segundos o 165.207 minutos  625 iteraciones  Tiempo por iter: 15.86 s/iter
-
-Instancia1, 40 de 50 perturbaciones N: 5  T_0: 0.8  d: 16
- Secuencia: [9, 15, 8, 11, 17, 13, 18, 3, 1, 16, 14, 5, 4, 2, 6, 19, 7, 10, 20, 12]  Makespan: [1288 1288 1288]  Tiempo de ejecucion: 9224.829 segundos o 153.747 minutos  625 iteraciones  Tiempo por iter: 14.76 s/iter
-
-Instancia1, 41 de 50 perturbaciones N: 5  T_0: 1.0  d: 3
- Secuencia: [3, 11, 15, 9, 14, 17, 6, 13, 19, 8, 4, 2, 5, 18, 7, 16, 1, 10, 20, 12]  Makespan: [1279 1279 1279]  Tiempo de ejecucion: 7539.639 segundos o 125.661 minutos  625 iteraciones  Tiempo por iter: 12.063 s/iter
-
-Instancia1, 42 de 50 perturbaciones N: 5  T_0: 1.0  d: 6
- Secuencia: [9, 15, 6, 3, 19, 8, 4, 2, 13, 1, 5, 7, 11, 17, 14, 18, 16, 10, 20, 12]  Makespan: [1278 1278 1278]  Tiempo de ejecucion: 8675.24 segundos o 144.587 minutos  625 iteraciones  Tiempo por iter: 13.88 s/iter
-
-Instancia1, 43 de 50 perturbaciones N: 5  T_0: 1.0  d: 10
- Secuencia: [3, 15, 1, 9, 13, 17, 4, 19, 8, 16, 6, 5, 18, 2, 7, 11, 14, 10, 20, 12]  Makespan: [1281 1281 1281]  Tiempo de ejecucion: 9851.527 segundos o 164.192 minutos  625 iteraciones  Tiempo por iter: 15.762 s/iter
-
-Instancia1, 44 de 50 perturbaciones N: 5  T_0: 1.0  d: 13
- Secuencia: [9, 15, 17, 3, 8, 6, 19, 5, 7, 14, 11, 18, 16, 13, 4, 2, 1, 10, 20, 12]  Makespan: [1278 1278 1278]  Tiempo de ejecucion: 10105.664 segundos o 168.428 minutos  625 iteraciones  Tiempo por iter: 16.169 s/iter
-
-Instancia1, 45 de 50 perturbaciones N: 5  T_0: 1.0  d: 16
- Secuencia: [9, 15, 17, 6, 19, 13, 18, 3, 7, 11, 8, 16, 1, 5, 4, 2, 14, 10, 20, 12]  Makespan: [1278 1278 1278]  Tiempo de ejecucion: 9325.299 segundos o 155.422 minutos  625 iteraciones  Tiempo por iter: 14.92 s/iter
-
-Instancia1, 46 de 50 perturbaciones N: 5  T_0: 1.2  d: 3
- Secuencia: [9, 15, 6, 1, 16, 8, 3, 4, 2, 13, 17, 14, 5, 18, 7, 11, 19, 10, 20, 12]  Makespan: [1278 1278 1278]  Tiempo de ejecucion: 7434.431 segundos o 123.907 minutos  625 iteraciones  Tiempo por iter: 11.895 s/iter
-
-Instancia1, 47 de 50 perturbaciones N: 5  T_0: 1.2  d: 6
- Secuencia: [15, 6, 4, 8, 9, 11, 13, 19, 5, 1, 17, 14, 2, 7, 18, 16, 10, 20, 12, 3]  Makespan: [1283 1283 1283]  Tiempo de ejecucion: 8624.734 segundos o 143.746 minutos  625 iteraciones  Tiempo por iter: 13.8 s/iter
-
-Instancia1, 48 de 50 perturbaciones N: 5  T_0: 1.2  d: 10
- Secuencia: [17, 9, 15, 8, 3, 14, 6, 16, 1, 2, 13, 18, 7, 11, 5, 4, 19, 10, 20, 12]  Makespan: [1278 1278 1278]  Tiempo de ejecucion: 9845.804 segundos o 164.097 minutos  625 iteraciones  Tiempo por iter: 15.753 s/iter
-
-Instancia1, 49 de 50 perturbaciones N: 5  T_0: 1.2  d: 13
- Secuencia: [9, 15, 17, 3, 13, 6, 19, 8, 2, 4, 7, 11, 5, 1, 18, 14, 16, 10, 20, 12]  Makespan: [1278 1278 1278]  Tiempo de ejecucion: 10066.701 segundos o 167.778 minutos  625 iteraciones  Tiempo por iter: 16.107 s/iter
-
-Instancia1, 50 de 50 perturbaciones N: 5  T_0: 1.2  d: 16
- Secuencia: [9, 15, 6, 3, 11, 14, 17, 19, 13, 5, 18, 7, 8, 16, 4, 2, 1, 10, 20, 12]  Makespan: [1278 1278 1278]  Tiempo de ejecucion: 9276.386 segundos o 154.606 minutos  625 iteraciones  Tiempo por iter: 14.842 s/iter
-
-## Instancia 2 de Taillard
-
-Instancia2, 1 de 50 perturbaciones N: 2  T_0: 0.4  d: 3
- Secuencia: [6, 7, 19, 14, 15, 12, 9, 1, 17, 5, 10, 16, 3, 11, 20, 13, 2, 4, 8, 18]  Makespan: [1366 1366 1366]  Tiempo de ejecucion: 1136.061 segundos o 18.934 minutos  100 iteraciones  Tiempo por iter: 11.361 s/iter
-
-Instancia2, 2 de 50 perturbaciones N: 2  T_0: 0.4  d: 6
- Secuencia: [6, 7, 3, 19, 15, 1, 12, 13, 11, 17, 20, 8, 14, 10, 9, 16, 4, 2, 18, 5]  Makespan: [1366 1366 1366]  Tiempo de ejecucion: 1414.499 segundos o 23.575 minutos  100 iteraciones  Tiempo por iter: 14.145 s/iter
-
-Instancia2, 3 de 50 perturbaciones N: 2  T_0: 0.4  d: 10
- Secuencia: [6, 10, 17, 7, 15, 3, 13, 19, 20, 11, 9, 12, 8, 5, 18, 1, 2, 4, 14, 16]  Makespan: [1360 1360 1360]  Tiempo de ejecucion: 1571.438 segundos o 26.191 minutos  100 iteraciones  Tiempo por iter: 15.714 s/iter
-
-Instancia2, 4 de 50 perturbaciones N: 2  T_0: 0.4  d: 13
- Secuencia: [6, 7, 15, 17, 9, 1, 13, 20, 16, 4, 8, 10, 18, 12, 3, 14, 11, 2, 19, 5]  Makespan: [1367 1367 1367]  Tiempo de ejecucion: 1577.007 segundos o 26.283 minutos  100 iteraciones  Tiempo por iter: 15.77 s/iter
-
-Instancia2, 5 de 50 perturbaciones N: 2  T_0: 0.4  d: 16
- Secuencia: [19, 6, 10, 17, 20, 3, 15, 12, 18, 5, 11, 13, 16, 4, 14, 7, 1, 9, 8, 2]  Makespan: [1365 1365 1365]  Tiempo de ejecucion: 1381.191 segundos o 23.02 minutos  100 iteraciones  Tiempo por iter: 13.812 s/iter
-
-Instancia2, 6 de 50 perturbaciones N: 2  T_0: 0.6  d: 3
- Secuencia: [6, 7, 10, 19, 15, 20, 16, 3, 5, 13, 11, 18, 12, 4, 2, 14, 17, 9, 1, 8]  Makespan: [1366 1366 1366]  Tiempo de ejecucion: 1156.8 segundos o 19.28 minutos  100 iteraciones  Tiempo por iter: 11.568 s/iter
-
-Instancia2, 7 de 50 perturbaciones N: 2  T_0: 0.6  d: 6
- Secuencia: [6, 10, 17, 7, 9, 19, 15, 12, 11, 5, 8, 20, 1, 13, 3, 4, 16, 2, 14, 18]  Makespan: [1363 1363 1363]  Tiempo de ejecucion: 1339.929 segundos o 22.332 minutos  100 iteraciones  Tiempo por iter: 13.399 s/iter
-
-Instancia2, 8 de 50 perturbaciones N: 2  T_0: 0.6  d: 10
- Secuencia: [6, 7, 15, 13, 18, 11, 9, 19, 5, 14, 3, 1, 10, 2, 17, 12, 16, 20, 4, 8]  Makespan: [1367 1367 1367]  Tiempo de ejecucion: 1537.61 segundos o 25.627 minutos  100 iteraciones  Tiempo por iter: 15.376 s/iter
-
-Instancia2, 9 de 50 perturbaciones N: 2  T_0: 0.6  d: 13
- Secuencia: [6, 7, 10, 19, 20, 18, 15, 4, 3, 16, 9, 12, 13, 5, 14, 17, 1, 11, 2, 8]  Makespan: [1366 1366 1366]  Tiempo de ejecucion: 1556.672 segundos o 25.945 minutos  100 iteraciones  Tiempo por iter: 15.567 s/iter
-
-Instancia2, 10 de 50 perturbaciones N: 2  T_0: 0.6  d: 16
- Secuencia: [6, 7, 15, 17, 1, 11, 16, 12, 18, 20, 19, 5, 13, 4, 9, 10, 8, 14, 3, 2]  Makespan: [1367 1367 1367]  Tiempo de ejecucion: 1357.813 segundos o 22.63 minutos  100 iteraciones  Tiempo por iter: 13.578 s/iter
-
-Instancia2, 11 de 50 perturbaciones N: 2  T_0: 0.8  d: 3
- Secuencia: [6, 7, 17, 20, 9, 19, 15, 13, 5, 18, 10, 3, 16, 11, 4, 1, 8, 14, 12, 2]  Makespan: [1366 1366 1366]  Tiempo de ejecucion: 1136.353 segundos o 18.939 minutos  100 iteraciones  Tiempo por iter: 11.364 s/iter
-
-Instancia2, 12 de 50 perturbaciones N: 2  T_0: 0.8  d: 6
- Secuencia: [6, 7, 17, 20, 9, 18, 14, 15, 11, 19, 3, 1, 5, 8, 10, 12, 16, 13, 4, 2]  Makespan: [1366 1366 1366]  Tiempo de ejecucion: 1335.212 segundos o 22.254 minutos  100 iteraciones  Tiempo por iter: 13.352 s/iter
-
-Instancia2, 13 de 50 perturbaciones N: 2  T_0: 0.8  d: 10
- Secuencia: [6, 7, 17, 20, 12, 1, 19, 14, 5, 13, 18, 9, 15, 4, 11, 3, 10, 16, 8, 2]  Makespan: [1366 1366 1366]  Tiempo de ejecucion: 1503.165 segundos o 25.053 minutos  100 iteraciones  Tiempo por iter: 15.032 s/iter
-
-Instancia2, 14 de 50 perturbaciones N: 2  T_0: 0.8  d: 13
- Secuencia: [6, 7, 15, 3, 17, 13, 5, 19, 11, 16, 14, 20, 10, 9, 8, 1, 18, 2, 12, 4]  Makespan: [1367 1367 1367]  Tiempo de ejecucion: 1528.591 segundos o 25.477 minutos  100 iteraciones  Tiempo por iter: 15.286 s/iter
-
-Instancia2, 15 de 50 perturbaciones N: 2  T_0: 0.8  d: 16
- Secuencia: [6, 7, 3, 19, 10, 17, 20, 9, 12, 5, 8, 15, 16, 18, 4, 1, 14, 13, 2, 11]  Makespan: [1366 1366 1366]  Tiempo de ejecucion: 1398.864 segundos o 23.314 minutos  100 iteraciones  Tiempo por iter: 13.989 s/iter
-
-Instancia2, 16 de 50 perturbaciones N: 2  T_0: 1.0  d: 3
- Secuencia: [6, 7, 19, 15, 12, 1, 13, 11, 18, 5, 8, 9, 2, 14, 16, 4, 17, 3, 20, 10]  Makespan: [1366 1366 1366]  Tiempo de ejecucion: 1187.111 segundos o 19.785 minutos  100 iteraciones  Tiempo por iter: 11.871 s/iter
-
-Instancia2, 17 de 50 perturbaciones N: 2  T_0: 1.0  d: 6
- Secuencia: [6, 7, 19, 14, 15, 12, 9, 10, 8, 17, 20, 18, 11, 4, 16, 5, 1, 3, 13, 2]  Makespan: [1366 1366 1366]  Tiempo de ejecucion: 1342.429 segundos o 22.374 minutos  100 iteraciones  Tiempo por iter: 13.424 s/iter
-
-Instancia2, 18 de 50 perturbaciones N: 2  T_0: 1.0  d: 10
- Secuencia: [6, 7, 15, 17, 9, 20, 13, 19, 11, 1, 12, 4, 10, 2, 18, 3, 14, 16, 5, 8]  Makespan: [1367 1367 1367]  Tiempo de ejecucion: 1518.39 segundos o 25.307 minutos  100 iteraciones  Tiempo por iter: 15.184 s/iter
-
-Instancia2, 19 de 50 perturbaciones N: 2  T_0: 1.0  d: 13
- Secuencia: [6, 7, 19, 15, 20, 1, 11, 14, 17, 9, 4, 13, 18, 3, 10, 8, 16, 12, 5, 2]  Makespan: [1366 1366 1366]  Tiempo de ejecucion: 1531.814 segundos o 25.53 minutos  100 iteraciones  Tiempo por iter: 15.318 s/iter
-
-Instancia2, 20 de 50 perturbaciones N: 2  T_0: 1.0  d: 16
- Secuencia: [6, 19, 10, 7, 14, 15, 3, 9, 13, 4, 16, 1, 18, 11, 12, 8, 17, 20, 5, 2]  Makespan: [1364 1364 1364]  Tiempo de ejecucion: 1408.607 segundos o 23.477 minutos  100 iteraciones  Tiempo por iter: 14.086 s/iter
-
-Instancia2, 21 de 50 perturbaciones N: 2  T_0: 1.2  d: 3
- Secuencia: [6, 7, 17, 9, 3, 15, 12, 8, 10, 19, 16, 4, 18, 5, 14, 1, 13, 11, 20, 2]  Makespan: [1366 1366 1366]  Tiempo de ejecucion: 1132.572 segundos o 18.876 minutos  100 iteraciones  Tiempo por iter: 11.326 s/iter
-
-Instancia2, 22 de 50 perturbaciones N: 2  T_0: 1.2  d: 6
- Secuencia: [6, 7, 19, 15, 12, 9, 10, 17, 16, 4, 3, 11, 8, 20, 14, 13, 5, 1, 18, 2]  Makespan: [1366 1366 1366]  Tiempo de ejecucion: 1432.272 segundos o 23.871 minutos  100 iteraciones  Tiempo por iter: 14.323 s/iter
-
-Instancia2, 23 de 50 perturbaciones N: 2  T_0: 1.2  d: 10
- Secuencia: [6, 7, 17, 15, 3, 1, 11, 16, 12, 5, 13, 18, 20, 8, 9, 2, 19, 14, 10, 4]  Makespan: [1366 1366 1366]  Tiempo de ejecucion: 1513.925 segundos o 25.232 minutos  100 iteraciones  Tiempo por iter: 15.139 s/iter
-
-Instancia2, 24 de 50 perturbaciones N: 2  T_0: 1.2  d: 13
- Secuencia: [6, 7, 19, 15, 20, 1, 8, 14, 12, 17, 11, 16, 5, 3, 18, 10, 13, 9, 4, 2]  Makespan: [1366 1366 1366]  Tiempo de ejecucion: 1573.99 segundos o 26.233 minutos  100 iteraciones  Tiempo por iter: 15.74 s/iter
-
-Instancia2, 25 de 50 perturbaciones N: 2  T_0: 1.2  d: 16
- Secuencia: [6, 7, 3, 17, 9, 11, 18, 20, 19, 10, 1, 5, 8, 12, 14, 16, 15, 13, 4, 2]  Makespan: [1366 1366 1366]  Tiempo de ejecucion: 1397.967 segundos o 23.299 minutos  100 iteraciones  Tiempo por iter: 13.98 s/iter
-
-Instancia2, 26 de 50 perturbaciones N: 5  T_0: 0.4  d: 3
- Secuencia: [6, 19, 10, 7, 15, 13, 9, 12, 16, 3, 14, 8, 20, 17, 11, 18, 5, 1, 2, 4]  Makespan: [1360 1360 1360]  Tiempo de ejecucion: 7291.549 segundos o 121.526 minutos  625 iteraciones  Tiempo por iter: 11.666 s/iter
-
-Instancia2, 27 de 50 perturbaciones N: 5  T_0: 0.4  d: 6
- Secuencia: [6, 7, 19, 15, 11, 12, 9, 13, 14, 16, 10, 17, 20, 18, 5, 8, 4, 1, 3, 2]  Makespan: [1366 1366 1366]  Tiempo de ejecucion: 8564.632 segundos o 142.744 minutos  625 iteraciones  Tiempo por iter: 13.703 s/iter
-
-Instancia2, 28 de 50 perturbaciones N: 5  T_0: 0.4  d: 10
- Secuencia: [19, 6, 10, 7, 9, 15, 13, 4, 3, 18, 14, 12, 8, 16, 11, 20, 5, 17, 1, 2]  Makespan: [1366 1366 1366]  Tiempo de ejecucion: 9645.71 segundos o 160.762 minutos  625 iteraciones  Tiempo por iter: 15.433 s/iter
-
-Instancia2, 29 de 50 perturbaciones N: 5  T_0: 0.4  d: 13
- Secuencia: [6, 19, 10, 7, 18, 15, 3, 12, 9, 17, 1, 5, 16, 20, 4, 11, 2, 14, 8, 13]  Makespan: [1360 1360 1360]  Tiempo de ejecucion: 9626.194 segundos o 160.437 minutos  625 iteraciones  Tiempo por iter: 15.402 s/iter
-
-Instancia2, 30 de 50 perturbaciones N: 5  T_0: 0.4  d: 16
- Secuencia: [6, 10, 17, 7, 9, 12, 3, 19, 20, 1, 16, 5, 15, 8, 14, 11, 4, 13, 18, 2]  Makespan: [1363 1363 1363]  Tiempo de ejecucion: 8622.183 segundos o 143.703 minutos  625 iteraciones  Tiempo por iter: 13.795 s/iter
-
-Instancia2, 31 de 50 perturbaciones N: 5  T_0: 0.6  d: 3
- Secuencia: [6, 19, 10, 7, 15, 3, 9, 13, 14, 16, 12, 4, 17, 2, 20, 5, 8, 18, 11, 1]  Makespan: [1360 1360 1360]  Tiempo de ejecucion: 7300.114 segundos o 121.669 minutos  625 iteraciones  Tiempo por iter: 11.68 s/iter
-
-Instancia2, 32 de 50 perturbaciones N: 5  T_0: 0.6  d: 6
- Secuencia: [6, 19, 10, 7, 9, 12, 11, 17, 1, 15, 3, 13, 5, 20, 8, 14, 2, 16, 4, 18]  Makespan: [1361 1361 1361]  Tiempo de ejecucion: 8318.243 segundos o 138.637 minutos  625 iteraciones  Tiempo por iter: 13.309 s/iter
-
-Instancia2, 33 de 50 perturbaciones N: 5  T_0: 0.6  d: 10
- Secuencia: [6, 7, 19, 15, 9, 17, 14, 5, 1, 12, 3, 13, 18, 4, 20, 16, 8, 2, 11, 10]  Makespan: [1366 1366 1366]  Tiempo de ejecucion: 9654.858 segundos o 160.914 minutos  625 iteraciones  Tiempo por iter: 15.448 s/iter
-
-Instancia2, 34 de 50 perturbaciones N: 5  T_0: 0.6  d: 13
- Secuencia: [6, 19, 10, 7, 18, 15, 9, 4, 17, 14, 16, 12, 1, 13, 20, 11, 3, 5, 2, 8]  Makespan: [1360 1360 1360]  Tiempo de ejecucion: 9708.307 segundos o 161.805 minutos  625 iteraciones  Tiempo por iter: 15.533 s/iter
-
-Instancia2, 35 de 50 perturbaciones N: 5  T_0: 0.6  d: 16
- Secuencia: [6, 19, 10, 7, 15, 14, 17, 9, 1, 11, 13, 12, 3, 16, 20, 2, 4, 18, 8, 5]  Makespan: [1360 1360 1360]  Tiempo de ejecucion: 8740.939 segundos o 145.682 minutos  625 iteraciones  Tiempo por iter: 13.986 s/iter
-
-Instancia2, 36 de 50 perturbaciones N: 5  T_0: 0.8  d: 3
- Secuencia: [6, 7, 19, 20, 15, 17, 14, 1, 5, 12, 13, 16, 9, 11, 4, 18, 10, 3, 8, 2]  Makespan: [1366 1366 1366]  Tiempo de ejecucion: 7347.835 segundos o 122.464 minutos  625 iteraciones  Tiempo por iter: 11.757 s/iter
-
-Instancia2, 37 de 50 perturbaciones N: 5  T_0: 0.8  d: 6
- Secuencia: [19, 14, 6, 20, 7, 15, 1, 5, 13, 17, 4, 18, 10, 12, 8, 16, 3, 9, 11, 2]  Makespan: [1365 1365 1365]  Tiempo de ejecucion: 8444.793 segundos o 140.747 minutos  625 iteraciones  Tiempo por iter: 13.512 s/iter
-
-Instancia2, 38 de 50 perturbaciones N: 5  T_0: 0.8  d: 10
- Secuencia: [6, 7, 3, 17, 20, 12, 19, 5, 10, 13, 16, 18, 14, 15, 9, 1, 8, 4, 11, 2]  Makespan: [1366 1366 1366]  Tiempo de ejecucion: 9589.791 segundos o 159.83 minutos  625 iteraciones  Tiempo por iter: 15.344 s/iter
-
-Instancia2, 39 de 50 perturbaciones N: 5  T_0: 0.8  d: 13
- Secuencia: [19, 6, 10, 7, 20, 12, 3, 13, 9, 15, 4, 16, 11, 8, 18, 1, 17, 5, 2, 14]  Makespan: [1365 1365 1365]  Tiempo de ejecucion: 9488.884 segundos o 158.148 minutos  625 iteraciones  Tiempo por iter: 15.182 s/iter
-
-Instancia2, 40 de 50 perturbaciones N: 5  T_0: 0.8  d: 16
- Secuencia: [6, 10, 17, 7, 19, 15, 12, 1, 14, 18, 11, 9, 8, 20, 16, 5, 13, 2, 3, 4]  Makespan: [1359 1359 1359]  Tiempo de ejecucion: 8280.102 segundos o 138.002 minutos  625 iteraciones  Tiempo por iter: 13.248 s/iter
-
-Instancia2, 41 de 50 perturbaciones N: 5  T_0: 1.0  d: 3
- Secuencia: [6, 10, 17, 7, 15, 3, 19, 20, 11, 9, 13, 18, 5, 2, 4, 8, 14, 16, 12, 1]  Makespan: [1360 1360 1360]  Tiempo de ejecucion: 6077.355 segundos o 101.289 minutos  625 iteraciones  Tiempo por iter: 9.724 s/iter
-
-Instancia2, 42 de 50 perturbaciones N: 5  T_0: 1.0  d: 6
- Secuencia: [6, 7, 19, 15, 20, 12, 16, 3, 2, 18, 5, 17, 14, 4, 9, 1, 11, 8, 13, 10]  Makespan: [1366 1366 1366]  Tiempo de ejecucion: 7230.222 segundos o 120.504 minutos  625 iteraciones  Tiempo por iter: 11.568 s/iter
-
-Instancia2, 43 de 50 perturbaciones N: 5  T_0: 1.0  d: 10
- Secuencia: [19, 6, 10, 7, 17, 14, 9, 11, 15, 3, 18, 8, 20, 5, 12, 13, 4, 16, 1, 2]  Makespan: [1365 1365 1365]  Tiempo de ejecucion: 8146.335 segundos o 135.772 minutos  625 iteraciones  Tiempo por iter: 13.034 s/iter
-
-Instancia2, 44 de 50 perturbaciones N: 5  T_0: 1.0  d: 13
- Secuencia: [19, 14, 6, 20, 7, 15, 17, 12, 5, 9, 13, 16, 4, 10, 3, 1, 18, 8, 11, 2]  Makespan: [1365 1365 1365]  Tiempo de ejecucion: 8155.428 segundos o 135.924 minutos  625 iteraciones  Tiempo por iter: 13.049 s/iter
-
-Instancia2, 45 de 50 perturbaciones N: 5  T_0: 1.0  d: 16
- Secuencia: [6, 10, 17, 7, 18, 15, 9, 11, 13, 20, 8, 14, 12, 3, 1, 2, 19, 16, 4, 5]  Makespan: [1359 1359 1359]  Tiempo de ejecucion: 7393.197 segundos o 123.22 minutos  625 iteraciones  Tiempo por iter: 11.829 s/iter
-
-Instancia2, 46 de 50 perturbaciones N: 5  T_0: 1.2  d: 3
- Secuencia: [6, 7, 19, 20, 9, 3, 12, 15, 13, 5, 14, 18, 4, 2, 17, 1, 11, 16, 8, 10]  Makespan: [1366 1366 1366]  Tiempo de ejecucion: 6212.796 segundos o 103.547 minutos  625 iteraciones  Tiempo por iter: 9.94 s/iter
-
-Instancia2, 47 de 50 perturbaciones N: 5  T_0: 1.2  d: 6
- Secuencia: [6, 10, 17, 7, 15, 19, 9, 12, 16, 11, 14, 18, 5, 1, 13, 3, 20, 2, 4, 8]  Makespan: [1360 1360 1360]  Tiempo de ejecucion: 7087.612 segundos o 118.127 minutos  625 iteraciones  Tiempo por iter: 11.34 s/iter
-
-Instancia2, 48 de 50 perturbaciones N: 5  T_0: 1.2  d: 10
- Secuencia: [19, 6, 10, 7, 15, 1, 13, 18, 14, 5, 16, 12, 9, 11, 17, 3, 20, 8, 2, 4]  Makespan: [1365 1365 1365]  Tiempo de ejecucion: 7986.871 segundos o 133.115 minutos  625 iteraciones  Tiempo por iter: 12.779 s/iter
-
-Instancia2, 49 de 50 perturbaciones N: 5  T_0: 1.2  d: 13
- Secuencia: [6, 10, 17, 7, 9, 14, 11, 19, 12, 15, 13, 8, 18, 5, 3, 16, 20, 1, 2, 4]  Makespan: [1363 1363 1363]  Tiempo de ejecucion: 7973.799 segundos o 132.897 minutos  625 iteraciones  Tiempo por iter: 12.758 s/iter
-
-Instancia2, 50 de 50 perturbaciones N: 5  T_0: 1.2  d: 16
- Secuencia: [6, 10, 17, 7, 19, 15, 12, 1, 18, 14, 9, 11, 13, 16, 20, 5, 2, 3, 8, 4]  Makespan: [1359 1359 1359]  Tiempo de ejecucion: 7338.401 segundos o 122.307 minutos  625 iteraciones  Tiempo por iter: 11.741 s/iter
-
-## Instancia 3 de Taillard
-
-Instancia3, 1 de 50 perturbaciones N: 2  T_0: 0.4  d: 3
- Secuencia: [3, 16, 11, 14, 15, 10, 20, 18, 19, 1, 12, 9, 13, 7, 4, 5, 8, 17, 6, 2]  Makespan: [1098 1098 1098]  Tiempo de ejecucion: 1603.132 segundos o 26.719 minutos  100 iteraciones  Tiempo por iter: 16.031 s/iter
-
-Instancia3, 2 de 50 perturbaciones N: 2  T_0: 0.4  d: 6
- Secuencia: [3, 16, 14, 19, 18, 1, 20, 4, 12, 11, 13, 8, 7, 5, 9, 6, 10, 15, 17, 2]  Makespan: [1098 1098 1098]  Tiempo de ejecucion: 1786.987 segundos o 29.783 minutos  100 iteraciones  Tiempo por iter: 17.87 s/iter
-
-Instancia3, 3 de 50 perturbaciones N: 2  T_0: 0.4  d: 10
- Secuencia: [3, 15, 14, 16, 1, 20, 7, 19, 11, 10, 12, 6, 18, 13, 5, 9, 4, 8, 17, 2]  Makespan: [1096 1096 1096]  Tiempo de ejecucion: 1975.041 segundos o 32.917 minutos  100 iteraciones  Tiempo por iter: 19.75 s/iter
-
-Instancia3, 4 de 50 perturbaciones N: 2  T_0: 0.4  d: 13
- Secuencia: [3, 16, 11, 1, 20, 18, 14, 19, 13, 5, 7, 10, 12, 9, 8, 4, 17, 6, 15, 2]  Makespan: [1098 1098 1098]  Tiempo de ejecucion: 2030.339 segundos o 33.839 minutos  100 iteraciones  Tiempo por iter: 20.303 s/iter
-
-Instancia3, 5 de 50 perturbaciones N: 2  T_0: 0.4  d: 16
- Secuencia: [3, 16, 4, 19, 14, 13, 20, 5, 1, 12, 8, 11, 10, 18, 7, 17, 9, 6, 15, 2]  Makespan: [1098 1098 1098]  Tiempo de ejecucion: 1990.152 segundos o 33.169 minutos  100 iteraciones  Tiempo por iter: 19.902 s/iter
-
-Instancia3, 6 de 50 perturbaciones N: 2  T_0: 0.6  d: 3
- Secuencia: [3, 16, 14, 20, 19, 1, 7, 12, 13, 4, 5, 9, 10, 18, 15, 6, 11, 8, 17, 2]  Makespan: [1098 1098 1098]  Tiempo de ejecucion: 1547.588 segundos o 25.793 minutos  100 iteraciones  Tiempo por iter: 15.476 s/iter
-
-Instancia3, 7 de 50 perturbaciones N: 2  T_0: 0.6  d: 6
- Secuencia: [3, 16, 11, 1, 20, 7, 18, 4, 12, 13, 14, 17, 5, 6, 10, 19, 9, 8, 15, 2]  Makespan: [1098 1098 1098]  Tiempo de ejecucion: 1886.701 segundos o 31.445 minutos  100 iteraciones  Tiempo por iter: 18.867 s/iter
-
-Instancia3, 8 de 50 perturbaciones N: 2  T_0: 0.6  d: 10
- Secuencia: [3, 16, 1, 20, 7, 4, 5, 10, 19, 14, 13, 18, 12, 9, 17, 11, 8, 6, 15, 2]  Makespan: [1098 1098 1098]  Tiempo de ejecucion: 1956.271 segundos o 32.605 minutos  100 iteraciones  Tiempo por iter: 19.563 s/iter
-
-Instancia3, 9 de 50 perturbaciones N: 2  T_0: 0.6  d: 13
- Secuencia: [3, 16, 14, 4, 20, 7, 11, 1, 13, 19, 12, 5, 9, 10, 18, 8, 6, 15, 17, 2]  Makespan: [1098 1098 1098]  Tiempo de ejecucion: 1973.912 segundos o 32.899 minutos  100 iteraciones  Tiempo por iter: 19.739 s/iter
-
-Instancia3, 10 de 50 perturbaciones N: 2  T_0: 0.6  d: 16
- Secuencia: [3, 16, 14, 20, 18, 12, 1, 13, 19, 5, 4, 11, 10, 7, 6, 17, 9, 8, 15, 2]  Makespan: [1098 1098 1098]  Tiempo de ejecucion: 1920.056 segundos o 32.001 minutos  100 iteraciones  Tiempo por iter: 19.201 s/iter
-
-Instancia3, 11 de 50 perturbaciones N: 2  T_0: 0.8  d: 3
- Secuencia: [3, 16, 14, 20, 18, 7, 10, 12, 5, 1, 19, 4, 13, 11, 9, 17, 6, 8, 15, 2]  Makespan: [1098 1098 1098]  Tiempo de ejecucion: 1627.718 segundos o 27.129 minutos  100 iteraciones  Tiempo por iter: 16.277 s/iter
-
-Instancia3, 12 de 50 perturbaciones N: 2  T_0: 0.8  d: 6
- Secuencia: [3, 16, 14, 20, 7, 8, 13, 19, 18, 4, 12, 1, 5, 11, 10, 17, 9, 6, 15, 2]  Makespan: [1098 1098 1098]  Tiempo de ejecucion: 1813.652 segundos o 30.228 minutos  100 iteraciones  Tiempo por iter: 18.137 s/iter
-
-Instancia3, 13 de 50 perturbaciones N: 2  T_0: 0.8  d: 10
- Secuencia: [3, 16, 14, 20, 11, 18, 7, 19, 4, 10, 12, 8, 5, 1, 13, 17, 9, 6, 15, 2]  Makespan: [1098 1098 1098]  Tiempo de ejecucion: 2031.684 segundos o 33.861 minutos  100 iteraciones  Tiempo por iter: 20.317 s/iter
-
-Instancia3, 14 de 50 perturbaciones N: 2  T_0: 0.8  d: 13
- Secuencia: [3, 4, 16, 14, 20, 18, 5, 1, 10, 19, 7, 12, 9, 13, 11, 6, 8, 15, 17, 2]  Makespan: [1092 1092 1092]  Tiempo de ejecucion: 2091.971 segundos o 34.866 minutos  100 iteraciones  Tiempo por iter: 20.92 s/iter
-
-Instancia3, 15 de 50 perturbaciones N: 2  T_0: 0.8  d: 16
- Secuencia: [3, 16, 14, 15, 10, 18, 11, 20, 13, 12, 1, 19, 7, 5, 9, 4, 8, 17, 6, 2]  Makespan: [1098 1098 1098]  Tiempo de ejecucion: 1936.715 segundos o 32.279 minutos  100 iteraciones  Tiempo por iter: 19.367 s/iter
-
-Instancia3, 16 de 50 perturbaciones N: 2  T_0: 1.0  d: 3
- Secuencia: [3, 16, 14, 20, 18, 10, 7, 12, 5, 13, 11, 1, 4, 19, 9, 6, 15, 8, 17, 2]  Makespan: [1098 1098 1098]  Tiempo de ejecucion: 1576.344 segundos o 26.272 minutos  100 iteraciones  Tiempo por iter: 15.763 s/iter
-
-Instancia3, 17 de 50 perturbaciones N: 2  T_0: 1.0  d: 6
- Secuencia: [3, 16, 14, 20, 18, 15, 1, 7, 11, 13, 12, 4, 19, 9, 10, 5, 6, 8, 17, 2]  Makespan: [1098 1098 1098]  Tiempo de ejecucion: 1960.88 segundos o 32.681 minutos  100 iteraciones  Tiempo por iter: 19.609 s/iter
-
-Instancia3, 18 de 50 perturbaciones N: 2  T_0: 1.0  d: 10
- Secuencia: [3, 16, 11, 10, 18, 7, 1, 20, 19, 12, 9, 14, 15, 4, 13, 5, 6, 8, 17, 2]  Makespan: [1098 1098 1098]  Tiempo de ejecucion: 2102.814 segundos o 35.047 minutos  100 iteraciones  Tiempo por iter: 21.028 s/iter
-
-Instancia3, 19 de 50 perturbaciones N: 2  T_0: 1.0  d: 13
- Secuencia: [3, 4, 16, 19, 14, 18, 20, 13, 12, 8, 7, 11, 17, 1, 5, 10, 9, 15, 6, 2]  Makespan: [1097 1097 1097]  Tiempo de ejecucion: 2045.712 segundos o 34.095 minutos  100 iteraciones  Tiempo por iter: 20.457 s/iter
-
-Instancia3, 20 de 50 perturbaciones N: 2  T_0: 1.0  d: 16
- Secuencia: [3, 4, 16, 14, 19, 20, 18, 1, 12, 5, 10, 7, 6, 13, 11, 9, 8, 15, 17, 2]  Makespan: [1089 1089 1089]  Tiempo de ejecucion: 1856.071 segundos o 30.935 minutos  100 iteraciones  Tiempo por iter: 18.561 s/iter
-
-Instancia3, 21 de 50 perturbaciones N: 2  T_0: 1.2  d: 3
- Secuencia: [3, 16, 1, 20, 11, 7, 19, 14, 17, 10, 18, 12, 13, 5, 9, 8, 6, 4, 15, 2]  Makespan: [1098 1098 1098]  Tiempo de ejecucion: 1643.427 segundos o 27.39 minutos  100 iteraciones  Tiempo por iter: 16.434 s/iter
-
-Instancia3, 22 de 50 perturbaciones N: 2  T_0: 1.2  d: 6
- Secuencia: [3, 16, 14, 20, 7, 4, 18, 10, 5, 19, 1, 12, 9, 6, 13, 11, 8, 15, 17, 2]  Makespan: [1098 1098 1098]  Tiempo de ejecucion: 1808.416 segundos o 30.14 minutos  100 iteraciones  Tiempo por iter: 18.084 s/iter
-
-Instancia3, 23 de 50 perturbaciones N: 2  T_0: 1.2  d: 10
- Secuencia: [3, 4, 16, 19, 14, 18, 7, 15, 1, 20, 12, 11, 10, 5, 9, 8, 13, 17, 6, 2]  Makespan: [1097 1097 1097]  Tiempo de ejecucion: 2066.399 segundos o 34.44 minutos  100 iteraciones  Tiempo por iter: 20.664 s/iter
-
-Instancia3, 24 de 50 perturbaciones N: 2  T_0: 1.2  d: 13
- Secuencia: [3, 16, 14, 20, 18, 5, 1, 10, 4, 7, 19, 12, 11, 9, 13, 8, 17, 6, 15, 2]  Makespan: [1098 1098 1098]  Tiempo de ejecucion: 1992.078 segundos o 33.201 minutos  100 iteraciones  Tiempo por iter: 19.921 s/iter
-
-Instancia3, 25 de 50 perturbaciones N: 2  T_0: 1.2  d: 16
- Secuencia: [3, 16, 14, 19, 20, 4, 12, 10, 11, 13, 7, 18, 1, 5, 17, 6, 9, 8, 15, 2]  Makespan: [1098 1098 1098]  Tiempo de ejecucion: 1977.06 segundos o 32.951 minutos  100 iteraciones  Tiempo por iter: 19.771 s/iter
-
-Instancia3, 26 de 50 perturbaciones N: 5  T_0: 0.4  d: 3
- Secuencia: [3, 16, 4, 11, 1, 20, 18, 14, 19, 12, 10, 5, 6, 7, 8, 17, 9, 13, 15, 2]  Makespan: [1098 1098 1098]  Tiempo de ejecucion: 10125.991 segundos o 168.767 minutos  625 iteraciones  Tiempo por iter: 16.202 s/iter
-
-Instancia3, 27 de 50 perturbaciones N: 5  T_0: 0.4  d: 6
- Secuencia: [3, 4, 16, 11, 1, 20, 18, 19, 14, 13, 12, 7, 5, 6, 10, 15, 9, 8, 17, 2]  Makespan: [1087 1087 1087]  Tiempo de ejecucion: 11741.918 segundos o 195.699 minutos  625 iteraciones  Tiempo por iter: 18.787 s/iter
-
-Instancia3, 28 de 50 perturbaciones N: 5  T_0: 0.4  d: 10
- Secuencia: [3, 16, 14, 4, 20, 7, 18, 10, 5, 12, 6, 15, 1, 19, 8, 11, 9, 13, 17, 2]  Makespan: [1098 1098 1098]  Tiempo de ejecucion: 12747.111 segundos o 212.452 minutos  625 iteraciones  Tiempo por iter: 20.395 s/iter
-
-Instancia3, 29 de 50 perturbaciones N: 5  T_0: 0.4  d: 13
- Secuencia: [3, 4, 16, 14, 20, 7, 18, 12, 13, 10, 11, 8, 19, 5, 9, 1, 17, 6, 15, 2]  Makespan: [1092 1092 1092]  Tiempo de ejecucion: 12988.858 segundos o 216.481 minutos  625 iteraciones  Tiempo por iter: 20.782 s/iter
-
-Instancia3, 30 de 50 perturbaciones N: 5  T_0: 0.4  d: 16
- Secuencia: [3, 4, 16, 14, 19, 18, 11, 1, 13, 20, 5, 10, 12, 7, 6, 17, 9, 8, 15, 2]  Makespan: [1088 1088 1088]  Tiempo de ejecucion: 12239.86 segundos o 203.998 minutos  625 iteraciones  Tiempo por iter: 19.584 s/iter
-
-Instancia3, 31 de 50 perturbaciones N: 5  T_0: 0.6  d: 3
- Secuencia: [3, 4, 16, 14, 19, 1, 18, 20, 12, 8, 7, 17, 11, 10, 5, 6, 9, 13, 15, 2]  Makespan: [1088 1088 1088]  Tiempo de ejecucion: 10090.088 segundos o 168.168 minutos  625 iteraciones  Tiempo por iter: 16.144 s/iter
-
-Instancia3, 32 de 50 perturbaciones N: 5  T_0: 0.6  d: 6
- Secuencia: [3, 4, 16, 14, 19, 18, 7, 1, 10, 20, 12, 5, 8, 17, 11, 13, 9, 6, 15, 2]  Makespan: [1095 1095 1095]  Tiempo de ejecucion: 11713.698 segundos o 195.228 minutos  625 iteraciones  Tiempo por iter: 18.742 s/iter
-
-Instancia3, 33 de 50 perturbaciones N: 5  T_0: 0.6  d: 10
- Secuencia: [3, 4, 16, 14, 19, 20, 18, 10, 12, 9, 7, 1, 17, 5, 13, 11, 8, 6, 15, 2]  Makespan: [1089 1089 1089]  Tiempo de ejecucion: 13037.378 segundos o 217.29 minutos  625 iteraciones  Tiempo por iter: 20.86 s/iter
-
-Instancia3, 34 de 50 perturbaciones N: 5  T_0: 0.6  d: 13
- Secuencia: [3, 4, 16, 14, 19, 20, 11, 10, 7, 18, 12, 1, 13, 5, 6, 9, 8, 15, 17, 2]  Makespan: [1089 1089 1089]  Tiempo de ejecucion: 13021.395 segundos o 217.023 minutos  625 iteraciones  Tiempo por iter: 20.834 s/iter
-
-Instancia3, 35 de 50 perturbaciones N: 5  T_0: 0.6  d: 16
- Secuencia: [3, 4, 16, 19, 14, 20, 18, 11, 7, 1, 17, 12, 8, 10, 5, 9, 6, 13, 15, 2]  Makespan: [1097 1097 1097]  Tiempo de ejecucion: 11724.042 segundos o 195.401 minutos  625 iteraciones  Tiempo por iter: 18.758 s/iter
-
-Instancia3, 36 de 50 perturbaciones N: 5  T_0: 0.8  d: 3
- Secuencia: [3, 16, 14, 19, 10, 18, 7, 20, 1, 5, 13, 11, 4, 12, 9, 17, 6, 8, 15, 2]  Makespan: [1098 1098 1098]  Tiempo de ejecucion: 8612.868 segundos o 143.548 minutos  625 iteraciones  Tiempo por iter: 13.781 s/iter
-
-Instancia3, 37 de 50 perturbaciones N: 5  T_0: 0.8  d: 6
- Secuencia: [3, 16, 1, 20, 18, 5, 10, 7, 4, 12, 11, 14, 19, 13, 17, 8, 9, 6, 15, 2]  Makespan: [1098 1098 1098]  Tiempo de ejecucion: 9779.707 segundos o 162.995 minutos  625 iteraciones  Tiempo por iter: 15.648 s/iter
-
-Instancia3, 38 de 50 perturbaciones N: 5  T_0: 0.8  d: 10
- Secuencia: [3, 16, 11, 14, 4, 13, 20, 18, 1, 19, 12, 5, 10, 9, 7, 6, 8, 15, 17, 2]  Makespan: [1098 1098 1098]  Tiempo de ejecucion: 10940.545 segundos o 182.342 minutos  625 iteraciones  Tiempo por iter: 17.505 s/iter
-
-Instancia3, 39 de 50 perturbaciones N: 5  T_0: 0.8  d: 13
- Secuencia: [3, 16, 14, 20, 18, 7, 1, 19, 11, 10, 12, 5, 9, 13, 6, 4, 15, 8, 17, 2]  Makespan: [1098 1098 1098]  Tiempo de ejecucion: 10989.154 segundos o 183.153 minutos  625 iteraciones  Tiempo por iter: 17.583 s/iter
-
-Instancia3, 40 de 50 perturbaciones N: 5  T_0: 0.8  d: 16
- Secuencia: [3, 4, 16, 14, 19, 18, 6, 20, 7, 13, 12, 11, 10, 5, 1, 9, 8, 15, 17, 2]  Makespan: [1094 1094 1094]  Tiempo de ejecucion: 10423.189 segundos o 173.72 minutos  625 iteraciones  Tiempo por iter: 16.677 s/iter
-
-Instancia3, 41 de 50 perturbaciones N: 5  T_0: 1.0  d: 3
- Secuencia: [3, 4, 16, 19, 14, 18, 20, 1, 7, 17, 12, 10, 5, 6, 9, 13, 11, 8, 15, 2]  Makespan: [1097 1097 1097]  Tiempo de ejecucion: 8571.895 segundos o 142.865 minutos  625 iteraciones  Tiempo por iter: 13.715 s/iter
-
-Instancia3, 42 de 50 perturbaciones N: 5  T_0: 1.0  d: 6
- Secuencia: [3, 4, 16, 14, 20, 18, 7, 11, 1, 13, 19, 12, 5, 6, 9, 8, 10, 15, 17, 2]  Makespan: [1090 1090 1090]  Tiempo de ejecucion: 9714.653 segundos o 161.911 minutos  625 iteraciones  Tiempo por iter: 15.543 s/iter
-
-Instancia3, 43 de 50 perturbaciones N: 5  T_0: 1.0  d: 10
- Secuencia: [3, 4, 16, 19, 14, 18, 20, 12, 9, 1, 7, 10, 17, 5, 6, 11, 8, 13, 15, 2]  Makespan: [1097 1097 1097]  Tiempo de ejecucion: 9735.827 segundos o 162.264 minutos  625 iteraciones  Tiempo por iter: 15.577 s/iter
-
-Instancia3, 44 de 50 perturbaciones N: 5  T_0: 1.0  d: 13
- Secuencia: [3, 4, 16, 14, 19, 18, 7, 13, 12, 10, 20, 5, 9, 1, 11, 15, 6, 8, 17, 2]  Makespan: [1096 1096 1096]  Tiempo de ejecucion: 9164.664 segundos o 152.744 minutos  625 iteraciones  Tiempo por iter: 14.663 s/iter
-
-Instancia3, 45 de 50 perturbaciones N: 5  T_0: 1.0  d: 16
- Secuencia: [3, 4, 16, 19, 14, 18, 20, 10, 5, 12, 1, 7, 11, 13, 9, 6, 15, 8, 17, 2]  Makespan: [1097 1097 1097]  Tiempo de ejecucion: 8653.299 segundos o 144.222 minutos  625 iteraciones  Tiempo por iter: 13.845 s/iter
-
-Instancia3, 46 de 50 perturbaciones N: 5  T_0: 1.2  d: 3
- Secuencia: [3, 4, 16, 14, 19, 1, 18, 7, 20, 5, 10, 12, 11, 13, 9, 6, 15, 8, 17, 2]  Makespan: [1089 1089 1089]  Tiempo de ejecucion: 7173.413 segundos o 119.557 minutos  625 iteraciones  Tiempo por iter: 11.477 s/iter
-
-Instancia3, 47 de 50 perturbaciones N: 5  T_0: 1.2  d: 6
- Secuencia: [3, 4, 16, 19, 14, 18, 20, 10, 12, 5, 11, 1, 13, 6, 7, 17, 9, 8, 15, 2]  Makespan: [1097 1097 1097]  Tiempo de ejecucion: 8146.904 segundos o 135.782 minutos  625 iteraciones  Tiempo por iter: 13.035 s/iter
-
-Instancia3, 48 de 50 perturbaciones N: 5  T_0: 1.2  d: 10
- Secuencia: [3, 4, 16, 14, 19, 20, 11, 10, 7, 18, 12, 1, 15, 6, 5, 13, 9, 8, 17, 2]  Makespan: [1090 1090 1090]  Tiempo de ejecucion: 9120.196 segundos o 152.003 minutos  625 iteraciones  Tiempo por iter: 14.592 s/iter
-
-Instancia3, 49 de 50 perturbaciones N: 5  T_0: 1.2  d: 13
- Secuencia: [3, 4, 16, 14, 20, 18, 13, 12, 19, 10, 7, 1, 5, 11, 17, 6, 9, 8, 15, 2]  Makespan: [1089 1089 1089]  Tiempo de ejecucion: 9326.287 segundos o 155.438 minutos  625 iteraciones  Tiempo por iter: 14.922 s/iter
-
-Instancia3, 50 de 50 perturbaciones N: 5  T_0: 1.2  d: 16
- Secuencia: [3, 4, 16, 14, 19, 20, 1, 7, 18, 13, 12, 5, 10, 9, 8, 17, 11, 6, 15, 2]  Makespan: [1088 1088 1088]  Tiempo de ejecucion: 8798.235 segundos o 146.637 minutos  625 iteraciones  Tiempo por iter: 14.077 s/iter
-
-## Instancia 4 de Taillard
-
-Instancia4, 1 de 50 perturbaciones N: 2  T_0: 0.4  d: 3
- Secuencia: [13, 16, 14, 9, 11, 7, 17, 15, 20, 1, 19, 10, 2, 12, 5, 3, 8, 6, 4, 18]  Makespan: [1301 1301 1301]  Tiempo de ejecucion: 1779.335 segundos o 29.656 minutos  100 iteraciones  Tiempo por iter: 17.793 s/iter
-
-Instancia4, 2 de 50 perturbaciones N: 2  T_0: 0.4  d: 6
- Secuencia: [13, 9, 16, 7, 17, 15, 11, 5, 2, 12, 20, 19, 10, 1, 8, 3, 6, 14, 4, 18]  Makespan: [1305 1305 1305]  Tiempo de ejecucion: 1894.396 segundos o 31.573 minutos  100 iteraciones  Tiempo por iter: 18.944 s/iter
-
-Instancia4, 3 de 50 perturbaciones N: 2  T_0: 0.4  d: 10
- Secuencia: [13, 9, 16, 11, 1, 15, 17, 19, 10, 5, 2, 12, 20, 7, 3, 8, 6, 14, 4, 18]  Makespan: [1304 1304 1304]  Tiempo de ejecucion: 2175.12 segundos o 36.252 minutos  100 iteraciones  Tiempo por iter: 21.751 s/iter
-
-Instancia4, 4 de 50 perturbaciones N: 2  T_0: 0.4  d: 13
- Secuencia: [13, 16, 11, 9, 7, 17, 1, 5, 19, 10, 14, 18, 20, 15, 2, 12, 8, 3, 6, 4]  Makespan: [1309 1309 1309]  Tiempo de ejecucion: 2134.719 segundos o 35.579 minutos  100 iteraciones  Tiempo por iter: 21.347 s/iter
-
-Instancia4, 5 de 50 perturbaciones N: 2  T_0: 0.4  d: 16
- Secuencia: [13, 17, 9, 2, 20, 11, 16, 19, 10, 7, 12, 5, 15, 1, 8, 6, 14, 3, 4, 18]  Makespan: [1304 1304 1304]  Tiempo de ejecucion: 2121.04 segundos o 35.351 minutos  100 iteraciones  Tiempo por iter: 21.21 s/iter
-
-Instancia4, 6 de 50 perturbaciones N: 2  T_0: 0.6  d: 3
- Secuencia: [13, 9, 17, 11, 15, 16, 7, 19, 20, 2, 12, 10, 1, 5, 3, 8, 6, 14, 4, 18]  Makespan: [1303 1303 1303]  Tiempo de ejecucion: 1800.833 segundos o 30.014 minutos  100 iteraciones  Tiempo por iter: 18.008 s/iter
-
-Instancia4, 7 de 50 perturbaciones N: 2  T_0: 0.6  d: 6
- Secuencia: [13, 9, 16, 2, 17, 19, 7, 20, 11, 10, 5, 12, 15, 1, 8, 3, 6, 14, 4, 18]  Makespan: [1306 1306 1306]  Tiempo de ejecucion: 1908.062 segundos o 31.801 minutos  100 iteraciones  Tiempo por iter: 19.081 s/iter
-
-Instancia4, 8 de 50 perturbaciones N: 2  T_0: 0.6  d: 10
- Secuencia: [13, 9, 16, 7, 17, 11, 12, 15, 19, 10, 1, 20, 2, 5, 6, 8, 18, 14, 3, 4]  Makespan: [1305 1305 1305]  Tiempo de ejecucion: 2247.891 segundos o 37.465 minutos  100 iteraciones  Tiempo por iter: 22.479 s/iter
-
-Instancia4, 9 de 50 perturbaciones N: 2  T_0: 0.6  d: 13
- Secuencia: [13, 16, 11, 17, 9, 19, 10, 7, 5, 1, 12, 20, 15, 2, 3, 6, 8, 14, 4, 18]  Makespan: [1309 1309 1309]  Tiempo de ejecucion: 2243.942 segundos o 37.399 minutos  100 iteraciones  Tiempo por iter: 22.439 s/iter
-
-Instancia4, 10 de 50 perturbaciones N: 2  T_0: 0.6  d: 16
- Secuencia: [13, 9, 16, 2, 17, 19, 12, 15, 10, 1, 5, 20, 11, 4, 8, 7, 14, 6, 3, 18]  Makespan: [1306 1306 1306]  Tiempo de ejecucion: 1980.963 segundos o 33.016 minutos  100 iteraciones  Tiempo por iter: 19.81 s/iter
-
-Instancia4, 11 de 50 perturbaciones N: 2  T_0: 0.8  d: 3
- Secuencia: [13, 9, 16, 2, 17, 19, 20, 7, 11, 10, 14, 15, 1, 5, 6, 4, 8, 12, 3, 18]  Makespan: [1306 1306 1306]  Tiempo de ejecucion: 1735.428 segundos o 28.924 minutos  100 iteraciones  Tiempo por iter: 17.354 s/iter
-
-Instancia4, 12 de 50 perturbaciones N: 2  T_0: 0.8  d: 6
- Secuencia: [13, 17, 9, 11, 7, 16, 19, 10, 5, 1, 12, 15, 20, 2, 4, 8, 6, 14, 3, 18]  Makespan: [1298 1298 1298]  Tiempo de ejecucion: 1960.835 segundos o 32.681 minutos  100 iteraciones  Tiempo por iter: 19.608 s/iter
-
-Instancia4, 13 de 50 perturbaciones N: 2  T_0: 0.8  d: 10
- Secuencia: [13, 16, 14, 9, 11, 17, 19, 15, 10, 7, 20, 2, 12, 1, 5, 4, 18, 8, 3, 6]  Makespan: [1301 1301 1301]  Tiempo de ejecucion: 2270.077 segundos o 37.835 minutos  100 iteraciones  Tiempo por iter: 22.701 s/iter
-
-Instancia4, 14 de 50 perturbaciones N: 2  T_0: 0.8  d: 13
- Secuencia: [13, 17, 9, 7, 12, 11, 10, 19, 16, 5, 15, 1, 20, 2, 3, 8, 6, 14, 4, 18]  Makespan: [1302 1302 1302]  Tiempo de ejecucion: 2170.101 segundos o 36.168 minutos  100 iteraciones  Tiempo por iter: 21.701 s/iter
-
-Instancia4, 15 de 50 perturbaciones N: 2  T_0: 0.8  d: 16
- Secuencia: [13, 16, 9, 17, 11, 7, 10, 19, 20, 2, 5, 1, 6, 12, 15, 8, 14, 18, 3, 4]  Makespan: [1308 1308 1308]  Tiempo de ejecucion: 2085.022 segundos o 34.75 minutos  100 iteraciones  Tiempo por iter: 20.85 s/iter
-
-Instancia4, 16 de 50 perturbaciones N: 2  T_0: 1.0  d: 3
- Secuencia: [13, 17, 9, 2, 12, 11, 15, 16, 1, 5, 19, 20, 10, 7, 14, 4, 8, 6, 3, 18]  Makespan: [1302 1302 1302]  Tiempo de ejecucion: 1821.237 segundos o 30.354 minutos  100 iteraciones  Tiempo por iter: 18.212 s/iter
-
-Instancia4, 17 de 50 perturbaciones N: 2  T_0: 1.0  d: 6
- Secuencia: [13, 9, 16, 2, 17, 19, 15, 12, 11, 10, 7, 4, 20, 1, 8, 5, 6, 14, 3, 18]  Makespan: [1306 1306 1306]  Tiempo de ejecucion: 1959.091 segundos o 32.652 minutos  100 iteraciones  Tiempo por iter: 19.591 s/iter
-
-Instancia4, 18 de 50 perturbaciones N: 2  T_0: 1.0  d: 10
- Secuencia: [13, 17, 9, 7, 12, 11, 10, 19, 20, 16, 2, 14, 15, 1, 5, 8, 4, 3, 18, 6]  Makespan: [1308 1308 1308]  Tiempo de ejecucion: 2166.039 segundos o 36.101 minutos  100 iteraciones  Tiempo por iter: 21.66 s/iter
-
-Instancia4, 19 de 50 perturbaciones N: 2  T_0: 1.0  d: 13
- Secuencia: [13, 17, 19, 9, 16, 11, 4, 10, 1, 5, 7, 12, 15, 20, 2, 8, 14, 3, 18, 6]  Makespan: [1301 1301 1301]  Tiempo de ejecucion: 2170.418 segundos o 36.174 minutos  100 iteraciones  Tiempo por iter: 21.704 s/iter
-
-Instancia4, 20 de 50 perturbaciones N: 2  T_0: 1.0  d: 16
- Secuencia: [13, 17, 9, 7, 16, 19, 10, 4, 1, 5, 11, 8, 12, 15, 20, 2, 18, 14, 3, 6]  Makespan: [1306 1306 1306]  Tiempo de ejecucion: 2071.211 segundos o 34.52 minutos  100 iteraciones  Tiempo por iter: 20.712 s/iter
-
-Instancia4, 21 de 50 perturbaciones N: 2  T_0: 1.2  d: 3
- Secuencia: [13, 17, 9, 11, 7, 16, 19, 2, 12, 20, 15, 1, 4, 10, 5, 8, 6, 14, 3, 18]  Makespan: [1300 1300 1300]  Tiempo de ejecucion: 1741.032 segundos o 29.017 minutos  100 iteraciones  Tiempo por iter: 17.41 s/iter
-
-Instancia4, 22 de 50 perturbaciones N: 2  T_0: 1.2  d: 6
- Secuencia: [13, 17, 19, 15, 9, 16, 7, 12, 2, 20, 11, 5, 10, 1, 8, 4, 18, 14, 3, 6]  Makespan: [1311 1311 1311]  Tiempo de ejecucion: 1940.273 segundos o 32.338 minutos  100 iteraciones  Tiempo por iter: 19.403 s/iter
-
-Instancia4, 23 de 50 perturbaciones N: 2  T_0: 1.2  d: 10
- Secuencia: [13, 17, 9, 7, 16, 19, 1, 11, 10, 20, 4, 2, 5, 12, 15, 8, 18, 14, 3, 6]  Makespan: [1305 1305 1305]  Tiempo de ejecucion: 2224.317 segundos o 37.072 minutos  100 iteraciones  Tiempo por iter: 22.243 s/iter
-
-Instancia4, 24 de 50 perturbaciones N: 2  T_0: 1.2  d: 13
- Secuencia: [13, 17, 9, 11, 10, 1, 19, 16, 12, 15, 7, 20, 2, 5, 8, 14, 18, 3, 6, 4]  Makespan: [1308 1308 1308]  Tiempo de ejecucion: 2164.539 segundos o 36.076 minutos  100 iteraciones  Tiempo por iter: 21.645 s/iter
-
-Instancia4, 25 de 50 perturbaciones N: 2  T_0: 1.2  d: 16
- Secuencia: [13, 17, 19, 9, 16, 11, 1, 15, 7, 12, 10, 4, 20, 2, 5, 8, 6, 14, 3, 18]  Makespan: [1293 1293 1293]  Tiempo de ejecucion: 2178.99 segundos o 36.316 minutos  100 iteraciones  Tiempo por iter: 21.79 s/iter
-
-Instancia4, 26 de 50 perturbaciones N: 5  T_0: 0.4  d: 3
- Secuencia: [13, 9, 16, 7, 17, 11, 1, 19, 10, 5, 12, 15, 20, 2, 8, 14, 18, 3, 6, 4]  Makespan: [1301 1301 1301]  Tiempo de ejecucion: 11135.973 segundos o 185.6 minutos  625 iteraciones  Tiempo por iter: 17.818 s/iter
-
-Instancia4, 27 de 50 perturbaciones N: 5  T_0: 0.4  d: 6
- Secuencia: [13, 17, 19, 9, 16, 11, 2, 1, 20, 15, 7, 12, 10, 4, 5, 8, 6, 14, 3, 18]  Makespan: [1293 1293 1293]  Tiempo de ejecucion: 12108.337 segundos o 201.806 minutos  625 iteraciones  Tiempo por iter: 19.373 s/iter
-
-Instancia4, 28 de 50 perturbaciones N: 5  T_0: 0.4  d: 10
- Secuencia: [13, 17, 9, 11, 7, 16, 19, 4, 10, 5, 20, 2, 1, 12, 15, 8, 6, 14, 3, 18]  Makespan: [1297 1297 1297]  Tiempo de ejecucion: 13590.232 segundos o 226.504 minutos  625 iteraciones  Tiempo por iter: 21.744 s/iter
-
-Instancia4, 29 de 50 perturbaciones N: 5  T_0: 0.4  d: 13
- Secuencia: [13, 17, 9, 11, 7, 20, 2, 12, 19, 16, 15, 4, 10, 1, 5, 6, 8, 14, 3, 18]  Makespan: [1300 1300 1300]  Tiempo de ejecucion: 13762.853 segundos o 229.381 minutos  625 iteraciones  Tiempo por iter: 22.021 s/iter
-
-Instancia4, 30 de 50 perturbaciones N: 5  T_0: 0.4  d: 16
- Secuencia: [13, 17, 19, 9, 16, 7, 5, 11, 10, 12, 15, 1, 4, 8, 20, 2, 14, 6, 3, 18]  Makespan: [1298 1298 1298]  Tiempo de ejecucion: 12924.548 segundos o 215.409 minutos  625 iteraciones  Tiempo por iter: 20.679 s/iter
-
-Instancia4, 31 de 50 perturbaciones N: 5  T_0: 0.6  d: 3
- Secuencia: [13, 17, 19, 9, 16, 11, 7, 1, 15, 12, 8, 4, 10, 5, 20, 2, 6, 14, 3, 18]  Makespan: [1299 1299 1299]  Tiempo de ejecucion: 10998.084 segundos o 183.301 minutos  625 iteraciones  Tiempo por iter: 17.597 s/iter
-
-Instancia4, 32 de 50 perturbaciones N: 5  T_0: 0.6  d: 6
- Secuencia: [13, 17, 9, 11, 7, 16, 19, 20, 2, 5, 4, 10, 1, 12, 15, 8, 6, 14, 3, 18]  Makespan: [1297 1297 1297]  Tiempo de ejecucion: 12215.715 segundos o 203.595 minutos  625 iteraciones  Tiempo por iter: 19.545 s/iter
-
-Instancia4, 33 de 50 perturbaciones N: 5  T_0: 0.6  d: 10
- Secuencia: [13, 17, 19, 9, 16, 11, 7, 20, 1, 5, 12, 15, 10, 2, 4, 8, 14, 3, 18, 6]  Makespan: [1301 1301 1301]  Tiempo de ejecucion: 13350.287 segundos o 222.505 minutos  625 iteraciones  Tiempo por iter: 21.36 s/iter
-
-Instancia4, 34 de 50 perturbaciones N: 5  T_0: 0.6  d: 13
- Secuencia: [13, 9, 16, 7, 17, 19, 11, 10, 1, 5, 12, 15, 20, 2, 8, 14, 3, 18, 6, 4]  Makespan: [1301 1301 1301]  Tiempo de ejecucion: 13548.404 segundos o 225.807 minutos  625 iteraciones  Tiempo por iter: 21.677 s/iter
-
-Instancia4, 35 de 50 perturbaciones N: 5  T_0: 0.6  d: 16
- Secuencia: [13, 17, 19, 9, 16, 11, 7, 5, 10, 12, 15, 1, 4, 8, 20, 2, 6, 14, 3, 18]  Makespan: [1298 1298 1298]  Tiempo de ejecucion: 11189.367 segundos o 186.489 minutos  625 iteraciones  Tiempo por iter: 17.903 s/iter
-
-Instancia4, 36 de 50 perturbaciones N: 5  T_0: 0.8  d: 3
- Secuencia: [13, 17, 19, 9, 16, 7, 1, 20, 11, 5, 12, 15, 10, 2, 4, 8, 14, 6, 3, 18]  Makespan: [1296 1296 1296]  Tiempo de ejecucion: 9438.152 segundos o 157.303 minutos  625 iteraciones  Tiempo por iter: 15.101 s/iter
-
-Instancia4, 37 de 50 perturbaciones N: 5  T_0: 0.8  d: 6
- Secuencia: [13, 17, 9, 11, 7, 19, 16, 15, 12, 10, 1, 20, 2, 4, 5, 8, 6, 14, 3, 18]  Makespan: [1300 1300 1300]  Tiempo de ejecucion: 10617.769 segundos o 176.963 minutos  625 iteraciones  Tiempo por iter: 16.988 s/iter
-
-Instancia4, 38 de 50 perturbaciones N: 5  T_0: 0.8  d: 10
- Secuencia: [13, 17, 9, 11, 7, 19, 16, 20, 2, 12, 15, 5, 10, 1, 8, 14, 4, 6, 3, 18]  Makespan: [1300 1300 1300]  Tiempo de ejecucion: 11510.159 segundos o 191.836 minutos  625 iteraciones  Tiempo por iter: 18.416 s/iter
-
-Instancia4, 39 de 50 perturbaciones N: 5  T_0: 0.8  d: 13
- Secuencia: [13, 17, 9, 11, 7, 16, 19, 12, 15, 10, 1, 5, 20, 2, 14, 4, 8, 6, 3, 18]  Makespan: [1297 1297 1297]  Tiempo de ejecucion: 11795.828 segundos o 196.597 minutos  625 iteraciones  Tiempo por iter: 18.873 s/iter
-
-Instancia4, 40 de 50 perturbaciones N: 5  T_0: 0.8  d: 16
- Secuencia: [13, 17, 19, 9, 10, 11, 7, 20, 16, 2, 4, 5, 1, 12, 15, 8, 14, 3, 18, 6]  Makespan: [1304 1304 1304]  Tiempo de ejecucion: 11100.778 segundos o 185.013 minutos  625 iteraciones  Tiempo por iter: 17.761 s/iter
-
-Instancia4, 41 de 50 perturbaciones N: 5  T_0: 1.0  d: 3
- Secuencia: [13, 17, 9, 11, 7, 16, 19, 1, 12, 15, 10, 5, 20, 2, 4, 8, 6, 14, 3, 18]  Makespan: [1297 1297 1297]  Tiempo de ejecucion: 9650.944 segundos o 160.849 minutos  625 iteraciones  Tiempo por iter: 15.442 s/iter
-
-Instancia4, 42 de 50 perturbaciones N: 5  T_0: 1.0  d: 6
- Secuencia: [13, 16, 14, 9, 11, 15, 17, 2, 12, 20, 19, 10, 7, 5, 1, 8, 3, 4, 18, 6]  Makespan: [1301 1301 1301]  Tiempo de ejecucion: 8687.553 segundos o 144.793 minutos  625 iteraciones  Tiempo por iter: 13.9 s/iter
-
-Instancia4, 43 de 50 perturbaciones N: 5  T_0: 1.0  d: 10
- Secuencia: [13, 17, 9, 11, 7, 16, 19, 1, 20, 5, 12, 15, 10, 2, 14, 4, 8, 6, 3, 18]  Makespan: [1298 1298 1298]  Tiempo de ejecucion: 9596.384 segundos o 159.94 minutos  625 iteraciones  Tiempo por iter: 15.354 s/iter
-
-Instancia4, 44 de 50 perturbaciones N: 5  T_0: 1.0  d: 13
- Secuencia: [13, 17, 9, 11, 7, 16, 19, 12, 15, 10, 1, 5, 20, 2, 4, 8, 6, 14, 3, 18]  Makespan: [1297 1297 1297]  Tiempo de ejecucion: 9628.038 segundos o 160.467 minutos  625 iteraciones  Tiempo por iter: 15.405 s/iter
-
-Instancia4, 45 de 50 perturbaciones N: 5  T_0: 1.0  d: 16
- Secuencia: [13, 17, 19, 9, 16, 11, 15, 2, 20, 7, 12, 10, 4, 1, 5, 6, 8, 14, 3, 18]  Makespan: [1300 1300 1300]  Tiempo de ejecucion: 9292.879 segundos o 154.881 minutos  625 iteraciones  Tiempo por iter: 14.869 s/iter
-
-Instancia4, 46 de 50 perturbaciones N: 5  T_0: 1.2  d: 3
- Secuencia: [13, 17, 19, 9, 16, 11, 1, 15, 2, 12, 10, 4, 5, 20, 7, 8, 14, 3, 18, 6]  Makespan: [1301 1301 1301]  Tiempo de ejecucion: 7766.271 segundos o 129.438 minutos  625 iteraciones  Tiempo por iter: 12.426 s/iter
-
-Instancia4, 47 de 50 perturbaciones N: 5  T_0: 1.2  d: 6
- Secuencia: [13, 16, 14, 9, 11, 7, 17, 19, 10, 5, 12, 15, 20, 2, 1, 4, 6, 8, 3, 18]  Makespan: [1302 1302 1302]  Tiempo de ejecucion: 8674.969 segundos o 144.583 minutos  625 iteraciones  Tiempo por iter: 13.88 s/iter
-
-Instancia4, 48 de 50 perturbaciones N: 5  T_0: 1.2  d: 10
- Secuencia: [13, 9, 16, 7, 17, 15, 1, 5, 19, 10, 12, 20, 11, 2, 8, 14, 3, 6, 4, 18]  Makespan: [1299 1299 1299]  Tiempo de ejecucion: 9732.77 segundos o 162.213 minutos  625 iteraciones  Tiempo por iter: 15.572 s/iter
-
-Instancia4, 49 de 50 perturbaciones N: 5  T_0: 1.2  d: 13
- Secuencia: [13, 17, 9, 11, 2, 20, 1, 12, 15, 7, 16, 19, 10, 4, 5, 8, 6, 14, 3, 18]  Makespan: [1301 1301 1301]  Tiempo de ejecucion: 10524.605 segundos o 175.41 minutos  625 iteraciones  Tiempo por iter: 16.839 s/iter
-
-Instancia4, 50 de 50 perturbaciones N: 5  T_0: 1.2  d: 16
- Secuencia: [13, 9, 16, 11, 2, 12, 15, 17, 5, 19, 10, 20, 7, 1, 8, 3, 6, 14, 4, 18]  Makespan: [1304 1304 1304]  Tiempo de ejecucion: 9928.765 segundos o 165.479 minutos  625 iteraciones  Tiempo por iter: 15.886 s/iter
-
