@@ -4,7 +4,7 @@
   <meta charset="utf-8" />
   <meta name="generator" content="pandoc" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
-  <title>Trabajo_de_Grado_Tatiana_Porras</title>
+  <title>Trabajo_de_Grado_Tatiana_Porras_toc</title>
   <style>
     code{white-space: pre-wrap;}
     span.smallcaps{font-variant: small-caps;}
@@ -56,7 +56,8 @@
   <![endif]-->
 </head>
 <body>
-<!-- Compilar con: pandoc.exe .\Trabajo_de_Grado_Tatiana_Porras.md -c .\Estilo1.css --katex --filter pandoc-crossref --citeproc -s -o Trabajo_de_Grado_Tatiana_Porras.html -->
+<!-- Generar la tabla de contenido ejecutando:  -->
+<!-- Compilar con: pandoc.exe --template=.\template.markdown .\Trabajo_de_Grado_Tatiana_Porras.md -c .\Estilo1.css --katex --filter pandoc-crossref --citeproc -s -o Trabajo_de_Grado_Tatiana_Porras.html -->
 <!-- Luego, imprimir Trabajo_de_Grado_Tatiana_Porras.html a PDF desde Chrome -->
 <div id="main-title">
 <p>ALGORITMO VORAZ ITERATIVO CON MULTI-VECINDAD APLICADO AL PROBLEMA DE
@@ -89,10 +90,91 @@ FACULTAD DE INGENIERÍA<br />
 PROYECTO CURRICULAR DE INGENIERÍA INDUSTRIAL<br />
 Bogotá D.C., Colombia. 2021-05-30</p>
 </div>
-<h1 id="título">TÍTULO</h1>
+<h1 id="tabla-de-contenidos">TABLA DE CONTENIDOS</h1>
+<ol type="1">
+<li><a
+href="#título">TÍTULO</a>……………………………………………………………………………………………………………………….
+2</li>
+<li><a
+href="#resumen">RESUMEN</a>……………………………………………………………………………………………………………………
+2</li>
+<li><a
+href="#abstract">ABSTRACT</a>…………………………………………………………………………………………………………………..
+3</li>
+<li><a
+href="#introducción">INTRODUCCIÓN</a>…………………………………………………………………………………………………………….
+3</li>
+<li><a href="#planteamiento-del-problema">PLANTEAMIENTO DEL
+PROBLEMA</a>…………………………………………………………………………………….. 4<br />
+5.1. <a href="#elementos-del-problema">Elementos del
+Problema</a>…………………………………………………………………………………………………. 4<br />
+5.2. <a href="#pregunta-del-problema">Pregunta del
+Problema</a>…………………………………………………………………………………………………… 4<br />
+5.3. <a href="#subpreguntas-del-problema">Subpreguntas del
+Problema</a>……………………………………………………………………………………………… 5<br />
+</li>
+<li><a
+href="#objetivos">OBJETIVOS</a>…………………………………………………………………………………………………………………..
+5<br />
+6.1. <a href="#objetivo-general">Objetivo
+General</a>…………………………………………………………………………………………………………. 5<br />
+6.2. <a href="#objetivos-específicos">Objetivos
+Específicos</a>……………………………………………………………………………………………………. 5<br />
+</li>
+<li><a
+href="#justificación">JUSTIFICACIÓN</a>……………………………………………………………………………………………………………..
+5</li>
+<li><a href="#alcances-y-limitaciones-del-proyecto">ALCANCES Y
+LIMITACIONES DEL PROYECTO</a>……………………………………………………………………….. 6</li>
+<li><a href="#marco-de-referencia">MARCO DE
+REFERENCIA</a>………………………………………………………………………………………………… 7<br />
+9.1. <a href="#antecedentes-y-marco-teórico">Antecedentes y Marco
+Teórico</a>………………………………………………………………………………………….. 7<br />
+9.2. <a href="#marco-conceptual">Marco
+Conceptual</a>……………………………………………………………………………………………………….. 7<br />
+</li>
+<li><a
+href="#hipótesis">HIPÓTESIS</a>………………………………………………………………………………………………………………….
+23</li>
+<li><a href="#diseño-metodológico">DISEÑO
+METODOLÓGICO</a>………………………………………………………………………………………………. 23<br />
+11.1. <a href="#escritura-del-algoritmo-mnig-en-python">Escritura del
+algoritmo MNIG en Python</a>…………………………………………………………………………….. 23<br />
+11.2. <a
+href="#ejecución-del-algoritmo-mnig-en-instancia-del-modelo-fmmsp">Ejecución
+del algoritmo MNIG en instancia del modelo FMMSP</a>……………………………………………………
+24<br />
+11.3. <a
+href="#comparación-del-algoritmo-mnig-con-otros-algoritmos">Comparación
+del algoritmo MNIG con otros algoritmos</a>……………………………………………………………..
+25<br />
+11.4. <a href="#instancias-de-taillard">Instancias de
+Taillard</a>………………………………………………………………………………………………….. 25<br />
+11.5. <a href="#perturbaciones-al-algoritmo-mnig">Perturbaciones al
+algoritmo MNIG</a>…………………………………………………………………………………… 25<br />
+</li>
+<li><a
+href="#resultados">RESULTADOS</a>………………………………………………………………………………………………………………
+26<br />
+12.1. <a href="#análisis-de-resultados">Análisis de
+resultados</a>…………………………………………………………………………………………………. 27<br />
+12.2. <a href="#resultados-de-las-instancias-de-taillard">Resultados de
+las instancias de Taillard</a>………………………………………………………………………………. 27<br />
+12.3. <a href="#resultados-de-las-200-perturbaciones">Resultados de las
+200 perturbaciones</a>…………………………………………………………………………………. 37<br />
+</li>
+<li><a href="#conclusiones-y-recomendaciones">CONCLUSIONES Y
+RECOMENDACIONES</a>…………………………………………………………………………….. 38</li>
+<li><a href="#glosario-de-anglicismos">GLOSARIO DE
+ANGLICISMOS</a>………………………………………………………………………………………….. 38</li>
+<li><a
+href="#referencias">REFERENCIAS</a>……………………………………………………………………………………………………………..
+38</li>
+</ol>
+<h1 id="título">1. TÍTULO</h1>
 <p>“ALGORITMO VORAZ ITERATIVO CON MULTI-VECINDAD APLICADO AL PROBLEMA DE
 SECUENCIACIÓN DIFUSO MULTIPRODUCTO Y MULTIETAPAS”</p>
-<h1 id="resumen">RESUMEN</h1>
+<h1 id="resumen">2. RESUMEN</h1>
 <p>Este trabajo exploró el Problema de Secuenciación Difuso
 Multiproducto y Multietapas (FMMSP por sus siglas en inglés, denotado
 como <span class="math inline">FFc | \tilde{T}_{i, u}, batch(b), Z_{i,
@@ -114,8 +196,11 @@ algoritmos. El algoritmo MNIG también fue aplicado a instancias de
 Taillard, que son instancias del problema flow shop básico.</p>
 <p><strong>Palabras Clave</strong>: Algoritmo Voraz Iterativo,
 Multi-vecindad, Secuenciación, Números Triangulares Difusos,
-Multiproducto, Multietapas.</p>
-<h1 id="abstract">ABSTRACT</h1>
+Multiproducto, Multietapas.<br />
+<br />
+<br />
+</p>
+<h1 id="abstract">3. ABSTRACT</h1>
 <p>This work explored the Fuzzy Multiproduct Multistage Scheduling
 Problem (FMMSP, denoted as <span class="math inline">FFc | \tilde{T}_{i,
 u}, batch(b), Z_{i, u, s} | C_{max}</span>) that can be observed in
@@ -138,7 +223,7 @@ problem.</p>
 <p><strong>Keywords</strong>: Iterated Greedy Algorithm,
 Multi-neighborhood, Scheduling, Triangular Fuzzy Numbers, Multiproduct,
 Multistage.</p>
-<h1 id="introducción">INTRODUCCIÓN</h1>
+<h1 id="introducción">4. INTRODUCCIÓN</h1>
 <p>El presente trabajo de tesis de pregrado ha hecho un aporte a un
 pequeño a mi conocimiento sobre los sistemas flow shop flexible con
 tiempos de procesamiento representados con números triangulares difusos,
@@ -209,7 +294,7 @@ bases de datos tales como: ScienceDirect, SCOPUS, Cengage Learning,
 Engineering Village, IEEE, JSTOR, y EBSCO. Se usaron y mezclaron las
 palabras clave: ‘fuzzy’, ‘multiproduct’, ‘multistage’, ‘scheduling’,
 ‘triangular fuzzy number’.</p>
-<h1 id="planteamiento-del-problema">PLANTEAMIENTO DEL PROBLEMA</h1>
+<h1 id="planteamiento-del-problema">5. PLANTEAMIENTO DEL PROBLEMA</h1>
 <p>El problema que se resolvió con esta tesis, es el de explorar el
 algoritmo MNIG como candidato para encontrar secuencias de un sistema de
 producción del tipo FMMSP, de modo tal que dichas secuencias tengan un
@@ -220,7 +305,7 @@ buenas soluciones del modelo FMMSP, pero estas soluciones tienen
 variabilidad, que hace que empeore la solución promedio encontrada por
 esos algoritmos. El algoritmo MNIG es capaz de mejorar la solución
 promedio encontrada para el modelo FMMSP.</p>
-<h2 id="elementos-del-problema">Elementos del Problema</h2>
+<h2 id="elementos-del-problema">5.1. Elementos del Problema</h2>
 <p>Según lo anterior, los elementos del problema son:</p>
 <ul>
 <li>Se requieren secuencias con bajos makespan en el modelo FMMSP,
@@ -244,7 +329,7 @@ algoritmos DBSA-LS, BDBSA, MBSA, e IGA. El algoritmo MNIG mejoró la
 solución promedio al ser comparada con los otros cuatro algoritmos, en
 la instancia o10s2u5 del modelo FMMSP.</li>
 </ul>
-<h2 id="pregunta-del-problema">Pregunta del Problema</h2>
+<h2 id="pregunta-del-problema">5.2. Pregunta del Problema</h2>
 <p>¿Cómo puede el algoritmo MNIG mejorar las soluciones promedio
 encontradas para el modelo FMMSP?</p>
 <p><strong>Respuesta encontrada en este trabajo</strong>: Implementando
@@ -253,7 +338,7 @@ modelo FMMSP. No es obligatorio que el algoritmo MNIG mejorara la
 solución promedio, pues eso no se podía predecir sin hacer este trabajo,
 pero se encontró que de hecho el algoritmo MNIG sí mejora la solución
 promedio respecto a los algoritmos DBSA-LS, BDBSA, MBSA, e IGA.</p>
-<h2 id="subpreguntas-del-problema">Subpreguntas del Problema</h2>
+<h2 id="subpreguntas-del-problema">5.3. Subpreguntas del Problema</h2>
 <p>¿Cómo puede implementarse el algoritmo MNIG, para obtener resultados
 del modelo FMMSP, denotado como <span class="math inline">FFc |
 \tilde{T}_{i, u}, batch(b), Z_{i, u, s} | C_{max}</span>?</p>
@@ -276,14 +361,14 @@ los otros cuatro algoritmos?</p>
 <p><strong>Respuesta</strong>: El algoritmo MNIG sorprendió en sus
 resultados, pues resultó ser al menos igual de bueno, y mejor en
 promedio, que los algoritmos DBSA-LS, BDBSA, MBSA, e IGA.</p>
-<h1 id="objetivos">OBJETIVOS</h1>
-<h2 id="objetivo-general">Objetivo General</h2>
+<h1 id="objetivos">6. OBJETIVOS</h1>
+<h2 id="objetivo-general">6.1. Objetivo General</h2>
 <ul>
 <li>Encontrar soluciones a través del algoritmo MNIG para el modelo
 FMMSP, y determinar si las soluciones encontradas mejoran o no la
 solución promedio.</li>
 </ul>
-<h2 id="objetivos-específicos">Objetivos Específicos</h2>
+<h2 id="objetivos-específicos">6.2. Objetivos Específicos</h2>
 <ul>
 <li>Implementar el algoritmo MNIG de modo que se puedan obtener
 resultados del modelo FMMSP, denotado como <span class="math inline">FFc
@@ -300,7 +385,7 @@ MNIG.</li>
 <li>Determinar la efectividad del algoritmo MNIG respecto al modelo flow
 shop general.</li>
 </ul>
-<h1 id="justificación">JUSTIFICACIÓN</h1>
+<h1 id="justificación">7. JUSTIFICACIÓN</h1>
 <p>Se propone este trabajo porque en el mundo académico existe una
 necesidad de comprobar que nuevos algoritmos den resultados comparables
 a viejos algoritmos, al ser aplicados a los modelos. En particular en el
@@ -376,7 +461,7 @@ producción, usando las tres partes que forman un número triangular
 difuso: el tiempo optimista de producción, el tiempo promedio de
 producción, y el tiempo pesimista de producción (esto se puede ver
 también en la sección del marco de referencia).</p>
-<h1 id="alcances-y-limitaciones-del-proyecto">ALCANCES Y LIMITACIONES
+<h1 id="alcances-y-limitaciones-del-proyecto">8. ALCANCES Y LIMITACIONES
 DEL PROYECTO</h1>
 <p><strong>Alcances:</strong> Los alcances de este proyecto están bien
 definidos. Parte del alcance consiste en escribir un algoritmo en
@@ -387,12 +472,13 @@ este proyecto con los de otros cuatro algoritmos (DBSA-LS, BDBSA, MBSA,
 e IGA) aplicados al modelo FMMSP <span class="math inline">FFc |
 \tilde{T}_{i, u}, batch(b), Z_{i, u, s} | C_{max}</span>. Dicha tesis
 será entregada a la Universidad Distrital.</p>
-<h1 id="marco-de-referencia">MARCO DE REFERENCIA</h1>
+<h1 id="marco-de-referencia">9. MARCO DE REFERENCIA</h1>
 <p>El marco de referencia se enfoca en el scheduling de los sistemas de
 producción tipo FMMSP, en el algoritmo MNIG que es un tipo de
 metaheurística, y en los otros cuatro algoritmos que son DBSA-LS, BDBSA,
 MBSA, e IGA.</p>
-<h2 id="antecedentes-y-marco-teórico">Antecedentes y Marco Teórico</h2>
+<h2 id="antecedentes-y-marco-teórico">9.1. Antecedentes y Marco
+Teórico</h2>
 <p>En los antecedentes encontramos dos temas pilares: el scheduling, y
 las metaheurísticas. Del libro de scheduling de Pinedo <span
 class="citation" data-cites="schedPinedo">(Pinedo 2016)</span> se tiene
@@ -436,7 +522,7 @@ tipos de problemas, y aunque originalmente no haya sido diseñado
 pensando en el modelo FMMSP <span class="math inline">FFc |
 \tilde{T}_{i, u}, batch(b), Z_{i, u, s} | C_{max}</span> se puede
 adaptar fácilmente sin cambiar la esencia de la metaheurística.</p>
-<h2 id="marco-conceptual">Marco Conceptual</h2>
+<h2 id="marco-conceptual">9.2. Marco Conceptual</h2>
 <p><strong>Scheduling:</strong> problemas de optimización en los que se
 establece una secuencia de trabajos en un sistema de producción, y se
 busca optimizar la medida de desempeño de interés en el sistema de
@@ -788,6 +874,9 @@ de Python:</p>
 <div class="imag">
 <p><img src="diags/diag_dneh_smr.svg" /></p>
 </div>
+<p><br />
+<br />
+</p>
 <hr />
 <p><strong>Algoritmo 1</strong> DNEH_SMR en pseudocódigo Python</p>
 <hr />
@@ -877,6 +966,9 @@ versión de diagrama de flujo y en pseudocódigo de Python:</p>
 <div class="imag">
 <p><img src="diags/diag_desrec.svg" /></p>
 </div>
+<p><br />
+<br />
+</p>
 <hr />
 <p><strong>Algoritmo 2</strong> Destrucción y reconstrucción de las
 secuencias</p>
@@ -948,6 +1040,9 @@ Python:</p>
 <div class="imag">
 <p><img src="diags/diag_busq_local.svg" /></p>
 </div>
+<p><br />
+<br />
+</p>
 <hr />
 <p><strong>Algoritmo 3</strong> Búsqueda local con multi-vecindad</p>
 <hr />
@@ -1023,6 +1118,11 @@ Shao, and Pi 2020)</span></p>
 <div class="imag">
 <p><img src="diags/diag_MNIG.svg" /></p>
 </div>
+<p><br />
+<br />
+<br />
+<br />
+</p>
 <hr />
 <p><strong>Algoritmo 4</strong> MNIG</p>
 <hr />
@@ -1115,22 +1215,23 @@ class="math inline">FFc | \tilde{T}_{i, u}, batch(b), Z_{i, u, s} |
 C_{max}</span>, el algoritmo MNIG, y los cuatro algoritmos DBSA-LS,
 BDBSA, MBSA, e IGA. Con este marco de referencia se llevó a cabo el
 proyecto de grado.</p>
-<h1 id="hipótesis">HIPÓTESIS</h1>
+<h1 id="hipótesis">10. HIPÓTESIS</h1>
 <p>A través del algoritmo MNIG se pueden encontrar soluciones para el
 modelo FMMSP <span class="math inline">FFc | \tilde{T}_{i, u}, batch(b),
 Z_{i, u, s} | C_{max}</span>. Tras su aplicación la efectividad del
 algoritmo MNIG es medible y es comparable a la efectividad de los otros
 cuatro algoritmos: DBSA-LS, BDBSA, MBSA, e IGA.</p>
-<h1 id="diseño-metodológico">DISEÑO METODOLÓGICO</h1>
+<h1 id="diseño-metodológico">11. DISEÑO METODOLÓGICO</h1>
 <p>El diseño metodológico de este proyecto abarca las siguientes partes
 principales: escribir el algoritmo MNIG en Python, ejecutar el algoritmo
 MNIG en una instancia del modelo FMMSP, comparar los resultados del
 algoritmo MNIG con los resultados de los otros cuatro algoritmos que ya
 han sido aplicados al modelo FMMSP (DBSA-LS, BDBSA, MBSA, e IGA), y
 perturbar el algoritmo MNIG tomando los tiempos de ejecución de 200
-perturbaciones.</p>
-<h2 id="escritura-del-algoritmo-mnig-en-python">Escritura del algoritmo
-MNIG en Python</h2>
+perturbaciones.<br />
+</p>
+<h2 id="escritura-del-algoritmo-mnig-en-python">11.1. Escritura del
+algoritmo MNIG en Python</h2>
 <p>El algoritmo MNIG se escribió en el lenguaje Python como una
 aplicación de consola. El interprete de Python empieza por ejecutar un
 archivo de texto plano de Python, en que se encuentran los parámetros
@@ -1173,8 +1274,8 @@ secuencia final así como su makespan.</p>
 <code>__init__.py</code> se podría decir que es el paquete con los
 algoritmos necesarios para ejecutar el algoritmo principal MNIG.</p>
 <h2
-id="ejecución-del-algoritmo-mnig-en-instancia-del-modelo-fmmsp">Ejecución
-del algoritmo MNIG en instancia del modelo FMMSP</h2>
+id="ejecución-del-algoritmo-mnig-en-instancia-del-modelo-fmmsp">11.2.
+Ejecución del algoritmo MNIG en instancia del modelo FMMSP</h2>
 <p>Aquí se explica por qué sólo se trabajará una instancia y no varias
 del modelo FMMSP <span class="math inline">FFc | \tilde{T}_{i, u},
 batch(b), Z_{i, u, s} | C_{max}</span>. La razón es que sólo existe una
@@ -1196,15 +1297,15 @@ instancia sobre la que se probará el algoritmo es de 10 trabajos, 2
 etapas, y 5 unidades. La siguiente tabla contiene los datos de la
 instancia: <span class="citation" data-cites="modFMMSP">(Yan, Han, and
 Gu 2020)</span></p>
-<table>
+<table style="width:97%;">
 <caption>Tiempos de procesamiento de la instancia o10s2u5</caption>
 <colgroup>
-<col style="width: 13%" />
-<col style="width: 17%" />
-<col style="width: 17%" />
-<col style="width: 17%" />
-<col style="width: 17%" />
-<col style="width: 17%" />
+<col style="width: 12%" />
+<col style="width: 16%" />
+<col style="width: 16%" />
+<col style="width: 16%" />
+<col style="width: 16%" />
+<col style="width: 16%" />
 </colgroup>
 <thead>
 <tr class="header">
@@ -1303,8 +1404,8 @@ Gu 2020)</span></p>
 tabla pues son números difusos triangulares. El algoritmo fue ejecutado
 sobre esta instancia o10s2u5 y se compararon los resultados con los de
 los otros cuatro algoritmos.</p>
-<h2 id="comparación-del-algoritmo-mnig-con-otros-algoritmos">Comparación
-del algoritmo MNIG con otros algoritmos</h2>
+<h2 id="comparación-del-algoritmo-mnig-con-otros-algoritmos">11.3.
+Comparación del algoritmo MNIG con otros algoritmos</h2>
 <p>Tras aplicar el algoritmo MNIG a la instancia del modelo FMMSP y
 obtener resultados, se comparó con los otros cuatro algoritmos. Estos
 son: DBSA-LS, BDBSA, MBSA, e IGA. Estos cuatro algoritmos ya fueron
@@ -1354,7 +1455,7 @@ instancia o10s2u5</caption>
 algoritmo MNIG al ser aplicado al modelo FMMSP <span
 class="math inline">FFc | \tilde{T}_{i, u}, batch(b), Z_{i, u, s} |
 C_{max}</span>.</p>
-<h2 id="instancias-de-taillard">Instancias de Taillard</h2>
+<h2 id="instancias-de-taillard">11.4. Instancias de Taillard</h2>
 <p>A nivel internacional, se reconocen algunas instancias con las que se
 puede medir la efectividad de las metaheurísticas. Para el caso flow
 shop, las instancias de Taillard son instancias que se han venido usando
@@ -1368,8 +1469,8 @@ horas por cada instancia, es decir, al menos 25 días de ejecución
 continua, y probablemente más. Aparte para analizar el algoritmo MNIG
 aplicado al problema flow shop básico, no necesariamente es obligatorio
 probar con todas las instancias.</p>
-<h2 id="perturbaciones-al-algoritmo-mnig">Perturbaciones al algoritmo
-MNIG</h2>
+<h2 id="perturbaciones-al-algoritmo-mnig">11.5. Perturbaciones al
+algoritmo MNIG</h2>
 <p>Se realizaron 200 perturbaciones distintas al algoritmo MNIG,
 variando el sistema flow shop (usando instancias de Taillard), el
 parámetro <span class="math inline">N</span>, el parámetro <span
@@ -1413,7 +1514,7 @@ Si por ejemplo el sistema tiene 36 trabajos, entonces los valores de
 3/6 = 18, 4/6 = 24, 5/6 = 30, es decir [6, 12, 18, 24, 30]. Las primeras
 4 instancias de Taillard tienen 20 trabajos, por lo cual los valores de
 <span class="math inline">d</span> son [3, 6, 10, 13, 16].</p>
-<h1 id="resultados">RESULTADOS</h1>
+<h1 id="resultados">12. RESULTADOS</h1>
 <p>Se corrió varias veces el algoritmo MNIG implementado en Python, para
 resolver la instancia o10s2u5 del modelo FMMSP. Las siguientes dos
 tablas presentan un resumen de los resultados encontrados al resolver la
@@ -1479,8 +1580,10 @@ instancia o10s2u5.</p>
 </tr>
 </tbody>
 </table>
-<p>Todas estas secuencias tienen un makespan de (36, 44, 52).</p>
-<h2 id="análisis-de-resultados">Análisis de resultados</h2>
+<p>Todas estas secuencias tienen un makespan de (36, 44, 52).<br />
+<br />
+</p>
+<h2 id="análisis-de-resultados">12.1. Análisis de resultados</h2>
 <p>El algoritmo MNIG se corrió más de 30 veces en la instancia o10s2u5
 del modelo FMMSP, y se midió el tiempo de ejecución de esas 30 veces
 para promediarlo. Se encontró un tiempo de ejecución promedio de 0.83
@@ -1495,19 +1598,19 @@ o10s2u5. En todas las ejecuciones, el algoritmo MNIG aportó la misma
 solución, por lo que la peor y mejor solución, son la misma. Esto
 muestra una mejora por parte del algoritmo MNIG en comparación de los
 otros cuatro algoritmos.</p>
-<table>
+<table style="width:97%;">
 <caption>Comparación de los algoritmos</caption>
 <colgroup>
-<col style="width: 14%" />
+<col style="width: 15%" />
+<col style="width: 16%" />
+<col style="width: 24%" />
+<col style="width: 24%" />
 <col style="width: 17%" />
-<col style="width: 25%" />
-<col style="width: 25%" />
-<col style="width: 18%" />
 </colgroup>
 <thead>
 <tr class="header">
 <th style="text-align: center;">Algoritmo</th>
-<th style="text-align: center;">Mejor valor</th>
+<th style="text-align: left;">Mejor valor</th>
 <th style="text-align: center;">Valor medio</th>
 <th style="text-align: center;">Peor valor</th>
 <th style="text-align: center;">% de mejora del MNIG</th>
@@ -1516,35 +1619,35 @@ otros cuatro algoritmos.</p>
 <tbody>
 <tr class="odd">
 <td style="text-align: center;">MNIG</td>
-<td style="text-align: center;">(36,44,52)</td>
+<td style="text-align: left;">(36,44,52)</td>
 <td style="text-align: center;">(36,44,52)</td>
 <td style="text-align: center;">(36,44,52)</td>
 <td style="text-align: center;">0.00%</td>
 </tr>
 <tr class="even">
 <td style="text-align: center;">DBSA-LS</td>
-<td style="text-align: center;">(36,44,52)</td>
+<td style="text-align: left;">(36,44,52)</td>
 <td style="text-align: center;">(38,45,52)</td>
 <td style="text-align: center;">(42,48,53)</td>
 <td style="text-align: center;">2.22%</td>
 </tr>
 <tr class="odd">
 <td style="text-align: center;">BDBSA</td>
-<td style="text-align: center;">(36,44,52)</td>
+<td style="text-align: left;">(36,44,52)</td>
 <td style="text-align: center;">(38.6,45.5,52)</td>
 <td style="text-align: center;">(40,46,54)</td>
 <td style="text-align: center;">3.08%</td>
 </tr>
 <tr class="even">
 <td style="text-align: center;">MBSA</td>
-<td style="text-align: center;">(40,47,55)</td>
+<td style="text-align: left;">(40,47,55)</td>
 <td style="text-align: center;">(44,50,57)</td>
 <td style="text-align: center;">(42.2,49.3,54.6)</td>
 <td style="text-align: center;">12.44%</td>
 </tr>
 <tr class="odd">
 <td style="text-align: center;">IGA</td>
-<td style="text-align: center;">(39,45,52)</td>
+<td style="text-align: left;">(39,45,52)</td>
 <td style="text-align: center;">(40.1,46.9,54.5)</td>
 <td style="text-align: center;">(43,49,57)</td>
 <td style="text-align: center;">6.58%</td>
@@ -1580,19 +1683,23 @@ porcentajes.</p>
 promedio al menos un 2.22% y máximo un 12.44%, en comparación con los
 algoritmos DBSA-LS, BDBSA, MBSA, e IGA, para la instancia o10s2u5 del
 modelo FMMSP.</p>
-<h2 id="resultados-de-las-instancias-de-taillard">Resultados de las
-instancias de Taillard</h2>
+<h2 id="resultados-de-las-instancias-de-taillard">12.2. Resultados de
+las instancias de Taillard</h2>
 <p>El algoritmo MNIG se aplicó a las primeras 95 instancias de Taillard.
 Se decidió no aplicarlo a las últimas 25 instancias (son 120 en total),
 porque esta implementación del algoritmo MNIG se tardaba más de 24 horas
-por instancia.</p>
-<table>
+por instancia.<br />
+<br />
+<br />
+<br />
+</p>
+<table style="width:98%;">
 <caption>Resultados de las instancias de Taillard</caption>
 <colgroup>
-<col style="width: 8%" />
-<col style="width: 7%" />
-<col style="width: 65%" />
-<col style="width: 19%" />
+<col style="width: 13%" />
+<col style="width: 12%" />
+<col style="width: 54%" />
+<col style="width: 16%" />
 </colgroup>
 <thead>
 <tr class="header">
@@ -2544,20 +2651,20 @@ sobre todo en instancias de gran cantidad de trabajos y máquinas (por
 ejemplo 500 trabajos y 20 máquinas, instancias de este tamaño
 requerirían varios días de ejecución por iteración, en esta
 implementación del algoritmo).</p>
-<h2 id="resultados-de-las-200-perturbaciones">Resultados de las 200
-perturbaciones</h2>
+<h2 id="resultados-de-las-200-perturbaciones">12.3. Resultados de las
+200 perturbaciones</h2>
 <p>En el Anexo A se presentan los resultados de las 200 perturbaciones
 (es demasiado largo para mostrarlo aquí). La siguiente tabla muestra las
 mejores secuencias que se pudieron encontrar gracias a las
 perturbaciones, en las primeras 4 instancias de Taillard:</p>
-<table>
+<table style="width:98%;">
 <caption>Mejores secuencias encontradas con las perturbaciones</caption>
 <colgroup>
-<col style="width: 5%" />
-<col style="width: 23%" />
-<col style="width: 46%" />
+<col style="width: 11%" />
+<col style="width: 35%" />
+<col style="width: 31%" />
 <col style="width: 10%" />
-<col style="width: 13%" />
+<col style="width: 10%" />
 </colgroup>
 <thead>
 <tr class="header">
@@ -2640,13 +2747,13 @@ altos de <span class="math inline">T_0</span> y de <span
 class="math inline">d</span>.</p>
 <p>La siguiente es la tabla resumen de los resultados de las
 perturbaciones realizadas al algoritmo MNIG:</p>
-<table>
+<table style="width:97%;">
 <caption>Resumen de las perturbaciones</caption>
 <colgroup>
-<col style="width: 10%" />
-<col style="width: 27%" />
+<col style="width: 15%" />
 <col style="width: 25%" />
-<col style="width: 37%" />
+<col style="width: 22%" />
+<col style="width: 34%" />
 </colgroup>
 <thead>
 <tr class="header">
@@ -2688,7 +2795,7 @@ aproximadamente hora y media. El tiempo promedio por instancia, de 50
 perturbaciones, es de 4690.67 minutos, aproximadamente 78 horas, o poco
 más de 3 días de computación continua (por esto se optó por no probar
 instancias con <span class="math inline">N</span> mayor que 5).</p>
-<h1 id="conclusiones-y-recomendaciones">CONCLUSIONES Y
+<h1 id="conclusiones-y-recomendaciones">13. CONCLUSIONES Y
 RECOMENDACIONES</h1>
 <p>A futuro se podría mejorar el algoritmo para tratar otros problemas
 de scheduling. Con este trabajo se puede concluir que no hay impedimento
@@ -2711,7 +2818,7 @@ class="math inline">N</span>, porque el tiempo de ejecución crece según
 el cuadrado de este parámetro.</p>
 <p>Como conclusión final, este trabajo evidencia que el algoritmo MNIG
 sí es competitivo para resolver el problema FMMSP.</p>
-<h1 id="glosario-de-anglicismos">GLOSARIO DE ANGLICISMOS</h1>
+<h1 id="glosario-de-anglicismos">14. GLOSARIO DE ANGLICISMOS</h1>
 <p><strong>Scheduling</strong>: Rama de estudio de la secuenciación de
 trabajos en un sistema productivo.</p>
 <p><strong>Makespan</strong>: Tiempo de terminación máximo de una
@@ -2722,7 +2829,7 @@ las máquinas es el mismo para todos los trabajos.</p>
 <p><strong>Greedy algorithm</strong>: Tipo de algoritmo que en español
 se le llama algoritmo voraz.</p>
 <p><strong>Fuzzy number</strong>: Número difuso.</p>
-<h1 class="unnumbered" id="referencias">REFERENCIAS</h1>
+<h1 class="unnumbered" id="referencias">15. REFERENCIAS</h1>
 <div id="refs" class="references csl-bib-body hanging-indent"
 role="doc-bibliography">
 <div id="ref-fuzzyNum" class="csl-entry" role="doc-biblioentry">

@@ -1,3 +1,92 @@
+---
+references:
+- author:
+  - family: Yan
+    given: Xueli
+  - family: Han
+    given: Yuxin
+  - family: Gu
+    given: Xingsheng
+  container-title: Neurocomputing
+  doi: "https://doi.org/10.1016/j.neucom.2020.02.066"
+  id: modFMMSP
+  issued: 2020
+  title: An improved discrete backtracking searching algorithm for fuzzy
+    multiproduct multistage scheduling problem
+  type: article-journal
+- author:
+  - family: Shao
+    given: Weishi
+  - family: Shao
+    given: Zhongshi
+  - family: Pi
+    given: Dechang
+  container-title: Knowledge-Based Systems
+  doi: "https://doi.org/10.1016/j.knosys.2020.105527"
+  id: algMNIG
+  issued: 2020
+  title: Modeling and multi neighborhood iterated greedy algorithm for
+    distributed hybrid flow shop scheduling problem
+  type: article-journal
+- author:
+  - family: Pinedo
+    given: Michael
+  edition: 5
+  id: schedPinedo
+  isbn: 978-3-319-26578-0
+  issued: 2016
+  publisher: Springer
+  publisher-place: New York, USA
+  title: Scheduling, Theory, Algorithms, and Systems
+  type: book
+- author:
+  - family: Talbi
+    given: El-Ghazali
+  edition: 1
+  id: metaTalbi
+  isbn: 978-0-470-27858-1
+  issued: 2009
+  publisher: Wiley
+  publisher-place: USA
+  title: Metaheuristics, From Design to Implementation
+  type: book
+- author:
+  - family: Garey
+    given: M.
+  - family: Jhonson
+    given: D.
+  - family: Sethi
+    given: R.
+  container-title: Mathematics of Operations Research
+  id: flowCompl
+  issue: 2
+  issued: 1976
+  page: 117, 129
+  title: The complexity of flowshop and jobshop scheduling
+  type: article-journal
+  volume: 1
+- author:
+  - family: Taillard
+    given: E.
+  container-title: EJOR
+  id: instTaillard
+  issue: 2
+  issued: 1993
+  page: 278, 285
+  title: Benchmarks for basic scheduling problems
+  type: article-journal
+  volume: 64
+- author:
+  - family: Anand
+    given: M. Clement
+  - family: Bharatraj
+    given: Janani
+  id: fuzzyNum
+  issued: 2017
+  title: Theory of Triangular Fuzzy Number
+  type: paper-conference
+---
+
 ```{=html}
 <!-- Generar la tabla de contenido ejecutando:  -->
 ```
@@ -40,12 +129,52 @@ PROYECTO CURRICULAR DE INGENIERÍA INDUSTRIAL\
 Bogotá D.C., Colombia. 2021-05-30
 :::
 
-# TÍTULO
+# TABLA DE CONTENIDOS
+
+1.   [TÍTULO](#título)........................................................................................................................................ 2
+2.   [RESUMEN](#resumen).................................................................................................................................... 2
+3.   [ABSTRACT](#abstract)................................................................................................................................... 3
+4.   [INTRODUCCIÓN](#introducción)............................................................................................................................ 3
+5.   [PLANTEAMIENTO DEL PROBLEMA](#planteamiento-del-problema).................................................................................................. 4\
+    5.1.   [Elementos del Problema](#elementos-del-problema)................................................................................................................ 4\
+    5.2.   [Pregunta del Problema](#pregunta-del-problema).................................................................................................................. 4\
+    5.3.   [Subpreguntas del Problema](#subpreguntas-del-problema)............................................................................................................ 5\
+6.   [OBJETIVOS](#objetivos)................................................................................................................................... 5\
+    6.1.   [Objetivo General](#objetivo-general)......................................................................................................................... 5\
+    6.2.   [Objetivos Específicos](#objetivos-específicos)................................................................................................................... 5\
+7.   [JUSTIFICACIÓN](#justificación)............................................................................................................................. 5
+8.   [ALCANCES Y LIMITACIONES DEL
+    PROYECTO](#alcances-y-limitaciones-del-proyecto)................................................................................... 6
+9.   [MARCO DE REFERENCIA](#marco-de-referencia)............................................................................................................... 7\
+    9.1.   [Antecedentes y Marco Teórico](#antecedentes-y-marco-teórico)........................................................................................................ 7\
+    9.2.   [Marco Conceptual](#marco-conceptual)....................................................................................................................... 7\
+10.   [HIPÓTESIS](#hipótesis).................................................................................................................................. 23
+11.   [DISEÑO METODOLÓGICO](#diseño-metodológico)............................................................................................................. 23\
+    11.1.   [Escritura del algoritmo MNIG en
+        Python](#escritura-del-algoritmo-mnig-en-python)......................................................................................... 23\
+    11.2.   [Ejecución del algoritmo MNIG en instancia del modelo
+        FMMSP](#ejecución-del-algoritmo-mnig-en-instancia-del-modelo-fmmsp)............................................................ 24\
+    11.3.   [Comparación del algoritmo MNIG con otros
+        algoritmos](#comparación-del-algoritmo-mnig-con-otros-algoritmos)....................................................................... 25\
+    11.4.   [Instancias de Taillard](#instancias-de-taillard)................................................................................................................. 25\
+    11.5.   [Perturbaciones al algoritmo
+        MNIG](#perturbaciones-al-algoritmo-mnig)................................................................................................ 25\
+12.   [RESULTADOS](#resultados).............................................................................................................................. 26\
+    12.1.   [Análisis de resultados](#análisis-de-resultados)................................................................................................................ 27\
+    12.2.   [Resultados de las instancias de
+        Taillard](#resultados-de-las-instancias-de-taillard)........................................................................................... 27\
+    12.3.   [Resultados de las 200
+        perturbaciones](#resultados-de-las-200-perturbaciones).............................................................................................. 37\
+13.   [CONCLUSIONES Y RECOMENDACIONES](#conclusiones-y-recomendaciones)......................................................................................... 38
+14.   [GLOSARIO DE ANGLICISMOS](#glosario-de-anglicismos)........................................................................................................ 38
+15.   [REFERENCIAS](#referencias)............................................................................................................................. 38
+
+# 1. TÍTULO
 
 "ALGORITMO VORAZ ITERATIVO CON MULTI-VECINDAD APLICADO AL PROBLEMA DE
 SECUENCIACIÓN DIFUSO MULTIPRODUCTO Y MULTIETAPAS"
 
-# RESUMEN
+# 2. RESUMEN
 
 Este trabajo exploró el Problema de Secuenciación Difuso Multiproducto y
 Multietapas (FMMSP por sus siglas en inglés, denotado como
@@ -68,9 +197,11 @@ algoritmos. El algoritmo MNIG también fue aplicado a instancias de
 Taillard, que son instancias del problema flow shop básico.
 
 **Palabras Clave**: Algoritmo Voraz Iterativo, Multi-vecindad,
-Secuenciación, Números Triangulares Difusos, Multiproducto, Multietapas.
+Secuenciación, Números Triangulares Difusos, Multiproducto, Multietapas.\
+\
+\
 
-# ABSTRACT
+# 3. ABSTRACT
 
 This work explored the Fuzzy Multiproduct Multistage Scheduling Problem
 (FMMSP, denoted as
@@ -96,7 +227,7 @@ problem.
 **Keywords**: Iterated Greedy Algorithm, Multi-neighborhood, Scheduling,
 Triangular Fuzzy Numbers, Multiproduct, Multistage.
 
-# INTRODUCCIÓN
+# 4. INTRODUCCIÓN
 
 El presente trabajo de tesis de pregrado ha hecho un aporte a un pequeño
 a mi conocimiento sobre los sistemas flow shop flexible con tiempos de
@@ -168,7 +299,7 @@ Engineering Village, IEEE, JSTOR, y EBSCO. Se usaron y mezclaron las
 palabras clave: 'fuzzy', 'multiproduct', 'multistage', 'scheduling',
 'triangular fuzzy number'.
 
-# PLANTEAMIENTO DEL PROBLEMA
+# 5. PLANTEAMIENTO DEL PROBLEMA
 
 El problema que se resolvió con esta tesis, es el de explorar el
 algoritmo MNIG como candidato para encontrar secuencias de un sistema de
@@ -182,7 +313,7 @@ variabilidad, que hace que empeore la solución promedio encontrada por
 esos algoritmos. El algoritmo MNIG es capaz de mejorar la solución
 promedio encontrada para el modelo FMMSP.
 
-## Elementos del Problema
+## 5.1. Elementos del Problema
 
 Según lo anterior, los elementos del problema son:
 
@@ -207,7 +338,7 @@ siguiente manera, respectivamente:
     la solución promedio al ser comparada con los otros cuatro
     algoritmos, en la instancia o10s2u5 del modelo FMMSP.
 
-## Pregunta del Problema
+## 5.2. Pregunta del Problema
 
 ¿Cómo puede el algoritmo MNIG mejorar las soluciones promedio
 encontradas para el modelo FMMSP?
@@ -219,7 +350,7 @@ pues eso no se podía predecir sin hacer este trabajo, pero se encontró
 que de hecho el algoritmo MNIG sí mejora la solución promedio respecto a
 los algoritmos DBSA-LS, BDBSA, MBSA, e IGA.
 
-## Subpreguntas del Problema
+## 5.3. Subpreguntas del Problema
 
 ¿Cómo puede implementarse el algoritmo MNIG, para obtener resultados del
 modelo FMMSP, denotado como
@@ -249,15 +380,15 @@ otros cuatro algoritmos?
 resultó ser al menos igual de bueno, y mejor en promedio, que los
 algoritmos DBSA-LS, BDBSA, MBSA, e IGA.
 
-# OBJETIVOS
+# 6. OBJETIVOS
 
-## Objetivo General
+## 6.1. Objetivo General
 
 -   Encontrar soluciones a través del algoritmo MNIG para el modelo
     FMMSP, y determinar si las soluciones encontradas mejoran o no la
     solución promedio.
 
-## Objetivos Específicos
+## 6.2. Objetivos Específicos
 
 -   Implementar el algoritmo MNIG de modo que se puedan obtener
     resultados del modelo FMMSP, denotado como
@@ -274,7 +405,7 @@ algoritmos DBSA-LS, BDBSA, MBSA, e IGA.
 -   Determinar la efectividad del algoritmo MNIG respecto al modelo flow
     shop general.
 
-# JUSTIFICACIÓN
+# 7. JUSTIFICACIÓN
 
 Se propone este trabajo porque en el mundo académico existe una
 necesidad de comprobar que nuevos algoritmos den resultados comparables
@@ -352,7 +483,7 @@ número triangular difuso: el tiempo optimista de producción, el tiempo
 promedio de producción, y el tiempo pesimista de producción (esto se
 puede ver también en la sección del marco de referencia).
 
-# ALCANCES Y LIMITACIONES DEL PROYECTO
+# 8. ALCANCES Y LIMITACIONES DEL PROYECTO
 
 **Alcances:** Los alcances de este proyecto están bien definidos. Parte
 del alcance consiste en escribir un algoritmo en Python, específicamente
@@ -363,14 +494,14 @@ otros cuatro algoritmos (DBSA-LS, BDBSA, MBSA, e IGA) aplicados al
 modelo FMMSP $FFc | \tilde{T}_{i, u}, batch(b), Z_{i, u, s} | C_{max}$.
 Dicha tesis será entregada a la Universidad Distrital.
 
-# MARCO DE REFERENCIA
+# 9. MARCO DE REFERENCIA
 
 El marco de referencia se enfoca en el scheduling de los sistemas de
 producción tipo FMMSP, en el algoritmo MNIG que es un tipo de
 metaheurística, y en los otros cuatro algoritmos que son DBSA-LS, BDBSA,
 MBSA, e IGA.
 
-## Antecedentes y Marco Teórico
+## 9.1. Antecedentes y Marco Teórico
 
 En los antecedentes encontramos dos temas pilares: el scheduling, y las
 metaheurísticas. Del libro de scheduling de Pinedo [@schedPinedo] se
@@ -417,7 +548,7 @@ pensando en el modelo FMMSP
 $FFc | \tilde{T}_{i, u}, batch(b), Z_{i, u, s} | C_{max}$ se puede
 adaptar fácilmente sin cambiar la esencia de la metaheurística.
 
-## Marco Conceptual
+## 9.2. Marco Conceptual
 
 **Scheduling:** problemas de optimización en los que se establece una
 secuencia de trabajos en un sistema de producción, y se busca optimizar
@@ -723,6 +854,8 @@ de Python:
 ::: imag
 ![](diags/diag_dneh_smr.svg)
 :::
+\
+\
 
 ------------------------------------------------------------------------
 
@@ -803,6 +936,8 @@ flujo y en pseudocódigo de Python:
 ::: imag
 ![](diags/diag_desrec.svg)
 :::
+\
+\
 
 ------------------------------------------------------------------------
 
@@ -863,6 +998,8 @@ en su versión de diagrama de flujo y en pseudocódigo de Python:
 ::: imag
 ![](diags/diag_busq_local.svg)
 :::
+\
+\
 
 ------------------------------------------------------------------------
 
@@ -928,6 +1065,10 @@ Diagrama de flujo y pseudocódigo de Python del algoritmo MNIG:
 ::: imag
 ![](diags/diag_MNIG.svg)
 :::
+\
+\
+\
+\
 
 ------------------------------------------------------------------------
 
@@ -1009,7 +1150,7 @@ $FFc | \tilde{T}_{i, u}, batch(b), Z_{i, u, s} | C_{max}$, el algoritmo
 MNIG, y los cuatro algoritmos DBSA-LS, BDBSA, MBSA, e IGA. Con este
 marco de referencia se llevó a cabo el proyecto de grado.
 
-# HIPÓTESIS
+# 10. HIPÓTESIS
 
 A través del algoritmo MNIG se pueden encontrar soluciones para el
 modelo FMMSP $FFc | \tilde{T}_{i, u}, batch(b), Z_{i, u, s} | C_{max}$.
@@ -1017,7 +1158,7 @@ Tras su aplicación la efectividad del algoritmo MNIG es medible y es
 comparable a la efectividad de los otros cuatro algoritmos: DBSA-LS,
 BDBSA, MBSA, e IGA.
 
-# DISEÑO METODOLÓGICO
+# 11. DISEÑO METODOLÓGICO
 
 El diseño metodológico de este proyecto abarca las siguientes partes
 principales: escribir el algoritmo MNIG en Python, ejecutar el algoritmo
@@ -1026,8 +1167,9 @@ algoritmo MNIG con los resultados de los otros cuatro algoritmos que ya
 han sido aplicados al modelo FMMSP (DBSA-LS, BDBSA, MBSA, e IGA), y
 perturbar el algoritmo MNIG tomando los tiempos de ejecución de 200
 perturbaciones.
+\
 
-## Escritura del algoritmo MNIG en Python
+## 11.1. Escritura del algoritmo MNIG en Python
 
 El algoritmo MNIG se escribió en el lenguaje Python como una aplicación
 de consola. El interprete de Python empieza por ejecutar un archivo de
@@ -1072,7 +1214,7 @@ es tratada como un paquete mediante el archivo `__init__.py` se podría
 decir que es el paquete con los algoritmos necesarios para ejecutar el
 algoritmo principal MNIG.
 
-## Ejecución del algoritmo MNIG en instancia del modelo FMMSP
+## 11.2. Ejecución del algoritmo MNIG en instancia del modelo FMMSP
 
 Aquí se explica por qué sólo se trabajará una instancia y no varias del
 modelo FMMSP $FFc | \tilde{T}_{i, u}, batch(b), Z_{i, u, s} | C_{max}$.
@@ -1126,7 +1268,7 @@ pues son números difusos triangulares. El algoritmo fue ejecutado sobre
 esta instancia o10s2u5 y se compararon los resultados con los de los
 otros cuatro algoritmos.
 
-## Comparación del algoritmo MNIG con otros algoritmos
+## 11.3. Comparación del algoritmo MNIG con otros algoritmos
 
 Tras aplicar el algoritmo MNIG a la instancia del modelo FMMSP y obtener
 resultados, se comparó con los otros cuatro algoritmos. Estos son:
@@ -1148,7 +1290,7 @@ Con esta tabla se compararon directamente los resultados del algoritmo
 MNIG al ser aplicado al modelo FMMSP
 $FFc | \tilde{T}_{i, u}, batch(b), Z_{i, u, s} | C_{max}$.
 
-## Instancias de Taillard
+## 11.4. Instancias de Taillard
 
 A nivel internacional, se reconocen algunas instancias con las que se
 puede medir la efectividad de las metaheurísticas. Para el caso flow
@@ -1164,7 +1306,7 @@ continua, y probablemente más. Aparte para analizar el algoritmo MNIG
 aplicado al problema flow shop básico, no necesariamente es obligatorio
 probar con todas las instancias.
 
-## Perturbaciones al algoritmo MNIG
+## 11.5. Perturbaciones al algoritmo MNIG
 
 Se realizaron 200 perturbaciones distintas al algoritmo MNIG, variando
 el sistema flow shop (usando instancias de Taillard), el parámetro $N$,
@@ -1206,7 +1348,7 @@ trabajos, entonces los valores de $d$ serán: 1/6 \* 36 = 6, 2/6 \* 36 =
 primeras 4 instancias de Taillard tienen 20 trabajos, por lo cual los
 valores de $d$ son \[3, 6, 10, 13, 16\].
 
-# RESULTADOS
+# 12. RESULTADOS
 
 Se corrió varias veces el algoritmo MNIG implementado en Python, para
 resolver la instancia o10s2u5 del modelo FMMSP. Las siguientes dos
@@ -1235,8 +1377,10 @@ instancia o10s2u5.
   : Secuencias encontradas con la solución (36, 44, 52)
 
 Todas estas secuencias tienen un makespan de (36, 44, 52).
+\
+\
 
-## Análisis de resultados
+## 12.1. Análisis de resultados
 
 El algoritmo MNIG se corrió más de 30 veces en la instancia o10s2u5 del
 modelo FMMSP, y se midió el tiempo de ejecución de esas 30 veces para
@@ -1301,12 +1445,16 @@ promedio al menos un 2.22% y máximo un 12.44%, en comparación con los
 algoritmos DBSA-LS, BDBSA, MBSA, e IGA, para la instancia o10s2u5 del
 modelo FMMSP.
 
-## Resultados de las instancias de Taillard
+## 12.2. Resultados de las instancias de Taillard
 
 El algoritmo MNIG se aplicó a las primeras 95 instancias de Taillard. Se
 decidió no aplicarlo a las últimas 25 instancias (son 120 en total),
 porque esta implementación del algoritmo MNIG se tardaba más de 24 horas
 por instancia.
+\
+\
+\
+\
 
   -----------------------------------------------------------------------------------
    Instancia   Makespan                    Secuencia                    \% sobre cota
@@ -2028,7 +2176,7 @@ ejemplo 500 trabajos y 20 máquinas, instancias de este tamaño
 requerirían varios días de ejecución por iteración, en esta
 implementación del algoritmo).
 
-## Resultados de las 200 perturbaciones
+## 12.3. Resultados de las 200 perturbaciones
 
 En el Anexo A se presentan los resultados de las 200 perturbaciones (es
 demasiado largo para mostrarlo aquí). La siguiente tabla muestra las
@@ -2113,7 +2261,7 @@ de 4690.67 minutos, aproximadamente 78 horas, o poco más de 3 días de
 computación continua (por esto se optó por no probar instancias con $N$
 mayor que 5).
 
-# CONCLUSIONES Y RECOMENDACIONES
+# 13. CONCLUSIONES Y RECOMENDACIONES
 
 A futuro se podría mejorar el algoritmo para tratar otros problemas de
 scheduling. Con este trabajo se puede concluir que no hay impedimento
@@ -2138,7 +2286,7 @@ cuadrado de este parámetro.
 Como conclusión final, este trabajo evidencia que el algoritmo MNIG sí
 es competitivo para resolver el problema FMMSP.
 
-# GLOSARIO DE ANGLICISMOS
+# 14. GLOSARIO DE ANGLICISMOS
 
 **Scheduling**: Rama de estudio de la secuenciación de trabajos en un
 sistema productivo.
@@ -2154,4 +2302,4 @@ algoritmo voraz.
 
 **Fuzzy number**: Número difuso.
 
-# REFERENCIAS
+# 15. REFERENCIAS
